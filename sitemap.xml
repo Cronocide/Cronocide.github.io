@@ -3,16 +3,17 @@
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   
   <url>
+    <loc>https://www.cronocide.com/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>https://www.cronocide.com/about/</loc>
     <priority>0</priority>
   </url>
   
   <url>
     <loc>https://www.cronocide.com/categories/</loc>
-  </url>
-  
-  <url>
-    <loc>https://www.cronocide.com/</loc>
   </url>
   
   <url>

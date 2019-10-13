@@ -248,6 +248,7 @@ label {
   color: #fefefe;
   padding: 0.25em 0.75em;
   margin: 0.5rem;
+  cursor: pointer;
 }
 [for="themer"] [aria-hidden]::before {
   content: 'dark';
@@ -896,6 +897,15 @@ h1 svg {
 .gallery {
   display: flex;
   justify-content: center;
+}
+
+div.social {
+  margin-top: 5px;
+  text-align: center;
+}
+
+div.social a {
+  border-bottom: none;
 }
 
 /* Media queries */
