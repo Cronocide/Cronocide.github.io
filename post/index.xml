@@ -6,7 +6,7 @@
     <description>Recent content in Posts on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Thu, 24 Oct 2019 00:52:11 -0600</lastBuildDate>
+    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
     
 	<atom:link href="https://www.cronocide.com/post/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +14,7 @@
     <item>
       <title>Building your first SIEM with the Elastic Stack</title>
       <link>https://www.cronocide.com/post/byfswtes/</link>
-      <pubDate>Thu, 24 Oct 2019 00:52:11 -0600</pubDate>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
       
       <guid>https://www.cronocide.com/post/byfswtes/</guid>
       <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.

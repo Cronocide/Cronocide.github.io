@@ -249,7 +249,7 @@
     <div class="date">
       
       
-      <strong aria-hidden="true">Publish date: </strong>Oct 10, 24240
+      <strong aria-hidden="true">Publish date: </strong>Mar 3, 26260
       
         
       
@@ -454,8 +454,7 @@ Add the following line to the bottom of <code>/opt/zeek/share/zeek/site/local.ze
 <pre><code class="language-sh">sudo /opt/zeek/bin/zeekctl deploy
 </code></pre>
 
-<p>sh
-Then start Zeek:</p>
+<p>Then start Zeek:</p>
 
 <pre><code class="language-sh">sudo /opt/zeek/bin/zeekctl start
 </code></pre>
@@ -594,15 +593,15 @@ sudo mkdir /etc/logstash/tables
 
 filter {
   # Lookup source and destination addresses against our list of Tor nodes
-  if [source][address] {
+  if (&quot;&quot; in [source][address]) {
     translate {
       dictionary_path =&gt; &quot;/etc/logstash/tables/tor_nodes.json&quot;
       field =&gt; &quot;[source][address]&quot;
       destination =&gt; &quot;[@metadata][torsrc]&quot;
     }
-    mutate {convert =&gt; { &quot;torsrc&quot; =&gt; &quot;integer&quot; }}
+    mutate {convert =&gt; { &quot;[@metadata][torsrc]&quot; =&gt; &quot;integer&quot; }}
   }
-  if [destination][address] {
+  if (&quot;&quot; in [destination][address]) {
     translate {
       dictionary_path =&gt; &quot;/etc/logstash/tables/tor_nodes.json&quot;
       field =&gt; &quot;[destination][address]&quot;
@@ -656,8 +655,6 @@ sudo systemctl restart kibana
 
 <p>Now it&rsquo;s time to log in to our dashboard! Navigate to the IP address of the box Kibana is running on on port 5601. Since we&rsquo;ll be loading this in the web browser on the SIEM, the address would be <a href="http://localhost:5601">http://localhost:5601</a>.</p>
 
-<p>(image of kibana)</p>
-
 <p>When prompted to explore your own data or play with the examples, choose to explore your data.</p>
 
 <p>Kibana is a great visualization and search tool for Elasticsearch. Think of it as as not much more than a GUI for Elasticsearch. Elasticsearch controls how the data is stored, searched, and configured. We can modify all of those parameters through Kibana.</p>
@@ -670,19 +667,13 @@ sudo systemctl restart kibana
 
 <p>Select the Settings gear in the bottom left of Kibana and select Index Patterns under Kibana in the left. We&rsquo;ll create a new <em>index pattern</em> that describes any indices that start with &lsquo;system&rsquo;. set the index pattern to be <code>system-*</code> and click next. When prompted for a time filter field, select &lsquo;@Timestamp&rsquo;. This lets Kibana know how to assign your events to a timeline.</p>
 
-<p>(system index image)</p>
-
 <p>We&rsquo;ll do the same with our <code>zeek-*</code> index pattern.</p>
-
-<p>(zeek index image)</p>
 
 <h3 id="using-kibana">Using Kibana</h3>
 
 <p>Now let&rsquo;s explore the data. Select the Discover icon (second from the top on the left).</p>
 
 <p>On the left there will be a dropdown to select your index. This lets you choose the type of data you&rsquo;re searching for. In our case, we can search for system logs or Zeek logs. The logs are sorted historically, and you can adjust the search time to go further back.</p>
-
-<p>(image of the search)</p>
 
 <p>Let&rsquo;s perform an example search. First, select the <code>system-*</code> index on the left. Then perform a sudo command on your host. This will make an entry in auth.log, which will be read by filebeat and pushed into Logstash, then normalized and put into Elasticsearch. This will happen after a few seconds.</p>
 
@@ -709,8 +700,6 @@ To generate some of this traffic you could download and install Tor, but that wo
 
 <pre><code>tags: zeek.connection AND _exists_:destination.tor
 </code></pre>
-
-<p>(image of the search)</p>
 
 <p>Clicking on the event will show us the source address, and let us know that it was our box that was connecting to Tor.</p>
 
