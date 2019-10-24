@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on cronocide.com</title>
+    <link>https://www.cronocide.com/post/</link>
+    <description>Recent content in Posts on cronocide.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Thu, 24 Oct 2019 00:52:11 -0600</lastBuildDate>
+    
+	<atom:link href="https://www.cronocide.com/post/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Building your first SIEM with the Elastic Stack</title>
+      <link>https://www.cronocide.com/post/byfswtes/</link>
+      <pubDate>Thu, 24 Oct 2019 00:52:11 -0600</pubDate>
+      
+      <guid>https://www.cronocide.com/post/byfswtes/</guid>
+      <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.
+After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,823 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="https://www.cronocide.com/post/byfswtes/">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://www.cronocide.com/css/prism.css" media="none" onload="this.media='all';">
+
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://www.cronocide.com/css/styles.css">
+
+  <style id="inverter" media="none">
+    html { filter: invert(100%) }
+    * { background-color: inherit }
+    img:not([src*=".svg"]), .colors, iframe, .demo-container { filter: invert(100%) }
+  </style>
+
+  
+  
+  <title>Building your first SIEM with the Elastic Stack | cronocide.com</title>
+</head>
+
+  <body>
+    <a href="#main">skip to content</a>
+    <svg style="display: none">
+  <symbol id="bookmark" viewBox="0 0 40 50">
+    <g transform="translate(2266 3206.2)">
+      <path style="stroke:currentColor;stroke-width:3.2637;fill:none" d="m-2262.2-3203.4-.2331 42.195 16.319-16.318 16.318 16.318.2331-42.428z"/>
+    </g>
+  </symbol>
+  <symbol id="w3c" viewBox="0 0 127.09899 67.763">
+   <text font-size="83" style="font-size:83px;font-family:Trebuchet;letter-spacing:-12;fill-opacity:0" letter-spacing="-12" y="67.609352" x="-26.782778">W3C</text>
+   <text font-size="83" style="font-size:83px;font-weight:bold;font-family:Trebuchet;fill-opacity:0" y="67.609352" x="153.21722" font-weight="bold">SVG</text>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m33.695.377 12.062 41.016 12.067-41.016h8.731l-19.968 67.386h-.831l-12.48-41.759-12.479 41.759h-.832l-19.965-67.386h8.736l12.061 41.016 8.154-27.618-3.993-13.397h8.737z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m91.355 46.132c0 6.104-1.624 11.234-4.862 15.394-3.248 4.158-7.45 6.237-12.607 6.237-3.882 0-7.263-1.238-10.148-3.702-2.885-2.47-5.02-5.812-6.406-10.022l6.82-2.829c1.001 2.552 2.317 4.562 3.953 6.028 1.636 1.469 3.56 2.207 5.781 2.207 2.329 0 4.3-1.306 5.909-3.911 1.609-2.606 2.411-5.738 2.411-9.401 0-4.049-.861-7.179-2.582-9.399-1.995-2.604-5.129-3.912-9.397-3.912h-3.327v-3.991l11.646-20.133h-14.062l-3.911 6.655h-2.493v-14.976h32.441v4.075l-12.31 21.217c4.324 1.385 7.596 3.911 9.815 7.571 2.22 3.659 3.329 7.953 3.329 12.892z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.21 0 1.414 8.6-5.008 9.583s-1.924-4.064-5.117-6.314c-2.693-1.899-4.447-2.309-7.186-1.746-3.527.73-7.516 4.938-9.258 10.13-2.084 6.21-2.104 9.218-2.178 11.978-.115 4.428.58 7.043.58 7.043s-3.04-5.626-3.011-13.866c.018-5.882.947-11.218 3.666-16.479 2.404-4.627 5.954-7.404 9.114-7.728 3.264-.343 5.848 1.229 7.841 2.938 2.089 1.788 4.213 5.698 4.213 5.698l4.94-9.837z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.82 48.674s-2.208 3.957-3.589 5.48c-1.379 1.524-3.849 4.209-6.896 5.555-3.049 1.343-4.646 1.598-7.661 1.306-3.01-.29-5.807-2.032-6.786-2.764-.979-.722-3.486-2.864-4.897-4.854-1.42-2-3.634-5.995-3.634-5.995s1.233 4.001 2.007 5.699c.442.977 1.81 3.965 3.749 6.572 1.805 2.425 5.315 6.604 10.652 7.545 5.336.945 9.002-1.449 9.907-2.031.907-.578 2.819-2.178 4.032-3.475 1.264-1.351 2.459-3.079 3.116-4.108.487-.758 1.276-2.286 1.276-2.286l-1.276-6.644z"/>
+  </symbol>
+  
+  <symbol id="folder" viewBox="0 0 24 24">
+    <g transform="translate(2266 3206.2)">
+       <path style="stroke:currentColor;stroke-width:3.2637;fill:currentColor" d="M20,6h-8l-1.414-1.414C10.211,4.211,9.702,4,9.172,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8 C22,6.9,21.1,6,20,6z"/>
+    </g>
+  </symbol>
+
+  <symbol id="tag" viewBox="0 0 177.16535 177.16535">
+    <g transform="translate(0 -875.2)">
+     <path style="fill-rule:evenodd;stroke-width:0;fill:currentColor" d="m159.9 894.3-68.79 8.5872-75.42 77.336 61.931 60.397 75.429-76.565 6.8495-69.755zm-31.412 31.835a10.813 10.813 0 0 1 1.8443 2.247 10.813 10.813 0 0 1 -3.5174 14.872l-.0445.0275a10.813 10.813 0 0 1 -14.86 -3.5714 10.813 10.813 0 0 1 3.5563 -14.863 10.813 10.813 0 0 1 13.022 1.2884z"/>
+    </g>
+  </symbol>
+
+  <symbol id="balloon" viewBox="0 0 141.73228 177.16535">
+   <g transform="translate(0 -875.2)">
+    <g>
+     <path style="fill:currentColor" d="m68.156 882.83-.88753 1.4269c-4.9564 7.9666-6.3764 17.321-5.6731 37.378.36584 10.437 1.1246 23.51 1.6874 29.062.38895 3.8372 3.8278 32.454 4.6105 38.459 4.6694-.24176 9.2946.2879 14.377 1.481 1.2359-3.2937 5.2496-13.088 8.886-21.623 6.249-14.668 8.4128-21.264 10.253-31.252 1.2464-6.7626 1.6341-12.156 1.4204-19.764-.36325-12.93-2.1234-19.487-6.9377-25.843-2.0833-2.7507-6.9865-7.6112-7.9127-7.8436-.79716-.20019-6.6946-1.0922-6.7755-1.0248-.02213.0182-5.0006-.41858-7.5248-.22808l-2.149-.22808h-3.3738z"/>
+     <path style="fill:currentColor" d="m61.915 883.28-3.2484.4497c-1.7863.24724-3.5182.53481-3.8494.63994-2.4751.33811-4.7267.86957-6.7777 1.5696-.28598 0-1.0254.20146-2.3695.58589-5.0418 1.4418-6.6374 2.2604-8.2567 4.2364-6.281 7.6657-11.457 18.43-12.932 26.891-1.4667 8.4111.71353 22.583 5.0764 32.996 3.8064 9.0852 13.569 25.149 22.801 37.517 1.3741 1.841 2.1708 2.9286 2.4712 3.5792 3.5437-1.1699 6.8496-1.9336 10.082-2.3263-1.3569-5.7831-4.6968-21.86-6.8361-33.002-.92884-4.8368-2.4692-14.322-3.2452-19.991-.68557-5.0083-.77707-6.9534-.74159-15.791.04316-10.803.41822-16.162 1.5026-21.503 1.4593-5.9026 3.3494-11.077 6.3247-15.852z"/>
+     <path style="fill:currentColor" d="m94.499 885.78c-.10214-.0109-.13691 0-.0907.0409.16033.13489 1.329 1.0675 2.5976 2.0723 6.7003 5.307 11.273 14.568 12.658 25.638.52519 4.1949.24765 14.361-.5059 18.523-2.4775 13.684-9.7807 32.345-20.944 53.519l-3.0559 5.7971c2.8082.76579 5.7915 1.727 8.9926 2.8441 11.562-11.691 18.349-19.678 24.129-28.394 7.8992-11.913 11.132-20.234 12.24-31.518.98442-10.02-1.5579-20.876-6.7799-28.959-.2758-.4269-.57803-.86856-.89617-1.3166-3.247-6.13-9.752-12.053-21.264-16.131-2.3687-.86369-6.3657-2.0433-7.0802-2.1166z"/>
+     <path style="fill:currentColor" d="m32.52 892.22c-.20090-.13016-1.4606.81389-3.9132 2.7457-11.486 9.0476-17.632 24.186-16.078 39.61.79699 7.9138 2.4066 13.505 5.9184 20.562 5.8577 11.77 14.749 23.219 30.087 38.74.05838.059.12188.1244.18052.1838 1.3166-.5556 2.5965-1.0618 3.8429-1.5199-.66408-.32448-1.4608-1.3297-3.8116-4.4602-5.0951-6.785-8.7512-11.962-13.051-18.486-5.1379-7.7948-5.0097-7.5894-8.0586-13.054-6.2097-11.13-8.2674-17.725-8.6014-27.563-.21552-6.3494.13041-9.2733 1.775-14.987 2.1832-7.5849 3.9273-10.986 9.2693-18.07 1.7839-2.3656 2.6418-3.57 2.4409-3.7003z"/>
+     <path style="fill:currentColor" d="m69.133 992.37c-6.2405.0309-12.635.76718-19.554 2.5706 4.6956 4.7759 9.935 10.258 12.05 12.625l4.1272 4.6202h11.493l3.964-4.4516c2.0962-2.3541 7.4804-7.9845 12.201-12.768-8.378-1.4975-16.207-2.6353-24.281-2.5955z"/>
+     <rect style="stroke-width:0;fill:currentColor" ry="2.0328" height="27.746" width="22.766" y="1017.7" x="60.201"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="info" viewBox="0 0 41.667 41.667">
+   <g transform="translate(-37.035 -1004.6)">
+    <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m76.25 1030.2a18.968 18.968 0 0 1 -23.037 13.709 18.968 18.968 0 0 1 -13.738 -23.019 18.968 18.968 0 0 1 23.001 -13.768 18.968 18.968 0 0 1 13.798 22.984"/>
+    <g transform="matrix(1.1146 0 0 1.1146 -26.276 -124.92)">
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m75.491 1039.5v-8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" transform="scale(-1)" d="m-73.193-1024.5a2.3719 2.3719 0 0 1 -2.8807 1.7142 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="warning" viewBox="0 0 48.430474 41.646302">
+    <g transform="translate(-1.1273 -1010.2)">
+     <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:4.151;fill:none" d="m25.343 1012.3-22.14 37.496h44.28z"/>
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:4.1512;fill:none" d="m25.54 1027.7v8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" d="m27.839 1042.8a2.3719 2.3719 0 0 1 -2.8807 1.7143 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+  </symbol>
+
+  <symbol id="menu" viewBox="0 0 50 50">
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="0" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="20" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="40" x="0"/>
+   </symbol>
+
+   <symbol id="link" viewBox="0 0 50 50">
+    <g transform="translate(0 -1002.4)">
+     <g transform="matrix(.095670 0 0 .095670 2.3233 1004.9)">
+      <g>
+       <path style="stroke-width:0;fill:currentColor" d="m452.84 192.9-128.65 128.65c-35.535 35.54-93.108 35.54-128.65 0l-42.881-42.886 42.881-42.876 42.884 42.876c11.845 11.822 31.064 11.846 42.886 0l128.64-128.64c11.816-11.831 11.816-31.066 0-42.9l-42.881-42.881c-11.822-11.814-31.064-11.814-42.887 0l-45.928 45.936c-21.292-12.531-45.491-17.905-69.449-16.291l72.501-72.526c35.535-35.521 93.136-35.521 128.64 0l42.886 42.881c35.535 35.523 35.535 93.141-.001 128.66zm-254.28 168.51-45.903 45.9c-11.845 11.846-31.064 11.817-42.881 0l-42.884-42.881c-11.845-11.821-11.845-31.041 0-42.886l128.65-128.65c11.819-11.814 31.069-11.814 42.884 0l42.886 42.886 42.876-42.886-42.876-42.881c-35.54-35.521-93.113-35.521-128.65 0l-128.65 128.64c-35.538 35.545-35.538 93.146 0 128.65l42.883 42.882c35.51 35.54 93.11 35.54 128.65 0l72.496-72.499c-23.956 1.597-48.092-3.784-69.474-16.283z"/>
+      </g>
+     </g>
+    </g>
+  </symbol>
+
+  <symbol id="doc" viewBox="0 0 35 45">
+   <g transform="translate(-147.53 -539.83)">
+    <path style="stroke:currentColor;stroke-width:2.4501;fill:none" d="m149.38 542.67v39.194h31.354v-39.194z"/>
+    <g style="stroke-width:25" transform="matrix(.098003 0 0 .098003 133.69 525.96)">
+     <path d="m220 252.36h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path style="stroke:currentColor;stroke-width:25;fill:none" d="m220 409.95h200"/>
+     <path d="m220 488.74h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path d="m220 331.15h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+    </g>
+   </g>
+ </symbol>
+
+ <symbol id="tick" viewBox="0 0 177.16535 177.16535">
+  <g transform="translate(0 -875.2)">
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="155" width="40" y="702.99" x="556.82"/>
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="40" width="90.404" y="817.99" x="506.42"/>
+  </g>
+ </symbol>
+</svg>
+
+    <div class="wrapper">
+      <header class="intro-and-nav" role="banner">
+  <div>
+    <div class="intro">
+      <a class="logo" href="/" aria-label="cronocide.com home page">
+        <img src="https://www.cronocide.com/images/logo.svg" alt="">
+      </a>
+      <label for="themer">
+      <input type="checkbox" id="themer" class="vh">
+      <span aria-hidden="true"></span> mode
+      </label>
+      
+      <p class="library-desc">
+        
+      </p>
+    </div>
+    <nav id="patterns-nav" class="patterns" role="navigation">
+  <h2 class="vh">Main navigation</h2>
+  <button id="menu-button" aria-expanded="false">
+    <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
+      <use xlink:href="#menu"></use>
+    </svg>
+    Menu
+  </button>
+  
+  <ul id="patterns-list">
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">Home</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/post/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">Posts</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/repo/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">Repo</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/about/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">About</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/index.xml" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">RSS</span>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    <div class="social">
+  <a href="https://www.reddit.com/u/Cronocide"><img src="/images/reddit.svg" width=25></a>
+  <a href="https://twitter.com/Cronocide"><img src="/images/twitter.svg" width=25></a>
+  <a href="https://github.com/Cronocide"><img src="/images/github.svg" width=25></a>
+</div>
+
+  </div>
+</header>
+
+      <div class="main-and-footer">
+        <div>
+          
+  <main id="main">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      Building your first SIEM with the Elastic Stack
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong aria-hidden="true">Publish date: </strong>Oct 10, 24240
+      
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Table of contents</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#preface">
+            Preface
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#installation">
+            Installation
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#configuration-and-setup">
+            Configuration and Setup
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#next-steps">
+            Next Steps
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
+
+    
+
+    
+
+<h2 id="preface">Preface</h2>
+
+<p>This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.</p>
+
+<p>After we get the basic software running we&rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</p>
+
+<p>These instructions are for a single Ubuntu 18.04 host running all 6 of the SIEM components. This is not guaranteed to work on all Debian distributions immediately; you may need to tweak some of the source repositories for other distributions. If you are running these components on separate hosts, you will need to modify the configurations and commands listed below to work with your distributed architecture.</p>
+
+<hr />
+
+<h2 id="installation">Installation</h2>
+
+<h3 id="install-elastic-repositories">Install Elastic repositories</h3>
+
+<p>We&rsquo;ll start out by adding the Elastic apt repositories to our sources to install all the packages we&rsquo;ll need from Elastic:</p>
+
+<pre><code class="language-sh">wget -qO - https://artifacts.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add -
+sudo apt-get install apt-transport-https
+echo &quot;deb https://artifacts.elastic.co/packages/7.x/apt stable main&quot; | sudo tee -a /etc/apt/sources.list.d/elastic-7.x.list
+sudo apt-get update
+</code></pre>
+
+<p>This makes it really easy to install the rest of the Elastic Stack. We&rsquo;ll talk about configuring each of these services in a little bit; let&rsquo;s get them installed first:</p>
+
+<h3 id="install-elasticsearch">Install Elasticsearch:</h3>
+
+<pre><code class="language-sh">sudo apt-get install elasticsearch
+</code></pre>
+
+<p>Before we install the rest of the Elastic Stack, lets make sure we get Elasticsearch fired up so that it will be ready for us to put data into:</p>
+
+<pre><code class="language-sh">sudo systemctl enable elasticsearch
+sudo systemctl start elasticsearch
+</code></pre>
+
+<h3 id="install-kibana">Install Kibana:</h3>
+
+<pre><code class="language-sh">sudo apt-get install kibana
+</code></pre>
+
+<h3 id="install-logstash">Install Logstash:</h3>
+
+<pre><code class="language-sh">sudo apt-get install default-jre -y
+sudo apt-get install logstash
+</code></pre>
+
+<h3 id="install-filebeat">Install Filebeat:</h3>
+
+<pre><code class="language-sh">sudo apt-get install filebeat
+</code></pre>
+
+<h3 id="install-elastalert">Install Elastalert:</h3>
+
+<p>Installing Elastalert isn&rsquo;t as straightforward, but it isn&rsquo;t that difficult either. We&rsquo;ll clone the Elastalert source repository, and (after making sure that python&rsquo;s <code>pip3</code> and the <code>setuptools</code> pip package are installed) move the installation directory to <code>/etc</code> to keep things consistent.</p>
+
+<pre><code class="language-sh">sudo apt install python3-pip -y
+pip3 install &quot;setuptools&gt;=11.3&quot; PyYAML
+git clone https://github.com/Yelp/elastalert.git
+cd elastalert &amp;&amp; sudo python3 setup.py install
+mkdir bin &amp;&amp; mkdir rules
+sudo mv /usr/local/bin/elastalert* bin/
+cd ../ &amp;&amp; sudo mv elastalert/ /etc/
+</code></pre>
+
+<h3 id="create-elastalert-systemd-service">Create Elastalert <code>systemd</code> service</h3>
+
+<p>Elastalert doesn&rsquo;t include a <code>systemd</code> service by default, but it&rsquo;s pretty trivial to make one. Don&rsquo;t worry if some of the paths not existing yet, we&rsquo;ll set those up in a minute:</p>
+
+<p>Create the file <code>/etc/systemd/system/elastalert.service</code> with the following contents:</p>
+
+<pre><code>[Unit]
+Description=elastalert
+After=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/etc/elastalert
+ExecStart=/etc/elastalert/bin/elastalert --config /etc/elastalert/config.yaml
+StandardOutput=file:/var/log/elastalert.log
+StandardError=file:/var/log/elastalert.log
+Restart=Always
+
+[Install]
+WantedBy=multi-user.target
+</code></pre>
+
+<p>Then enable the service:</p>
+
+<pre><code class="language-sh">sudo systemctl enable elastalert.service
+sudo systemctl start elastalert
+</code></pre>
+
+<h3 id="install-zeek">Install Zeek</h3>
+
+<p>The Zeek binaries are made available through the <a href="https://software.opensuse.org//download.html?project=security%3Azeek&amp;package=zeek">OpenSUSE project</a>, but if they don&rsquo;t work on your distribution you can always <a href="https://docs.zeek.org/en/stable/install/install.html#installing-from-source">build it from source.</a></p>
+
+<pre><code class="language-sh">sudo sh -c &quot;echo 'deb http://download.opensuse.org/repositories/security:/zeek/xUbuntu_18.04/ /' &gt; /etc/apt/sources.list.d/security:zeek.list&quot;
+wget -nv https://download.opensuse.org/repositories/security:zeek/xUbuntu_18.04/Release.key -O Release.key
+sudo apt-key add - &lt; Release.key
+rm Release.key &amp;&amp; sudo apt-get update
+sudo apt-get install zeek -y
+</code></pre>
+
+<p>The installer may prompt you for a server to send mail through. Go ahead and accept the defaults on this one, which will configure Zeek not to send email.</p>
+
+<hr />
+
+<h2 id="configuration-and-setup">Configuration and Setup</h2>
+
+<h3 id="configure-zeek">Configure Zeek</h3>
+
+<p>Zeek is a powerful and extensible network monitor. Ideally, you&rsquo;d want to use a span, tap, or mirrored port to get a copy of all your network traffic and send it to Zeek to be analyzed and to have log files generated. For this exercise we&rsquo;ll be using Zeek on the main interface of the SIEM.</p>
+
+<p>Zeek requires a network interface that it can listen on to pick up information about the network. With the driver we&rsquo;ll be using to pick up packets, we need to set that interface in <em>promiscuous mode</em> for Zeek to analyze traffic. On this machine our interface is <code>enp0s3</code>. First we&rsquo;ll enable promiscuous mode on our network adapter:</p>
+
+<pre><code class="language-sh">sudo ifconfig enp0s3 promisc
+</code></pre>
+
+<p>Zeek supports clustering with other Zeek sensors or <em>nodes</em>, so the configuration for each Zeek instance is located in <code>/opt/zeek/etc/node.cfg</code>.</p>
+
+<p>Edit <code>/opt/zeek/etc/node.cfg</code> to include your interface name:</p>
+
+<pre><code>[zeek]
+type=standalone
+host=localhost
+interface=enp0s3
+</code></pre>
+
+<p>Finally, we&rsquo;ll set Zeek&rsquo;s JSON logging property to make the logs from Zeek easier to parse.
+Add the following line to the bottom of <code>/opt/zeek/share/zeek/site/local.zeek</code>:</p>
+
+<pre><code># Output to JSON
+@load policy/tuning/json-logs.zeek
+</code></pre>
+
+<p>Zeek is best managed by the command-line management tool <code>zeekctl</code>. This utility will do most of the legwork for us in watching Zeek to make sure that it restarts if it crashes, and rotating the logs when they reach a certain age. This will be great for our Filebeat agent, which will just read new logs as they are created by Zeek.</p>
+
+<p>First, use <code>zeekctl</code> to set up the rest of the required config files for our Zeek deployment:</p>
+
+<pre><code class="language-sh">sudo /opt/zeek/bin/zeekctl deploy
+</code></pre>
+
+<p>sh
+Then start Zeek:</p>
+
+<pre><code class="language-sh">sudo /opt/zeek/bin/zeekctl start
+</code></pre>
+
+<p>To test and make sure we are getting network logs from Zeek, lets ping yahoo.com and make sure that we see the DNS lookup event in Zeek&rsquo;s built-in <code>dns.log</code>. It may take a few seconds for the event to get parsed from Zeek and show up in the log:</p>
+
+<pre><code class="language-sh">ping yahoo.com
+sudo tail -f /opt/zeek/logs/current/dns.log
+</code></pre>
+
+<h3 id="configure-filebeat">Configure filebeat</h3>
+
+<p>Our Filebeat setup is going to take the raw, unenriched log files generated by Zeek, our network monitor, as well as from the system&rsquo;s log files (which will be our endpoint logs) and put them into Logstash to be normalized and enriched. Normally your network sensor might be on a separate host, but in our example our network monitor is also our endpoint we are monitoring.</p>
+
+<p>First, enable the Zeek and system input modules for Filebeat:</p>
+
+<pre><code class="language-sh">sudo filebeat modules enable zeek system
+</code></pre>
+
+<p>Next we need to modify our <code>filebeat.yml</code> file to include our log file paths and our Logstash output port.
+Replace everything in <code>/etc/filebeat/filebeat.yml</code> with just the following:</p>
+
+<pre><code>filebeat.inputs:
+filebeat.config.modules:
+  path: /etc/filebeat/modules.d/*.yml
+  reload.enabled: true
+setup.template.settings:
+  index.number_of_shards: 1
+setup.kibana:
+  host: &quot;localhost:5601&quot;
+output.logstash:
+  hosts: [&quot;localhost:5044&quot;]
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~  
+logging.files:
+  path: /var/log/filebeat
+  name: filebeat
+  keepfiles: 7
+  permissions: 0644
+</code></pre>
+
+<p>Then restart Filebeat:</p>
+
+<pre><code class="language-sh">sudo systemctl enable filebeat
+sudo systemctl restart filebeat
+</code></pre>
+
+<p>One last change we&rsquo;ll need to make to our Filebeat configuration is to set the search path in the Zeek module. This doesn&rsquo;t really do much for us by way of normalization, but it does make Filebeat make an effort to tag the events with their type before sending them into Logstash to be enriched.</p>
+
+<p>Replace the contents of <code>/etc/filebeat/modules.d/zeek.yml</code> with the following:</p>
+
+<pre><code>- module: zeek
+  # All logs
+  connection:
+    enabled: true
+    var.paths:
+    - /opt/zeek/logs/current/conn.log
+  dns:
+    enabled: true
+    var.paths:
+    - /opt/zeek/logs/current/dns.log
+  http:
+    enabled: true
+    var.paths:
+    - /opt/zeek/logs/current/http.log
+  files:
+    enabled: true
+    var.paths:
+    - /opt/zeek/logs/current/files.log
+  ssl:
+    enabled: true
+    var.paths:
+    - /opt/zeek/logs/current/ssl.log
+  notice:
+    enabled: true
+    var.paths:
+    - /opt/zeek/logs/current/capture_loss.log
+    - /opt/zeek/logs/current/known_services.log
+    - /opt/zeek/logs/current/loaded_scripts.log
+    - /opt/zeek/logs/current/packet_filter.log
+    - /opt/zeek/logs/current/reporter.log
+    - /opt/zeek/logs/current/stats.log
+    - /opt/zeek/logs/current/stderr.log
+    - /opt/zeek/logs/current/stdout.log
+    - /opt/zeek/logs/current/weird.log
+</code></pre>
+
+<p>Let&rsquo;s make sure our Filebeat config file was accepted by checking to make sure that Filebeat started up alright:</p>
+
+<pre><code class="language-sh">sudo service filebeat status
+</code></pre>
+
+<h3 id="configure-logstash">Configure Logstash</h3>
+
+<p>Now that we have Filebeat reading the raw host logs <em>and</em> the raw Zeek network monitor logs, we are ready to set up Logstash to enrich the log files to make them more easy to search.</p>
+
+<p>Logstash allows multiple enrichment <em>pipelines</em> that can run different routines on different types of logs. For this example we&rsquo;ll use a single pipeline for our Zeek and host logs, but an easy optimization to this configuration would be to create separate pipelines for different types of logs.</p>
+
+<p>Let&rsquo;s define our pipeline by modifying <code>/etc/logstash/pipelines.yml</code> and replacing the config there with the following lines:</p>
+
+<pre><code>- pipeline.id: zeek_and_host_logs
+  path.config: &quot;/etc/logstash/conf.d/zeek_and_host.conf&quot;
+</code></pre>
+
+<p>Now we need to define our enrichment pipeline. Logstash pipelines always have 3 parts: an <em>input</em>, a <em>filter</em>, and an <em>output</em>. The inputs and outputs are pretty straightforward. The filters can get a little complex, and can do some pretty amazing things to your log. You can use things like geoIP lookups to attach a location to a log, or a lookup table to match hostnames in your environment to IP addresses. You can drop logs that you don&rsquo;t want, or put special tags on logs that you want to pay special attention to. <a href="https://www.elastic.co/guide/en/logstash/current/filter-plugins.html">Logstash&rsquo;s filter plugins</a> allow you to do almost anything you need to enrich and normalize the logs you get from any source.</p>
+
+<p>Another quick change to make is to enable Logstash&rsquo;s live update feature. Modify the appropriate line in <code>/etc/logstash/logstash.yml</code>:</p>
+
+<pre><code>config.reload.automatic: true
+</code></pre>
+
+<p>Our enrichment pipeline will be simple to start out. For now we&rsquo;re simply going to assign our Zeek logs to one index in Elasticsearch and our host&rsquo;s logs to another index.</p>
+
+<p>To demonstrate how we can use logstash to enrich our logs and provide us better threat data, we will have Logstash put a flag in the log if Zeek detects a connection to the Tor network. To do that, we will download a list of all Tor nodes and compare our connection data in the log with that list, and add a new field if the source or destination IP and port are on the Tor network.</p>
+
+<p>First, download a list of Tor nodes that I&rsquo;ve curated for this example, then create a <code>tables</code> folder in the <code>/etc/logstash/</code> directory to store it:</p>
+
+<pre><code class="language-sh">wget https://setup.cronocide.com/media/tor_nodes.json -O tor_nodes.json
+sudo mkdir /etc/logstash/tables
+</code></pre>
+
+<p>Then move <code>tor_nodes.json</code> to <code>/etc/logstash/tables</code>:</p>
+
+<pre><code class="language-sh">sudo mv tor_nodes.json /etc/logstash/tables/
+</code></pre>
+
+<p>Create the file <code>/etc/logstash/conf.d/zeek_and_host.conf</code> with the following content:</p>
+
+<pre><code>input {
+  beats {
+    host =&gt; &quot;0.0.0.0&quot;
+    port =&gt; 5044
+  }
+}
+
+filter {
+  # Lookup source and destination addresses against our list of Tor nodes
+  if [source][address] {
+    translate {
+      dictionary_path =&gt; &quot;/etc/logstash/tables/tor_nodes.json&quot;
+      field =&gt; &quot;[source][address]&quot;
+      destination =&gt; &quot;[@metadata][torsrc]&quot;
+    }
+    mutate {convert =&gt; { &quot;torsrc&quot; =&gt; &quot;integer&quot; }}
+  }
+  if [destination][address] {
+    translate {
+      dictionary_path =&gt; &quot;/etc/logstash/tables/tor_nodes.json&quot;
+      field =&gt; &quot;[destination][address]&quot;
+      destination =&gt; &quot;[@metadata][tordst]&quot;
+    }
+    mutate {convert =&gt; { &quot;[@metadata][tordst]&quot; =&gt; &quot;integer&quot; }}
+  }
+  if [@metadata][torsrc] == [source][port] {
+    mutate {add_field =&gt; { &quot;[source][tor]&quot; =&gt; &quot;true&quot;}}
+    mutate {convert =&gt; { &quot;[source][tor]&quot; =&gt; &quot;boolean&quot; }}
+  }
+  if [@metadata][tordst] == [destination][port] {
+    mutate {add_field =&gt; { &quot;[destination][tor]&quot; =&gt; &quot;true&quot;}}
+    mutate {convert =&gt; { &quot;[destination][tor]&quot; =&gt; &quot;boolean&quot;}}
+  }
+}
+
+output {
+  elasticsearch {
+    hosts =&gt; [&quot;localhost:9200&quot;]
+    ssl =&gt; false
+    ssl_certificate_verification =&gt; false
+    sniffing =&gt; false
+    manage_template =&gt; false
+    index =&gt; &quot;%{[event][module]}-%{+yyyy.MM.dd}&quot;
+  }
+}
+</code></pre>
+
+<p>Restart logstash to apply our changes:</p>
+
+<pre><code class="language-sh">sudo systemctl enable logstash
+sudo systemctl restart logstash
+</code></pre>
+
+<h3 id="configure-kibana">Configure Kibana</h3>
+
+<p>Now we&rsquo;re ready to start visualizing our data. First we need to change the binding port and address so that we can see our dashboards outside the box itself.</p>
+
+<p>Change these two lines in <code>/etc/kibana/kibana.yml</code>:</p>
+
+<pre><code>server.port: 5601
+server.host: &quot;0.0.0.0&quot;
+</code></pre>
+
+<p>Restart Kibana:</p>
+
+<pre><code class="language-sh">sudo systemctl enable kibana
+sudo systemctl restart kibana
+</code></pre>
+
+<p>Now it&rsquo;s time to log in to our dashboard! Navigate to the IP address of the box Kibana is running on on port 5601. Since we&rsquo;ll be loading this in the web browser on the SIEM, the address would be <a href="http://localhost:5601">http://localhost:5601</a>.</p>
+
+<p>(image of kibana)</p>
+
+<p>When prompted to explore your own data or play with the examples, choose to explore your data.</p>
+
+<p>Kibana is a great visualization and search tool for Elasticsearch. Think of it as as not much more than a GUI for Elasticsearch. Elasticsearch controls how the data is stored, searched, and configured. We can modify all of those parameters through Kibana.</p>
+
+<p>Not every log will have the same information, so we group logs with the same information into groups called <em>indices</em> to help make our data easier to search. In Elasticsearch, indices are a collection of logs that have the same <em>fields</em>.</p>
+
+<p>The first thing we will need to do is create two <em>indices</em> to store our two different types of data: our network logs from Zeek and our host or endpoint logs from Filebeat.</p>
+
+<p>By default, Logstash will make new indices in Elasticsearch every day, but there are many ways that this can be optimized, depending on your log type.</p>
+
+<p>Select the Settings gear in the bottom left of Kibana and select Index Patterns under Kibana in the left. We&rsquo;ll create a new <em>index pattern</em> that describes any indices that start with &lsquo;system&rsquo;. set the index pattern to be <code>system-*</code> and click next. When prompted for a time filter field, select &lsquo;@Timestamp&rsquo;. This lets Kibana know how to assign your events to a timeline.</p>
+
+<p>(system index image)</p>
+
+<p>We&rsquo;ll do the same with our <code>zeek-*</code> index pattern.</p>
+
+<p>(zeek index image)</p>
+
+<h3 id="using-kibana">Using Kibana</h3>
+
+<p>Now let&rsquo;s explore the data. Select the Discover icon (second from the top on the left).</p>
+
+<p>On the left there will be a dropdown to select your index. This lets you choose the type of data you&rsquo;re searching for. In our case, we can search for system logs or Zeek logs. The logs are sorted historically, and you can adjust the search time to go further back.</p>
+
+<p>(image of the search)</p>
+
+<p>Let&rsquo;s perform an example search. First, select the <code>system-*</code> index on the left. Then perform a sudo command on your host. This will make an entry in auth.log, which will be read by filebeat and pushed into Logstash, then normalized and put into Elasticsearch. This will happen after a few seconds.</p>
+
+<p>To search for this event, let&rsquo;s switch the search syntax from KQL to Lucene. Select the &lsquo;KQL&rsquo; button at the end of the search bar and turn the &lsquo;Kibana Query Language&rsquo; toggle off. This will make your search less flexible, but makes the searches compatible with other services like Elastalert.</p>
+
+<p>To see <em>just</em> the sudo command that was run (and not the sudo session authorizations ), make a search like the one below, substituting &lsquo;username&rsquo; for your username:</p>
+
+<pre><code>message: &quot;sudo: username&quot;
+</code></pre>
+
+<p>You should now be seeing only commands that were run in sudo mode for your user.</p>
+
+<p>Let&rsquo;s see if we can find new Tor sessions detected by Zeek.
+To generate some of this traffic you could download and install Tor, but that would take a little too much time for this example, so for now let&rsquo;s <em>pretend</em> we&rsquo;re connecting to the Tor network.</p>
+
+<p>Use Netcat to connect to a Tor router:</p>
+
+<pre><code class="language-sh">nc 79.137.79.167 9001
+</code></pre>
+
+<p>Use CTRL + C to disconnect. Zeek should have detected the connection, and Logstash should have recognized the IP address as being a Tor node and tagged it as such. Head back to Kibana and open up the discover tab again, and switch to the <code>zeek-*</code> index pattern on the left.</p>
+
+<p>After a few seconds the logs should be available to search. To search for our tor session, search for the following:</p>
+
+<pre><code>tags: zeek.connection AND _exists_:destination.tor
+</code></pre>
+
+<p>(image of the search)</p>
+
+<p>Clicking on the event will show us the source address, and let us know that it was our box that was connecting to Tor.</p>
+
+<h3 id="configure-elastalert">Configure elastalert</h3>
+
+<p>Now let&rsquo;s make an alert that lets us know any time that that event happens.
+To get Elastalert going we need to copy the example config file and modify it, or just create <code>/etc/elastalert/config.yaml</code> with the configuration below.</p>
+
+<pre><code class="language-sh">sudo cp /etc/elastalert/config.yaml.example /etc/elastalert/config.yaml
+</code></pre>
+
+<p>Edit the file <code>/etc/elastalert/config.yaml</code> to include the following contents:</p>
+
+<pre><code>rules_folder: rules
+run_every:
+  minutes: 1
+buffer_time:
+    minutes: 15
+es_host: localhost
+es_port: 9200
+writeback_index: elastalert_status
+writeback_alias: elastalert_alerts
+alert_time_limit:
+  days: 2
+</code></pre>
+
+<p>Elastalert can also send it&rsquo;s metrics data into Elasticsearch. With this data you can troubleshoot alerts.</p>
+
+<p>Run the following to configure the Elasticsearch index for Elastalert:</p>
+
+<pre><code class="language-sh">sudo /etc/elastalert/bin/elastalert-create-index --host localhost --port 9200 --no-ssl --no-auth --index 'elastalert_status' --alias 'elastalert_alerts' --old-index '' --url-prefix ''
+</code></pre>
+
+<p>Now lets make a rule. A rule in Elastalert is a search that is run in Elasticsearch that should return one or more results. Elastalert can alert you on spikes, lulls, the absence of events, new values of events, and unique events. With the rules available in Elastalert you can get your search just about as fine as you want it.</p>
+
+<p>For this rule, we will generate a Slack alert any time we get a connection to Tor.
+You will need a Slack Webhook URL for this to work. If you don&rsquo;t want to use slack, there are <a href="https://elastalert.readthedocs.io/en/latest/ruletypes.html#alerts">a ton of alerting options to choose from</a>. Select the way you&rsquo;d like this rule to alert and set the settings appropriately in the rule file:</p>
+
+<p>Create the new file <code>/etc/elastalert/rules/tor_connections.yaml</code> with the following contents, substituting your slack webhook URL or your custom alert settings:</p>
+
+<pre><code>name: Zeek Tor Destination Detected
+type: any
+index: &quot;zeek-*&quot;
+timeframe:
+  minutes: 1
+filter:
+- query:
+    query_string:
+      query: &quot;tags: zeek.connection AND _exists_:destination.tor&quot;
+query_key: &quot;source.ip&quot;
+
+alert:
+- &quot;slack&quot;
+alert_text: &quot;Tor node {0} was contacted on port {1} by {2}.&quot;
+alert_text_type: alert_text_only
+alert_text_args: [&quot;destination.address&quot;,&quot;destination.port&quot;,&quot;source.address&quot;]
+slack:
+slack_webhook_url: &quot;https://hooks.slack.com/services/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&quot;
+slack_icon_url_override: &quot;https://avatars0.githubusercontent.com/u/1194067?v=3&amp;s=200&quot;
+#Can be good, warning, danger:
+slack_msg_color: &quot;danger&quot;
+slack_username_override: &quot;Elastalert&quot;
+slack_title: &quot;Zeek: Tor Node Detection&quot;
+slack_title_link: &quot;http://localhost:5601/app/kibana#&quot;
+</code></pre>
+
+<p>After creating the rule, restart Elastalert to make sure that the new rules are loaded:</p>
+
+<pre><code class="language-sh">sudo service elastalert restart
+</code></pre>
+
+<p>Now verify that we are getting alerts for new tor sessions by faking a connection to Tor again:</p>
+
+<pre><code class="language-sh">nc 79.137.79.167 9001
+</code></pre>
+
+<p>After a few seconds, you should receive an alert with the connection info.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>To continue to improve you SIEM, consider what logs you can collect that offer you a tactical advantage, and what enrichments you can add to your logs to make them more valuable. Every environment will have special considerations that will need to be taken into account when designing and improving your SIEM. Start with logs that help you catch the most-obvious threats first and give you the greatest visibility into your environment.</p>
+
+  </main>
+  <div id="disqus-container">
+  
+</div>
+
+
+          <footer role="contentinfo">
+  
+    Made with <a href="https://gohugo.io/">Hugo</a>.
+  
+</footer>
+
+        </div>
+      </div>
+    </div>
+    <script src="https://www.cronocide.com/js/prism.js"></script>
+<script src="https://www.cronocide.com/js/dom-scripts.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+    
+  
+
+  </body>
+</html>
