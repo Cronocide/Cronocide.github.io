@@ -1,0 +1,1826 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="generator" content="Hugo 0.58.3" />
+  <link rel="canonical" href="https://www.cronocide.com/post/hacktober2019/">
+
+  
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+
+  <link rel="stylesheet" href="https://www.cronocide.com/css/prism.css" media="none" onload="this.media='all';">
+
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://www.cronocide.com/css/styles.css">
+
+  <style id="inverter" media="none">
+    html { filter: invert(100%) }
+    * { background-color: inherit }
+    img:not([src*=".svg"]), .colors, iframe, .demo-container { filter: invert(100%) }
+  </style>
+
+  
+  
+  <title>Hacktober 2019 - Filesystems | cronocide.com</title>
+</head>
+
+  <body>
+    <a href="#main">skip to content</a>
+    <svg style="display: none">
+  <symbol id="bookmark" viewBox="0 0 40 50">
+    <g transform="translate(2266 3206.2)">
+      <path style="stroke:currentColor;stroke-width:3.2637;fill:none" d="m-2262.2-3203.4-.2331 42.195 16.319-16.318 16.318 16.318.2331-42.428z"/>
+    </g>
+  </symbol>
+  <symbol id="w3c" viewBox="0 0 127.09899 67.763">
+   <text font-size="83" style="font-size:83px;font-family:Trebuchet;letter-spacing:-12;fill-opacity:0" letter-spacing="-12" y="67.609352" x="-26.782778">W3C</text>
+   <text font-size="83" style="font-size:83px;font-weight:bold;font-family:Trebuchet;fill-opacity:0" y="67.609352" x="153.21722" font-weight="bold">SVG</text>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m33.695.377 12.062 41.016 12.067-41.016h8.731l-19.968 67.386h-.831l-12.48-41.759-12.479 41.759h-.832l-19.965-67.386h8.736l12.061 41.016 8.154-27.618-3.993-13.397h8.737z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m91.355 46.132c0 6.104-1.624 11.234-4.862 15.394-3.248 4.158-7.45 6.237-12.607 6.237-3.882 0-7.263-1.238-10.148-3.702-2.885-2.47-5.02-5.812-6.406-10.022l6.82-2.829c1.001 2.552 2.317 4.562 3.953 6.028 1.636 1.469 3.56 2.207 5.781 2.207 2.329 0 4.3-1.306 5.909-3.911 1.609-2.606 2.411-5.738 2.411-9.401 0-4.049-.861-7.179-2.582-9.399-1.995-2.604-5.129-3.912-9.397-3.912h-3.327v-3.991l11.646-20.133h-14.062l-3.911 6.655h-2.493v-14.976h32.441v4.075l-12.31 21.217c4.324 1.385 7.596 3.911 9.815 7.571 2.22 3.659 3.329 7.953 3.329 12.892z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.21 0 1.414 8.6-5.008 9.583s-1.924-4.064-5.117-6.314c-2.693-1.899-4.447-2.309-7.186-1.746-3.527.73-7.516 4.938-9.258 10.13-2.084 6.21-2.104 9.218-2.178 11.978-.115 4.428.58 7.043.58 7.043s-3.04-5.626-3.011-13.866c.018-5.882.947-11.218 3.666-16.479 2.404-4.627 5.954-7.404 9.114-7.728 3.264-.343 5.848 1.229 7.841 2.938 2.089 1.788 4.213 5.698 4.213 5.698l4.94-9.837z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.82 48.674s-2.208 3.957-3.589 5.48c-1.379 1.524-3.849 4.209-6.896 5.555-3.049 1.343-4.646 1.598-7.661 1.306-3.01-.29-5.807-2.032-6.786-2.764-.979-.722-3.486-2.864-4.897-4.854-1.42-2-3.634-5.995-3.634-5.995s1.233 4.001 2.007 5.699c.442.977 1.81 3.965 3.749 6.572 1.805 2.425 5.315 6.604 10.652 7.545 5.336.945 9.002-1.449 9.907-2.031.907-.578 2.819-2.178 4.032-3.475 1.264-1.351 2.459-3.079 3.116-4.108.487-.758 1.276-2.286 1.276-2.286l-1.276-6.644z"/>
+  </symbol>
+  
+  <symbol id="folder" viewBox="0 0 24 24">
+    <g transform="translate(2266 3206.2)">
+       <path style="stroke:currentColor;stroke-width:3.2637;fill:currentColor" d="M20,6h-8l-1.414-1.414C10.211,4.211,9.702,4,9.172,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8 C22,6.9,21.1,6,20,6z"/>
+    </g>
+  </symbol>
+
+  <symbol id="tag" viewBox="0 0 177.16535 177.16535">
+    <g transform="translate(0 -875.2)">
+     <path style="fill-rule:evenodd;stroke-width:0;fill:currentColor" d="m159.9 894.3-68.79 8.5872-75.42 77.336 61.931 60.397 75.429-76.565 6.8495-69.755zm-31.412 31.835a10.813 10.813 0 0 1 1.8443 2.247 10.813 10.813 0 0 1 -3.5174 14.872l-.0445.0275a10.813 10.813 0 0 1 -14.86 -3.5714 10.813 10.813 0 0 1 3.5563 -14.863 10.813 10.813 0 0 1 13.022 1.2884z"/>
+    </g>
+  </symbol>
+
+  <symbol id="balloon" viewBox="0 0 141.73228 177.16535">
+   <g transform="translate(0 -875.2)">
+    <g>
+     <path style="fill:currentColor" d="m68.156 882.83-.88753 1.4269c-4.9564 7.9666-6.3764 17.321-5.6731 37.378.36584 10.437 1.1246 23.51 1.6874 29.062.38895 3.8372 3.8278 32.454 4.6105 38.459 4.6694-.24176 9.2946.2879 14.377 1.481 1.2359-3.2937 5.2496-13.088 8.886-21.623 6.249-14.668 8.4128-21.264 10.253-31.252 1.2464-6.7626 1.6341-12.156 1.4204-19.764-.36325-12.93-2.1234-19.487-6.9377-25.843-2.0833-2.7507-6.9865-7.6112-7.9127-7.8436-.79716-.20019-6.6946-1.0922-6.7755-1.0248-.02213.0182-5.0006-.41858-7.5248-.22808l-2.149-.22808h-3.3738z"/>
+     <path style="fill:currentColor" d="m61.915 883.28-3.2484.4497c-1.7863.24724-3.5182.53481-3.8494.63994-2.4751.33811-4.7267.86957-6.7777 1.5696-.28598 0-1.0254.20146-2.3695.58589-5.0418 1.4418-6.6374 2.2604-8.2567 4.2364-6.281 7.6657-11.457 18.43-12.932 26.891-1.4667 8.4111.71353 22.583 5.0764 32.996 3.8064 9.0852 13.569 25.149 22.801 37.517 1.3741 1.841 2.1708 2.9286 2.4712 3.5792 3.5437-1.1699 6.8496-1.9336 10.082-2.3263-1.3569-5.7831-4.6968-21.86-6.8361-33.002-.92884-4.8368-2.4692-14.322-3.2452-19.991-.68557-5.0083-.77707-6.9534-.74159-15.791.04316-10.803.41822-16.162 1.5026-21.503 1.4593-5.9026 3.3494-11.077 6.3247-15.852z"/>
+     <path style="fill:currentColor" d="m94.499 885.78c-.10214-.0109-.13691 0-.0907.0409.16033.13489 1.329 1.0675 2.5976 2.0723 6.7003 5.307 11.273 14.568 12.658 25.638.52519 4.1949.24765 14.361-.5059 18.523-2.4775 13.684-9.7807 32.345-20.944 53.519l-3.0559 5.7971c2.8082.76579 5.7915 1.727 8.9926 2.8441 11.562-11.691 18.349-19.678 24.129-28.394 7.8992-11.913 11.132-20.234 12.24-31.518.98442-10.02-1.5579-20.876-6.7799-28.959-.2758-.4269-.57803-.86856-.89617-1.3166-3.247-6.13-9.752-12.053-21.264-16.131-2.3687-.86369-6.3657-2.0433-7.0802-2.1166z"/>
+     <path style="fill:currentColor" d="m32.52 892.22c-.20090-.13016-1.4606.81389-3.9132 2.7457-11.486 9.0476-17.632 24.186-16.078 39.61.79699 7.9138 2.4066 13.505 5.9184 20.562 5.8577 11.77 14.749 23.219 30.087 38.74.05838.059.12188.1244.18052.1838 1.3166-.5556 2.5965-1.0618 3.8429-1.5199-.66408-.32448-1.4608-1.3297-3.8116-4.4602-5.0951-6.785-8.7512-11.962-13.051-18.486-5.1379-7.7948-5.0097-7.5894-8.0586-13.054-6.2097-11.13-8.2674-17.725-8.6014-27.563-.21552-6.3494.13041-9.2733 1.775-14.987 2.1832-7.5849 3.9273-10.986 9.2693-18.07 1.7839-2.3656 2.6418-3.57 2.4409-3.7003z"/>
+     <path style="fill:currentColor" d="m69.133 992.37c-6.2405.0309-12.635.76718-19.554 2.5706 4.6956 4.7759 9.935 10.258 12.05 12.625l4.1272 4.6202h11.493l3.964-4.4516c2.0962-2.3541 7.4804-7.9845 12.201-12.768-8.378-1.4975-16.207-2.6353-24.281-2.5955z"/>
+     <rect style="stroke-width:0;fill:currentColor" ry="2.0328" height="27.746" width="22.766" y="1017.7" x="60.201"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="info" viewBox="0 0 41.667 41.667">
+   <g transform="translate(-37.035 -1004.6)">
+    <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m76.25 1030.2a18.968 18.968 0 0 1 -23.037 13.709 18.968 18.968 0 0 1 -13.738 -23.019 18.968 18.968 0 0 1 23.001 -13.768 18.968 18.968 0 0 1 13.798 22.984"/>
+    <g transform="matrix(1.1146 0 0 1.1146 -26.276 -124.92)">
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m75.491 1039.5v-8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" transform="scale(-1)" d="m-73.193-1024.5a2.3719 2.3719 0 0 1 -2.8807 1.7142 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="warning" viewBox="0 0 48.430474 41.646302">
+    <g transform="translate(-1.1273 -1010.2)">
+     <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:4.151;fill:none" d="m25.343 1012.3-22.14 37.496h44.28z"/>
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:4.1512;fill:none" d="m25.54 1027.7v8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" d="m27.839 1042.8a2.3719 2.3719 0 0 1 -2.8807 1.7143 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+  </symbol>
+
+  <symbol id="menu" viewBox="0 0 50 50">
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="0" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="20" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="40" x="0"/>
+   </symbol>
+
+   <symbol id="link" viewBox="0 0 50 50">
+    <g transform="translate(0 -1002.4)">
+     <g transform="matrix(.095670 0 0 .095670 2.3233 1004.9)">
+      <g>
+       <path style="stroke-width:0;fill:currentColor" d="m452.84 192.9-128.65 128.65c-35.535 35.54-93.108 35.54-128.65 0l-42.881-42.886 42.881-42.876 42.884 42.876c11.845 11.822 31.064 11.846 42.886 0l128.64-128.64c11.816-11.831 11.816-31.066 0-42.9l-42.881-42.881c-11.822-11.814-31.064-11.814-42.887 0l-45.928 45.936c-21.292-12.531-45.491-17.905-69.449-16.291l72.501-72.526c35.535-35.521 93.136-35.521 128.64 0l42.886 42.881c35.535 35.523 35.535 93.141-.001 128.66zm-254.28 168.51-45.903 45.9c-11.845 11.846-31.064 11.817-42.881 0l-42.884-42.881c-11.845-11.821-11.845-31.041 0-42.886l128.65-128.65c11.819-11.814 31.069-11.814 42.884 0l42.886 42.886 42.876-42.886-42.876-42.881c-35.54-35.521-93.113-35.521-128.65 0l-128.65 128.64c-35.538 35.545-35.538 93.146 0 128.65l42.883 42.882c35.51 35.54 93.11 35.54 128.65 0l72.496-72.499c-23.956 1.597-48.092-3.784-69.474-16.283z"/>
+      </g>
+     </g>
+    </g>
+  </symbol>
+
+  <symbol id="doc" viewBox="0 0 35 45">
+   <g transform="translate(-147.53 -539.83)">
+    <path style="stroke:currentColor;stroke-width:2.4501;fill:none" d="m149.38 542.67v39.194h31.354v-39.194z"/>
+    <g style="stroke-width:25" transform="matrix(.098003 0 0 .098003 133.69 525.96)">
+     <path d="m220 252.36h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path style="stroke:currentColor;stroke-width:25;fill:none" d="m220 409.95h200"/>
+     <path d="m220 488.74h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path d="m220 331.15h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+    </g>
+   </g>
+ </symbol>
+
+ <symbol id="tick" viewBox="0 0 177.16535 177.16535">
+  <g transform="translate(0 -875.2)">
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="155" width="40" y="702.99" x="556.82"/>
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="40" width="90.404" y="817.99" x="506.42"/>
+  </g>
+ </symbol>
+</svg>
+
+    <div class="wrapper">
+      <header class="intro-and-nav" role="banner">
+  <div>
+    <div class="intro">
+      <a class="logo" href="/" aria-label="cronocide.com home page">
+        <img src="https://www.cronocide.com/images/logo.svg" alt="">
+      </a>
+      <label for="themer">
+      <input type="checkbox" id="themer" class="vh">
+      <span aria-hidden="true"></span> mode
+      </label>
+      
+      <p class="library-desc">
+        
+      </p>
+    </div>
+    <nav id="patterns-nav" class="patterns" role="navigation">
+  <h2 class="vh">Main navigation</h2>
+  <button id="menu-button" aria-expanded="false">
+    <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
+      <use xlink:href="#menu"></use>
+    </svg>
+    Menu
+  </button>
+  
+  <ul id="patterns-list">
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">Home</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/post/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">Posts</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/repo/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">Repo</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/about/" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">About</span>
+      </a>
+    </li>
+  
+    <li class="pattern">
+      
+      
+      
+      
+      <a href="/index.xml" >
+        <svg class="folder-icon" aria-hidden="true" focusable="false" viewBox="0 0 40 50">
+          <use xlink:href="#folder"></use>
+        </svg>
+        <span class="text">RSS</span>
+      </a>
+    </li>
+  
+  </ul>
+</nav>
+
+    <div class="social">
+  <a href="https://www.reddit.com/u/Cronocide"><img src="/images/reddit.svg" width=25></a>
+  <a href="https://twitter.com/Cronocide"><img src="/images/twitter.svg" width=25></a>
+  <a href="https://github.com/Cronocide"><img src="/images/github.svg" width=25></a>
+</div>
+
+  </div>
+</header>
+
+      <div class="main-and-footer">
+        <div>
+          
+  <main id="main">
+    <h1>
+      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
+        <use xlink:href="#bookmark"></use>
+      </svg>
+      Hacktober 2019 - Filesystems
+    </h1>
+
+    <div class="date">
+      
+      
+      <strong aria-hidden="true">Publish date: </strong>Mar 3, 26260
+      
+        
+      
+    </div>
+
+    
+    
+    
+      
+
+
+    
+
+    <p>I recently finished the Hacktober 2019 CTF from the great folks <a href="https://twitter.com/uvucsc">@UVUCSC</a>. The challenges were mostly entry-level but there were a few that were quite challenging.</p>
+
+<p>The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend <a href="https://www.linkedin.com/in/ddbishop/">chuck</a> called <code>filesystems</code>. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</p>
+
+<p>Which means, I have to solve it <em>all over again</em>.</p>
+
+<p><em><strong>chuck-sigh</strong></em></p>
+
+<p>Unfortunately I haven&rsquo;t figure out out how to display images on my hugo-templated website yet, so you&rsquo;ll have to follow along on the command line and use your imagination if you want to see what happened.</p>
+
+<p>Anyway, let&rsquo;s get started.</p>
+
+<p>For this challenge we aren&rsquo;t given anything but a <code>tar</code> file called <code>challenge1.tar</code>. Extracting it traditionally gives us the following directory tree:</p>
+
+<pre><code class="language-sh">./
+├── challenge1.img
+├── header
+│   ├── folder0
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder1
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder2
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder3
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder4
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder5
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder6
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder7
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   ├── folder8
+│   │   ├── file0
+│   │   ├── file1
+│   │   ├── file2
+│   │   ├── file3
+│   │   ├── file4
+│   │   ├── file5
+│   │   ├── file6
+│   │   ├── file7
+│   │   ├── file8
+│   │   └── file9
+│   └── folder9
+│       ├── file0
+│       ├── file1
+│       ├── file2
+│       ├── file3
+│       ├── file4
+│       ├── file5
+│       ├── file6
+│       ├── file7
+│       ├── file8
+│       └── file9
+└── key
+    ├── folder0
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder1
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder2
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder3
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder4
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder5
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder6
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder7
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    ├── folder8
+    │   ├── file0
+    │   ├── file1
+    │   ├── file10
+    │   ├── file11
+    │   ├── file12
+    │   ├── file13
+    │   ├── file14
+    │   ├── file15
+    │   ├── file16
+    │   ├── file17
+    │   ├── file18
+    │   ├── file19
+    │   ├── file2
+    │   ├── file20
+    │   ├── file21
+    │   ├── file22
+    │   ├── file23
+    │   ├── file24
+    │   ├── file25
+    │   ├── file26
+    │   ├── file27
+    │   ├── file28
+    │   ├── file29
+    │   ├── file3
+    │   ├── file30
+    │   ├── file31
+    │   ├── file32
+    │   ├── file33
+    │   ├── file34
+    │   ├── file35
+    │   ├── file36
+    │   ├── file37
+    │   ├── file38
+    │   ├── file39
+    │   ├── file4
+    │   ├── file40
+    │   ├── file41
+    │   ├── file42
+    │   ├── file43
+    │   ├── file44
+    │   ├── file45
+    │   ├── file46
+    │   ├── file47
+    │   ├── file48
+    │   ├── file49
+    │   ├── file5
+    │   ├── file50
+    │   ├── file51
+    │   ├── file52
+    │   ├── file53
+    │   ├── file54
+    │   ├── file55
+    │   ├── file56
+    │   ├── file57
+    │   ├── file58
+    │   ├── file59
+    │   ├── file6
+    │   ├── file60
+    │   ├── file61
+    │   ├── file62
+    │   ├── file63
+    │   ├── file64
+    │   ├── file65
+    │   ├── file66
+    │   ├── file67
+    │   ├── file68
+    │   ├── file69
+    │   ├── file7
+    │   ├── file70
+    │   ├── file71
+    │   ├── file72
+    │   ├── file73
+    │   ├── file74
+    │   ├── file75
+    │   ├── file76
+    │   ├── file77
+    │   ├── file78
+    │   ├── file79
+    │   ├── file8
+    │   ├── file80
+    │   ├── file81
+    │   ├── file82
+    │   ├── file83
+    │   ├── file84
+    │   ├── file85
+    │   ├── file86
+    │   ├── file87
+    │   ├── file88
+    │   ├── file89
+    │   ├── file9
+    │   ├── file90
+    │   ├── file91
+    │   ├── file92
+    │   ├── file93
+    │   ├── file94
+    │   ├── file95
+    │   ├── file96
+    │   ├── file97
+    │   ├── file98
+    │   └── file99
+    └── folder9
+        ├── file0
+        ├── file1
+        ├── file10
+        ├── file11
+        ├── file12
+        ├── file13
+        ├── file14
+        ├── file15
+        ├── file16
+        ├── file17
+        ├── file18
+        ├── file19
+        ├── file2
+        ├── file20
+        ├── file21
+        ├── file22
+        ├── file23
+        ├── file24
+        ├── file25
+        ├── file26
+        ├── file27
+        ├── file28
+        ├── file29
+        ├── file3
+        ├── file30
+        ├── file31
+        ├── file32
+        ├── file33
+        ├── file34
+        ├── file35
+        ├── file36
+        ├── file37
+        ├── file38
+        ├── file39
+        ├── file4
+        ├── file40
+        ├── file41
+        ├── file42
+        ├── file43
+        ├── file44
+        ├── file45
+        ├── file46
+        ├── file47
+        ├── file48
+        ├── file49
+        ├── file5
+        ├── file50
+        ├── file51
+        ├── file52
+        ├── file53
+        ├── file54
+        ├── file55
+        ├── file56
+        ├── file57
+        ├── file58
+        ├── file59
+        ├── file6
+        ├── file60
+        ├── file61
+        ├── file62
+        ├── file63
+        ├── file64
+        ├── file65
+        ├── file66
+        ├── file67
+        ├── file68
+        ├── file69
+        ├── file7
+        ├── file70
+        ├── file71
+        ├── file72
+        ├── file73
+        ├── file74
+        ├── file75
+        ├── file76
+        ├── file77
+        ├── file78
+        ├── file79
+        ├── file8
+        ├── file80
+        ├── file81
+        ├── file82
+        ├── file83
+        ├── file84
+        ├── file85
+        ├── file86
+        ├── file87
+        ├── file88
+        ├── file89
+        ├── file9
+        ├── file90
+        ├── file91
+        ├── file92
+        ├── file93
+        ├── file94
+        ├── file95
+        ├── file96
+        ├── file97
+        ├── file98
+        └── file99
+</code></pre>
+
+<p>So we&rsquo;re only <em>one step into this</em> and we&rsquo;re already ready for a tl;dr.
+Well here it is.
+Let&rsquo;s take a look at the content of one of the files:</p>
+
+<pre><code class="language-sh">$&gt; xxd key/folder0/file5 | head -n 10
+00000000: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000010: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000020: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000030: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000040: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000050: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000060: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000070: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000080: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+00000090: 0000 0000 0000 0000 0000 0000 0000 0000  ................
+</code></pre>
+
+<p>And guess what guys? <em>It goes on for another million bytes like that!</em>
+The whole thing, just all zeros. And it&rsquo;s not the only one! After sampling files all over that horrible tree all I&rsquo;m seeing is zeros. Megabytes and megabytes of null, all over my hard drive. Thanks chuck!</p>
+
+<p>We also have this challenge1.img file, which the diskarbitration framework on my mac doesn&rsquo;t recognize and neither does <code>file</code>:</p>
+
+<pre><code>$&gt; file challenge1.img
+challenge1.img: data
+</code></pre>
+
+<p>Great. Well I&rsquo;ll look at the image in a hexdump as well but won&rsquo;t see anything useful. All we have is a file of keys and headers, and so let&rsquo;s start googling there.</p>
+
+<p>A quick google search for <code>header key disk image</code> (the three things we seem to have) one of the entries about 5 down is</p>
+
+<blockquote>
+<p>&ldquo;Bruteforcing Linux Full Disk Encryption (LUKS) With Hashcat&rdquo;</p>
+</blockquote>
+
+<p>Linux Full Disk Encryption? LUKS? What the crap is that?
+Let us google further:</p>
+
+<blockquote>
+<p>The Linux Unified Key Setup (LUKS) is a disk encryption specification created by Clemens Fruhwirth in 2004 and was originally intended for Linux. While most disk encryption software implements different, incompatible, and undocumented formats, LUKS implements a platform-independent standard on-disk format for use in various tools.</p>
+</blockquote>
+
+<p>I know that chuck really likes Linux, in fact he runs it on his laptop. Maybe this is what we&rsquo;re looking for? Let&rsquo;s see if key and header have anything to do with LUKS. After googling <code>luks key header</code> we find <a href="https://www.lisenet.com/2013/luks-add-keys-backup-and-restore-volume-header/">this site</a> which quotes the following:</p>
+
+<blockquote>
+<p>Following up our LUKS installation, we will go further and explore how to add a backup passphrase as well as how to backup and restore LUKS volume header in case of disaster.
+<strong>LUKS format uses a metadata header and 8 key-slot areas that are being placed at the beginning of the disk</strong>. The passphrases are used to decrypt a single master key that is stored in the anti-forensic stripes.</p>
+</blockquote>
+
+<p>That sounds like the type of data that we have! But what about all these blank files? Let&rsquo;s go through all of them and compare the hashes of the empty ones and see if any <em>aren&rsquo;t</em> all zeros:</p>
+
+<pre><code class="language-sh">$&gt; for file in $(ls key/*/*); do md5 $file; done
+...
+MD5 (key/folder3/file81) = b6d81b360a5672d80c27430f39153e2c
+MD5 (key/folder3/file82) = b6d81b360a5672d80c27430f39153e2c
+MD5 (key/folder3/file83) = b6d81b360a5672d80c27430f39153e2c
+MD5 (key/folder3/file84) = 5a447860f291d664316a344562e14a30
+MD5 (key/folder3/file85) = b6d81b360a5672d80c27430f39153e2c
+MD5 (key/folder3/file86) = b6d81b360a5672d80c27430f39153e2c
+MD5 (key/folder3/file87) = b6d81b360a5672d80c27430f39153e2c
+...
+</code></pre>
+
+<p>Aha! Did you see it? Only <em>one</em> file in the keys isn&rsquo;t <em>all</em> zeros! Lets copy that out (key/folder3/file84).
+What about the header files?</p>
+
+<pre><code class="language-sh">$&gt; for file in $(ls header/*/*); do md5 $file; done
+...
+MD5 (header/folder6/file5) = 2c7ab85a893283e98c931e9511add182
+MD5 (header/folder6/file6) = 2c7ab85a893283e98c931e9511add182
+MD5 (header/folder6/file7) = 2c7ab85a893283e98c931e9511add182
+MD5 (header/folder6/file8) = 213b661636a402ff256d8807e8bb7372
+MD5 (header/folder6/file9) = 2c7ab85a893283e98c931e9511add182
+MD5 (header/folder7/file0) = 2c7ab85a893283e98c931e9511add182
+MD5 (header/folder7/file1) = 2c7ab85a893283e98c931e9511add182
+...
+</code></pre>
+
+<p>Eureka! (does anyone say that anymore??) We have only <em>one</em> file in the headers file that isn&rsquo;t <em>all</em> zeros. We&rsquo;ll copy it out too (header/folder6/file8).</p>
+
+<p>So now that we have just <em>one</em> header and <em>one</em> key, we <em>should</em> have enough data to decrypt the disk image (if it is a LUKS image that is).</p>
+
+<p>Unfortunately that means it is time to move over to Linux to try this out. Fortunately it&rsquo;s just a VM that I can fire up. For this challenge I used a vanilla Ubuntu 18.04 box.</p>
+
+<p>Now I don&rsquo;t know anything about LUKS, so it&rsquo;s time to do a bit of research. The site I posted above seems to do a pretty good job of explaining what we need to do to &ldquo;restore&rdquo; the LUKS header to our &ldquo;damaged&rdquo; image:</p>
+
+<pre><code class="language-sh">$&gt; cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
+</code></pre>
+
+<p>So let&rsquo;s try it out. After copying the challenge1.img, file8 and file84 to the linux VM, we try it out:</p>
+
+<pre><code class="language-sh">$&gt; cryptsetup luksHeaderRestore challenge1.img --header-backup-file file8
+</code></pre>
+
+<p>Doing so we are given this handy little warning:</p>
+
+<pre><code>WARNING!
+========
+Device challenge1.img does not contain LUKS header. Replacing header can destroy data on that device.
+
+Are you sure? (Type uppercase yes):
+</code></pre>
+
+<p>This makes sense to me, because I&rsquo;m thinking that if the image <em>does indeed</em> contain a luks header, we would have gotten <em>something</em> out of <code>file</code> indicating that it was a LUKS system. What we want to do is put the LUKS header in place, then decrypt the volume with the corresponding <em>key</em>.</p>
+
+<pre><code>YES
+</code></pre>
+
+<p>I probably should have backed up that file before irreversibly modifying it&hellip; oh well.</p>
+
+<p>If we run <code>file</code> on challenge1.img <em>now</em> we get:</p>
+
+<pre><code>challenge1.img: LUKS encrypted file, ver 1 [aes, xts-plain64, sha256] UUID: c3c465b4-4a78-4215-975e-f8ac6c8350ea
+</code></pre>
+
+<p>Ok, so now we have to decrypt it and mount any file systems on it&hellip; I think. After digging through the <code>man</code> page for <code>cryptsetup</code> I learn the following:</p>
+
+<pre><code class="language-sh">luksOpen &lt;device&gt; &lt;name&gt; (old syntax)
+       Opens the LUKS device &lt;device&gt; and sets up a mapping &lt;name&gt; after successful verification of the supplied passphrase.
+
+       First, the passphrase is searched in LUKS tokens. If it's not found in any token and also the passphrase is not supplied via --key-file, the command prompts for it interactively.
+
+       &lt;options&gt;  can  be  [--key-file, --keyfile-offset, --keyfile-size, --readonly, --test-passphrase, --allow-discards, --header, --key-slot, --master-key-file, --token-id, --token-only, --dis‐
+       able-keyring, --disable-locks].
+</code></pre>
+
+<p>What I understand from this is that this command <em>should</em> provide us a decrypted device at <code>&lt;name&gt;</code> <em>if</em> we give it a valid keyfile and cooresponding LUKS device, which we <em>should</em> have. That&rsquo;s a lot of <em>should&rsquo;s</em>. We&rsquo;ll see if this works.</p>
+
+<pre><code class="language-sh">$&gt; sudo cryptsetup luksOpen challenge1.img challenge1_decrypted --key-file file84
+</code></pre>
+
+<p>Ok, it says it worked, but now what? Some more googling later I learn that a <em>mapping</em> generated by LUKS is stored in <code>/dev/mapper/</code>, and looking there sure enough:</p>
+
+<pre><code class="language-sh">$&gt; ls /dev/mapper/
+challenge1_decrypted  control
+</code></pre>
+
+<p>Is this it? Did we do it? Did we create a decrypted device?? Let&rsquo;s try mounting it:</p>
+
+<pre><code>$&gt; sudo mkdir /mnt/challenge1
+$&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
+$&gt;
+</code></pre>
+
+<p>It worked! No errors! Let&rsquo;s <code>cd</code> to that directory and get our flag!</p>
+
+<pre><code class="language-sh">$&gt; cd /mnt/challenge1/ &amp;&amp; ls
+$&gt;
+</code></pre>
+
+<p>Uh, what?</p>
+
+<pre><code class="language-sh">$&gt; ls -la
+total 4
+drwxr-xr-x 1 vagrant vagrant    0 Oct  2 17:42 .
+drwxr-xr-x 3 root    root    4096 Oct 29 16:18 ..
+</code></pre>
+
+<p>There&rsquo;s nothing in there! It&rsquo;s empty! We came all this way&hellip; after all this work&hellip;</p>
+
+<p>At this point <a href="https://www.youtube.com/watch?v=D_KZSdBDofw&amp;t=1">I&rsquo;m kindof feeling like this</a> but I refuse to give up!
+There has to be something!</p>
+
+<p>In frustration I call <code>mount</code>, which ends in the following line:</p>
+
+<pre><code>/dev/mapper/challenge1_decrypted on /mnt/challenge1 type btrfs (rw,relatime,space_cache,subvolid=256,subvol=/default)
+</code></pre>
+
+<p>Two things catch my eye here. The first is that the filesystem type is btrfs, which is something I have heard chuck talk about several times. The second thing I notice is the options used to mount the volume include <code>subvolid</code> and <code>subvol</code>. Time to google BTRFS.</p>
+
+<p>* <em>&hellip;Much reading later&hellip;</em> *</p>
+
+<blockquote>
+<p>A subvolume is a part of filesystem with its own and independent file/directory hierarchy. Subvolumes can share file extents. A snapshot is also subvolume, but with a given initial content of the original subvolume.
+Note: A subvolume in btrfs is not like an LVM logical volume, which is block-level snapshot while btrfs subvolumes are file extent-based.</p>
+</blockquote>
+
+<p>So BTRFS has the notion of <em>subvolumes</em> which are kindof just nested volumes like ZFS or LVM, but different. They use extents (contiguous blocks of storage) to define their subvolumes.
+Does this BTRFS have other subvolumes perhaps?</p>
+
+<p>A little bit of googling later I learn that there is a <code>btrfs</code> command that will let you view the subvolumes on a btrfs filesystem:</p>
+
+<pre><code>$&gt; sudo btrfs subvolume list /mnt/challenge1
+ID 256 gen 17 top level 5 path default
+ID 257 gen 13 top level 5 path non-default
+</code></pre>
+
+<p>Ok, now we&rsquo;re getting somewhere! There&rsquo;s a <code>non-default</code> subvolume on our btrfs filesystem that we didn&rsquo;t see before. A quick google of &ldquo;how to mount btrfs subvlume&rdquo; <a href="https://thegeekdiary.com/how-to-create-and-mount-btrfs-snapshots/">takes me here</a>, where I learn the command to change the default subvolume that is mounted when a btrfs filesystem is mounted:</p>
+
+<pre><code class="language-sh">$&gt; btrfs subvolume set-default 257 /mnt/challenge1/
+</code></pre>
+
+<p>(257 is the subvolume ID). Now we unmount and remount the volume:</p>
+
+<pre><code class="language-sh">$&gt; sudo umount /mnt/challenge1
+$&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
+</code></pre>
+
+<p>Now we see if there is anything inside:</p>
+
+<pre><code class="language-sh">ls -la /mnt/challenge1/
+total 8
+drwxr-xr-x 1 vagrant vagrant   32 Oct  2 17:44 .
+drwxr-xr-x 4 root    root    4096 Oct 29 17:35 ..
+-rwxrwxrwx 1 vagrant vagrant  220 Oct  2 17:09 instructions.rar
+</code></pre>
+
+<p>Halleluja! We&rsquo;ve finally reached the end and found our flag! Let&rsquo;s extract that tar file:</p>
+
+<pre><code class="language-sh">$&gt; cd /mnt/challenge1/ &amp;&amp; tar -xvf instructions.rar
+tar: This does not look like a tar archive
+tar: Exiting with failure status due to previous errors
+</code></pre>
+
+<p>* Looks carefully *</p>
+
+<pre><code>tar: This does not look like a tar archive
+</code></pre>
+
+<p>** Looks more carefully **</p>
+
+<pre><code>instructions.rar
+</code></pre>
+
+<p>A .rar file?? Who uses rar files anymore?? Ok then, this shouldn&rsquo;t be too difficult, just got to install <code>rar</code> and uncompress it&hellip;</p>
+
+<pre><code class="language-sh">$&gt; sudo apt install rar
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Suggested packages:
+  unrar
+The following NEW packages will be installed:
+  rar
+0 upgraded, 1 newly installed, 0 to remove and 94 not upgraded.
+Need to get 295 kB of archives.
+After this operation, 799 kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu bionic/multiverse amd64 rar amd64 2:5.5.0-1 [295 kB]
+Fetched 295 kB in 1s (511 kB/s)
+Selecting previously unselected package rar.
+(Reading database ... 88083 files and directories currently installed.)
+Preparing to unpack .../rar_2%3a5.5.0-1_amd64.deb ...
+Unpacking rar (2:5.5.0-1) ...
+Setting up rar (2:5.5.0-1) ...
+Processing triggers for man-db (2.8.3-2ubuntu0.1) ...
+$&gt; rar e instructions.rar
+
+RAR 5.50   Copyright (c) 1993-2017 Alexander Roshal   11 Aug 2017
+Trial version             Type 'rar -?' for help
+
+
+Extracting from instructions.rar
+
+Extracting  instructions.txt                                          OK
+All OK
+</code></pre>
+
+<p>Alright, we have our <code>instructions.txt</code>, which isn&rsquo;t as nice as the flag, but still something! Let&rsquo;s see what our final step is:</p>
+
+<pre><code class="language-sh">$&gt; cat instructions.txt
+The flag is not here.
+</code></pre>
+
+<p>What? That&rsquo;s it?? That&rsquo;s all you have for me Chuck, after all this work??? Maybe I&rsquo;m missing some unprintable characters, let&rsquo;s see a hexdump of the file:</p>
+
+<pre><code class="language-sh">$&gt; xxd instructions.txt
+00000000: 5468 6520 666c 6167 2069 7320 6e6f 7420  The flag is not
+00000010: 6865 7265 2e                             here.
+</code></pre>
+
+<dl>
+<dt>Nope! All 21 bytes are right there for me to see, nothing is hidden.</dt>
+</dl>
+
+<p>:face_with_raised_eyebrow: emoji here.</p>
+
+<p>So this seems a lot like our previous problem, where initially we didn&rsquo;t see anything, but then we found out that the technology was capable of hiding things in plain sight. Let&rsquo;s take a step back and <a href="https://ss64.com/bash/rar.html">see if the rar command can hide additional files that we&rsquo;re not seeing</a>.</p>
+
+<p>* 15 minutes of reading later *</p>
+
+<p>It doesn&rsquo;t look like it. Everything in rar is pretty up front, which means this text file really is all we get. But this <em>can&rsquo;t</em> be a dead end! Chuck would <em>not</em> be that cruel!</p>
+
+<p>So let&rsquo;s take <em>another</em> step back and look at the rar file. Putting it through a hexdump we see this:</p>
+
+<pre><code>$&gt; xxd instructions.rar
+00000000: 5261 7221 1a07 0100 3392 b5e5 0a01 0506  Rar!....3.......
+00000010: 0005 0101 8080 00b3 43d8 b72c 0203 0b95  ........C..,....
+00000020: 0004 9500 2050 346a 9480 0000 1069 6e73  .... P4j.....ins
+00000030: 7472 7563 7469 6f6e 732e 7478 740a 0302  tructions.txt...
+00000040: 377e b62a 7679 d501 5468 6520 666c 6167  7~.*vy..The flag
+00000050: 2069 7320 6e6f 7420 6865 7265 2e96 1977   is not here...w
+00000060: 8d27 0323 11cb 8000 04c9 8000 0064 45bc  .'.#.........dE.
+00000070: 6780 0300 0353 544d 1007 3a6e 6f74 7468  g....STM..:notth
+00000080: 6566 6c61 672e 7478 74c7 d548 3530 333f  eflag.txt..H503?
+00000090: 7504 2ef9 2c07 c04b 2cba d903 93eb 71c0  u...,..K,.....q.
+000000a0: 3cb1 f651 0be0 d349 8a7c 9785 b3ea 79f2  &lt;..Q...I.|....y.
+000000b0: ddc4 3621 363b 1428 8be4 585e 6632 9923  ..6!6;.(..X^f2.#
+000000c0: be82 4c46 da72 08b2 a860 1b4d 4f88 0aa9  ..LF.r...`.MO...
+000000d0: d7ff ae78 1d77 5651 0305 0400            ...x.wVQ....
+</code></pre>
+
+<p>So ignoring as much unreadable binary as we can, we go from the top and see that we have a rar file&hellip; it&rsquo;s got a file called instructions.txt it looks like, the contents say &ldquo;The flag is not here&rdquo; (haha, very cheeky)&hellip; but wait! What is this? <code>nottheflag.txt</code>?? Where does that come from? How do I read it&rsquo;s contents?</p>
+
+<p>I go back through the documentation for <code>rar</code> but can find <em>absolutely nothing</em> about hidden files in the format. Everything about the file comes out with that command, but <em>obviously</em> there is more to the story here. There are 220 bytes in this rar file, and I have a feeling that we&rsquo;ll need to <a href="https://www.rarlab.com/technote.htm">go through the rar file specification one byte at a time to see how we get it out</a>.</p>
+
+<p>So that&rsquo;s exactly what I&rsquo;m going to do.</p>
+
+<p><code>IS THIS WHAT YOU WANTED, CHUCK? YOU WANTED ME TO READ A FILE BYTE BY BYTE AND COMPARE IT TO THE SPECIFICATION??</code></p>
+
+<p>Byte. After. Byte. We go through the version signature. Through the RAR header. One file, but a length longer than 21 bytes. Finally we get to byte 118 and we see <code>STM..:nottheflag.txt</code>. And this, my friends, is where we find our next clue:</p>
+
+<p>(From the above specification:)</p>
+
+<blockquote>
+<p>For service header this field contains a name of service header. Now the following names are used:
+CMT    Archive comment
+QO Archive quick open data
+ACL    NTFS file permissions
+STM    NTFS alternate data stream
+RR Recovery record</p>
+</blockquote>
+
+<p>That&rsquo;s what it is, some new alien technology defined by the STM service header: <em>an NTFS alternate data stream</em>.</p>
+
+<p>WTH is an NTFS alternate data stream? Our friend <a href="https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs/">Robert at Microsoft</a> explains profoundly:</p>
+
+<blockquote>
+<p>It is a data stream that is alternate.</p>
+</blockquote>
+
+<p>That makes so much more sense now! Thanks Robert from Microsoft!</p>
+
+<p>Annoyed, I continue reading the article with a sinking realization that this part will require a Windows VM of me.</p>
+
+<p><em><strong>chuck-sigh</strong></em></p>
+
+<p>I fire up <em>and install Windows</em> in a VM <em>because believe it or not, I don&rsquo;t have any reason to keep one handy</em>.</p>
+
+<p>This takes some time, and after paying my dues to the devil and letting Windows Telemetry play big brother on the VM, I finally have Windows machine to move this rar file over to.</p>
+
+<p>This is where things get a little awkward for me, because at the time of this write-up my website&rsquo;s ability to display images is&hellip; non-present. And because Windows got off the cool-kids bandwagon in the late nineties with their &lsquo;never use a CLI&rsquo; again mentality, I can&rsquo;t show you a lot of this on the command line.</p>
+
+<p>And obviously, it doesn&rsquo;t bug me.</p>
+
+<p>So we <a href="https://www.cronocide.com/images/hacktober_1.png">install WinRAR</a> and go through the process of <a href="https://www.cronocide.com/images/hacktober_2.png">extracting the instructions.txt file to the desktop</a>.</p>
+
+<p>Now it&rsquo;s up to our friend Robert from Microsoft to help us view this <em>alternate NTFS stream</em> in Powershell. This part I <em>can</em> do from a command line!</p>
+
+<pre><code class="language-powershell">PS C:\&gt; Get-item -Path C:\Users\cronocide\Desktop\instructions\instructions.txt -stream *
+
+
+PSPath        : Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt::$DATA
+PSParentPath  : Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
+PSChildName   : instructions.txt::$DATA
+PSDrive       : C
+PSProvider    : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer : False
+FileName      : C:\Users\Cronocide\Desktop\instructions\instructions.txt
+Stream        : :$DATA
+Length        : 21
+
+PSPath        : Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt:notthefl
+                ag.txt
+PSParentPath  : Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
+PSChildName   : instructions.txt:nottheflag.txt
+PSDrive       : C
+PSProvider    : Microsoft.PowerShell.Core\FileSystem
+PSIsContainer : False
+FileName      : C:\Users\Cronocide\Desktop\instructions\instructions.txt
+Stream        : nottheflag.txt
+Length        : 73
+</code></pre>
+
+<p>We can see right there that our &lsquo;nottheflag.txt&rsquo; is an alternate NTFS stream available to be read from instructions.txt, which can <em>only</em> be read on an NTFS filesystem. Now I know and trust Chuck, despite all of the pain he&rsquo;s put us through in this challenge, but I don&rsquo;t believe for a second that <code>nottheflag.txt</code> isn&rsquo;t the flag! It&rsquo;s got to be! There&rsquo;s nowhere else to go! There&rsquo;s nothing else to do! The game has to be over!</p>
+
+<p>Finally, we read the alternate stream:</p>
+
+<pre><code class="language-powershell">PS C:\Users\Cronocide&gt; Get-content -Path C:\Users\Cronocide\Desktop\instructions\instructions.txt -stream nottheflag.txt
+flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
+</code></pre>
+
+<p>There it is. <a href="https://youtu.be/Ga1hJgE_BwY?t=63">We found the treasure</a>.</p>
+
+<pre><code>flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
+</code></pre>
+
+<p>I sit back in my reclining office chair at my desk. It&rsquo;s dark outside. This challenge took my whole evening.</p>
+
+<p>But it was a good challenge. It was fun. And even though I had to read the rar specification byte by byte, I still learned a <em>ton</em> of cool new stuff.</p>
+
+<p>And at the end of the day, win or lose, that&rsquo;s what makes it all worth it.</p>
+
+<p>Thanks Chuck, this challenge was <em>awesome.</em></p>
+
+  </main>
+  <div id="disqus-container">
+  
+</div>
+
+
+          <footer role="contentinfo">
+  
+    Made with <a href="https://gohugo.io/">Hugo</a>.
+  
+</footer>
+
+        </div>
+      </div>
+    </div>
+    <script src="https://www.cronocide.com/js/prism.js"></script>
+<script src="https://www.cronocide.com/js/dom-scripts.js"></script>
+
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+    
+  
+
+  </body>
+</html>

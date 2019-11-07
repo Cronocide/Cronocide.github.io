@@ -6,9 +6,30 @@
     <description>Recent content on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
+    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
     
 	<atom:link href="https://www.cronocide.com/index.xml" rel="self" type="application/rss+xml" />
     
+    
+    <item>
+      <title>Building your first SIEM with the Elastic Stack</title>
+      <link>https://www.cronocide.com/post/byfswtes/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.cronocide.com/post/byfswtes/</guid>
+      <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.
+After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</description>
+    </item>
+    
+    <item>
+      <title>Hacktober 2019 - Filesystems</title>
+      <link>https://www.cronocide.com/post/hacktober2019/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
+      <guid>https://www.cronocide.com/post/hacktober2019/</guid>
+      <description>I recently finished the Hacktober 2019 CTF from the great folks @UVUCSC. The challenges were mostly entry-level but there were a few that were quite challenging.
+The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend chuck called filesystems. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</description>
+    </item>
     
     <item>
       <title></title>
