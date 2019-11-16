@@ -40,5 +40,15 @@ The highest-point-value challenge was a frustrating and time-consuming monster d
       <description>About Cronocide My name is Daniel Dayley. You can get the rest from OSINT.</description>
     </item>
     
+    <item>
+      <title></title>
+      <link>https://www.cronocide.com/repo/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://www.cronocide.com/repo/</guid>
+      <description> Apt Repository This repository has packages I&amp;rsquo;ve built for Linux and iOS. These packages are offered AS IS and include no warranty or obligation of support.
+Click here to add this repo to Cydia Packages    Name Version Arch     hostname 1.0.0 iphoneos-arm    </description>
+    </item>
+    
   </channel>
 </rss>
