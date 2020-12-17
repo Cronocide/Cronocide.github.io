@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>cronocide.com</title>
@@ -17,8 +17,8 @@
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
       
       <guid>https://www.cronocide.com/post/byfswtes/</guid>
-      <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.
-After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</description>
+      <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&#39;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.
+After we get the basic software running we&#39;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</description>
     </item>
     
     <item>
@@ -46,8 +46,8 @@ The highest-point-value challenge was a frustrating and time-consuming monster d
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       
       <guid>https://www.cronocide.com/repo/</guid>
-      <description> Apt Repository This repository has packages I&amp;rsquo;ve built for Linux and iOS. These packages are offered AS IS and include no warranty or obligation of support.
-   Add to Cydia      Packages    Name Version Arch     hostname 1.0.0 iphoneos-arm    </description>
+      <description>Apt Repository This repository has packages I&#39;ve built for Linux and iOS. These packages are offered AS IS and include no warranty or obligation of support.
+   Add to Cydia    Packages    Name Version Arch     hostname 1.0.0 iphoneos-arm    </description>
     </item>
     
   </channel>
