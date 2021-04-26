@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.61.0" />
+  <meta name="generator" content="Hugo 0.82.0" />
   <link rel="canonical" href="https://www.cronocide.com/post/hacktober2019/">
 
   
@@ -17,7 +17,9 @@
   <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
-
+  
+      <link rel="stylesheet" type="text/css" href="https://www.cronocide.comcss/asciinema-player.css" />
+  
   <link rel="stylesheet" href="https://www.cronocide.com/css/prism.css" media="none" onload="this.media='all';">
 
   
@@ -51,7 +53,7 @@
    <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.21 0 1.414 8.6-5.008 9.583s-1.924-4.064-5.117-6.314c-2.693-1.899-4.447-2.309-7.186-1.746-3.527.73-7.516 4.938-9.258 10.13-2.084 6.21-2.104 9.218-2.178 11.978-.115 4.428.58 7.043.58 7.043s-3.04-5.626-3.011-13.866c.018-5.882.947-11.218 3.666-16.479 2.404-4.627 5.954-7.404 9.114-7.728 3.264-.343 5.848 1.229 7.841 2.938 2.089 1.788 4.213 5.698 4.213 5.698l4.94-9.837z"/>
    <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.82 48.674s-2.208 3.957-3.589 5.48c-1.379 1.524-3.849 4.209-6.896 5.555-3.049 1.343-4.646 1.598-7.661 1.306-3.01-.29-5.807-2.032-6.786-2.764-.979-.722-3.486-2.864-4.897-4.854-1.42-2-3.634-5.995-3.634-5.995s1.233 4.001 2.007 5.699c.442.977 1.81 3.965 3.749 6.572 1.805 2.425 5.315 6.604 10.652 7.545 5.336.945 9.002-1.449 9.907-2.031.907-.578 2.819-2.178 4.032-3.475 1.264-1.351 2.459-3.079 3.116-4.108.487-.758 1.276-2.286 1.276-2.286l-1.276-6.644z"/>
   </symbol>
-  
+
   <symbol id="folder" viewBox="0 0 24 24">
     <g transform="translate(2266 3206.2)">
        <path style="stroke:currentColor;stroke-width:3.2637;fill:currentColor" d="M20,6h-8l-1.414-1.414C10.211,4.211,9.702,4,9.172,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8 C22,6.9,21.1,6,20,6z"/>
@@ -110,7 +112,12 @@
      </g>
     </g>
   </symbol>
-
+ <symbol id="hash" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+	 <g>
+	 <path style="fill:#030104;" d="M30,12V8h-5.004l1-8h-4l-1,8h-7.998l1-8h-4l-1,8H2v4h6.498L7.5,20H2v4h5l-1,8h4l1-8h8l-1.002,8H22
+		 l1-8h7v-4h-6.5l0.996-8H30z M19.5,20h-8l0.998-8h7.998L19.5,20z"/>
+	 </g>
+</symbol>
   <symbol id="doc" viewBox="0 0 35 45">
    <g transform="translate(-147.53 -539.83)">
     <path style="stroke:currentColor;stroke-width:2.4501;fill:none" d="m149.38 542.67v39.194h31.354v-39.194z"/>
@@ -240,23 +247,20 @@
           
   <main id="main">
     <h1>
-      <svg class="bookmark-icon" aria-hidden="true" viewBox="0 0 40 50" focusable="false">
-        <use xlink:href="#bookmark"></use>
-      </svg>
       Hacktober 2019 - Filesystems
     </h1>
 
     <div class="date">
       
       
-      <strong aria-hidden="true">Publish date: </strong>Mar 3, 26260
+      <strong aria-hidden="true">Publish date: </strong>Mar 26, 2019
       
         
       
     </div>
 
     
-    
+
     
       
 
@@ -267,13 +271,13 @@
 <p>The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend <a href="https://www.linkedin.com/in/ddbishop/">chuck</a> called <code>filesystems</code>. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</p>
 <p>Which means, I have to solve it <em>all over again</em>.</p>
 <p><em><strong>chuck-sigh</strong></em></p>
-<p>Unfortunately I haven't figure out out how to display images on my hugo-templated website yet, so you'll have to follow along on the command line and use your imagination if you want to see what happened.</p>
-<p>Anyway, let's get started.</p>
-<p>For this challenge we aren't given anything but a <code>tar</code> file called <code>challenge1.tar</code>. Extracting it traditionally gives us the following directory tree:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">./
+<p>Unfortunately I haven&rsquo;t figure out out how to display images on my hugo-templated website yet, so you&rsquo;ll have to follow along on the command line and use your imagination if you want to see what happened.</p>
+<p>Anyway, let&rsquo;s get started.</p>
+<p>For this challenge we aren&rsquo;t given anything but a <code>tar</code> file called <code>challenge1.tar</code>. Extracting it traditionally gives us the following directory tree:</p>
+<pre><code class="language-treeview" data-lang="treeview">./
 ├── challenge1.img
-├── header
-│   ├── folder0
+├── header/
+│   ├── folder0/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -284,7 +288,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder1
+│   ├── folder1/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -295,7 +299,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder2
+│   ├── folder2/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -306,7 +310,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder3
+│   ├── folder3/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -317,7 +321,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder4
+│   ├── folder4/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -328,7 +332,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder5
+│   ├── folder5/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -339,7 +343,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder6
+│   ├── folder6/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -350,7 +354,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder7
+│   ├── folder7/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -361,7 +365,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   ├── folder8
+│   ├── folder8/
 │   │   ├── file0
 │   │   ├── file1
 │   │   ├── file2
@@ -372,7 +376,7 @@
 │   │   ├── file7
 │   │   ├── file8
 │   │   └── file9
-│   └── folder9
+│   └── folder9/
 │       ├── file0
 │       ├── file1
 │       ├── file2
@@ -383,8 +387,8 @@
 │       ├── file7
 │       ├── file8
 │       └── file9
-└── key
-    ├── folder0
+└── key/
+    ├── folder0/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -485,7 +489,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder1
+    ├── folder1/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -586,7 +590,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder2
+    ├── folder2/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -687,7 +691,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder3
+    ├── folder3/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -788,7 +792,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder4
+    ├── folder4/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -889,7 +893,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder5
+    ├── folder5/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -990,7 +994,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder6
+    ├── folder6/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -1091,7 +1095,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder7
+    ├── folder7/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -1192,7 +1196,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    ├── folder8
+    ├── folder8/
     │   ├── file0
     │   ├── file1
     │   ├── file10
@@ -1293,7 +1297,7 @@
     │   ├── file97
     │   ├── file98
     │   └── file99
-    └── folder9
+    └── folder9/
         ├── file0
         ├── file1
         ├── file10
@@ -1394,10 +1398,10 @@
         ├── file97
         ├── file98
         └── file99
-</code></pre></div><p>So we're only <em>one step into this</em> and we're already ready for a tl;dr.
+</code></pre><p>So we&rsquo;re only <em>one step into this</em> and we&rsquo;re already ready for a tl;dr.
 Well here it is.
-Let's take a look at the content of one of the files:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; xxd key/folder0/file5 | head -n <span style="color:#ae81ff">10</span>
+Let&rsquo;s take a look at the content of one of the files:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; xxd key/folder0/file5 | head -n <span style="color:#ae81ff">10</span>
 00000000: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
 00000010: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
 00000020: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
@@ -1409,11 +1413,11 @@ Let's take a look at the content of one of the files:</p>
 00000080: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
 00000090: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
 </code></pre></div><p>And guess what guys? <em>It goes on for another million bytes like that!</em>
-The whole thing, just all zeros. And it's not the only one! After sampling files all over that horrible tree all I'm seeing is zeros. Megabytes and megabytes of null, all over my hard drive. Thanks chuck!</p>
-<p>We also have this challenge1.img file, which the diskarbitration framework on my mac doesn't recognize and neither does <code>file</code>:</p>
+The whole thing, just all zeros. And it&rsquo;s not the only one! After sampling files all over that horrible tree all I&rsquo;m seeing is zeros. Megabytes and megabytes of null, all over my hard drive. Thanks chuck!</p>
+<p>We also have this challenge1.img file, which the diskarbitration framework on my mac doesn&rsquo;t recognize and neither does <code>file</code>:</p>
 <pre><code>$&gt; file challenge1.img
 challenge1.img: data
-</code></pre><p>Great. Well I'll look at the image in a hexdump as well but won't see anything useful. All we have is a file of keys and headers, and so let's start googling there.</p>
+</code></pre><p>Great. Well I&rsquo;ll look at the image in a hexdump as well but won&rsquo;t see anything useful. All we have is a file of keys and headers, and so let&rsquo;s start googling there.</p>
 <p>A quick google search for <code>header key disk image</code> (the three things we seem to have) one of the entries about 5 down is</p>
 <blockquote>
 <p>&ldquo;Bruteforcing Linux Full Disk Encryption (LUKS) With Hashcat&rdquo;</p>
@@ -1423,13 +1427,13 @@ Let us google further:</p>
 <blockquote>
 <p>The Linux Unified Key Setup (LUKS) is a disk encryption specification created by Clemens Fruhwirth in 2004 and was originally intended for Linux. While most disk encryption software implements different, incompatible, and undocumented formats, LUKS implements a platform-independent standard on-disk format for use in various tools.</p>
 </blockquote>
-<p>I know that chuck really likes Linux, in fact he runs it on his laptop. Maybe this is what we're looking for? Let's see if key and header have anything to do with LUKS. After googling <code>luks key header</code> we find <a href="https://www.lisenet.com/2013/luks-add-keys-backup-and-restore-volume-header/">this site</a> which quotes the following:</p>
+<p>I know that chuck really likes Linux, in fact he runs it on his laptop. Maybe this is what we&rsquo;re looking for? Let&rsquo;s see if key and header have anything to do with LUKS. After googling <code>luks key header</code> we find <a href="https://www.lisenet.com/2013/luks-add-keys-backup-and-restore-volume-header/">this site</a> which quotes the following:</p>
 <blockquote>
 <p>Following up our LUKS installation, we will go further and explore how to add a backup passphrase as well as how to backup and restore LUKS volume header in case of disaster.
 <strong>LUKS format uses a metadata header and 8 key-slot areas that are being placed at the beginning of the disk</strong>. The passphrases are used to decrypt a single master key that is stored in the anti-forensic stripes.</p>
 </blockquote>
-<p>That sounds like the type of data that we have! But what about all these blank files? Let's go through all of them and compare the hashes of the empty ones and see if any <em>aren't</em> all zeros:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls key/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
+<p>That sounds like the type of data that we have! But what about all these blank files? Let&rsquo;s go through all of them and compare the hashes of the empty ones and see if any <em>aren&rsquo;t</em> all zeros:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls key/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
 ...
 MD5 <span style="color:#f92672">(</span>key/folder3/file81<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
 MD5 <span style="color:#f92672">(</span>key/folder3/file82<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
@@ -1439,9 +1443,9 @@ MD5 <span style="color:#f92672">(</span>key/folder3/file85<span style="color:#f9
 MD5 <span style="color:#f92672">(</span>key/folder3/file86<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
 MD5 <span style="color:#f92672">(</span>key/folder3/file87<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
 ...
-</code></pre></div><p>Aha! Did you see it? Only <em>one</em> file in the keys isn't <em>all</em> zeros! Lets copy that out (key/folder3/file84).
+</code></pre></div><p>Aha! Did you see it? Only <em>one</em> file in the keys isn&rsquo;t <em>all</em> zeros! Lets copy that out (key/folder3/file84).
 What about the header files?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls header/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls header/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
 ...
 MD5 <span style="color:#f92672">(</span>header/folder6/file5<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
 MD5 <span style="color:#f92672">(</span>header/folder6/file6<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
@@ -1451,51 +1455,51 @@ MD5 <span style="color:#f92672">(</span>header/folder6/file9<span style="color:#
 MD5 <span style="color:#f92672">(</span>header/folder7/file0<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
 MD5 <span style="color:#f92672">(</span>header/folder7/file1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
 ...
-</code></pre></div><p>Eureka! (does anyone say that anymore??) We have only <em>one</em> file in the headers file that isn't <em>all</em> zeros. We'll copy it out too (header/folder6/file8).</p>
+</code></pre></div><p>Eureka! (does anyone say that anymore??) We have only <em>one</em> file in the headers file that isn&rsquo;t <em>all</em> zeros. We&rsquo;ll copy it out too (header/folder6/file8).</p>
 <p>So now that we have just <em>one</em> header and <em>one</em> key, we <em>should</em> have enough data to decrypt the disk image (if it is a LUKS image that is).</p>
-<p>Unfortunately that means it is time to move over to Linux to try this out. Fortunately it's just a VM that I can fire up. For this challenge I used a vanilla Ubuntu 18.04 box.</p>
-<p>Now I don't know anything about LUKS, so it's time to do a bit of research. The site I posted above seems to do a pretty good job of explaining what we need to do to &ldquo;restore&rdquo; the LUKS header to our &ldquo;damaged&rdquo; image:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
-</code></pre></div><p>So let's try it out. After copying the challenge1.img, file8 and file84 to the linux VM, we try it out:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; cryptsetup luksHeaderRestore challenge1.img --header-backup-file file8
+<p>Unfortunately that means it is time to move over to Linux to try this out. Fortunately it&rsquo;s just a VM that I can fire up. For this challenge I used a vanilla Ubuntu 18.04 box.</p>
+<p>Now I don&rsquo;t know anything about LUKS, so it&rsquo;s time to do a bit of research. The site I posted above seems to do a pretty good job of explaining what we need to do to &ldquo;restore&rdquo; the LUKS header to our &ldquo;damaged&rdquo; image:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
+</code></pre></div><p>So let&rsquo;s try it out. After copying the challenge1.img, file8 and file84 to the linux VM, we try it out:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cryptsetup luksHeaderRestore challenge1.img --header-backup-file file8
 </code></pre></div><p>Doing so we are given this handy little warning:</p>
 <pre><code>WARNING!
 ========
 Device challenge1.img does not contain LUKS header. Replacing header can destroy data on that device.
 
 Are you sure? (Type uppercase yes):
-</code></pre><p>This makes sense to me, because I'm thinking that if the image <em>does indeed</em> contain a luks header, we would have gotten <em>something</em> out of <code>file</code> indicating that it was a LUKS system. What we want to do is put the LUKS header in place, then decrypt the volume with the corresponding <em>key</em>.</p>
+</code></pre><p>This makes sense to me, because I&rsquo;m thinking that if the image <em>does indeed</em> contain a luks header, we would have gotten <em>something</em> out of <code>file</code> indicating that it was a LUKS system. What we want to do is put the LUKS header in place, then decrypt the volume with the corresponding <em>key</em>.</p>
 <pre><code>YES
 </code></pre><p>I probably should have backed up that file before irreversibly modifying it&hellip; oh well.</p>
 <p>If we run <code>file</code> on challenge1.img <em>now</em> we get:</p>
 <pre><code>challenge1.img: LUKS encrypted file, ver 1 [aes, xts-plain64, sha256] UUID: c3c465b4-4a78-4215-975e-f8ac6c8350ea
 </code></pre><p>Ok, so now we have to decrypt it and mount any file systems on it&hellip; I think. After digging through the <code>man</code> page for <code>cryptsetup</code> I learn the following:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">luksOpen &lt;device&gt; &lt;name&gt; <span style="color:#f92672">(</span>old syntax<span style="color:#f92672">)</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">luksOpen &lt;device&gt; &lt;name&gt; <span style="color:#f92672">(</span>old syntax<span style="color:#f92672">)</span>
        Opens the LUKS device &lt;device&gt; and sets up a mapping &lt;name&gt; after successful verification of the supplied passphrase.
 
        First, the passphrase is searched in LUKS tokens. If it<span style="color:#960050;background-color:#1e0010">&#39;</span>s not found in any token and also the passphrase is not supplied via --key-file, the command prompts <span style="color:#66d9ef">for</span> it interactively.
 
        &lt;options&gt;  can  be  <span style="color:#f92672">[</span>--key-file, --keyfile-offset, --keyfile-size, --readonly, --test-passphrase, --allow-discards, --header, --key-slot, --master-key-file, --token-id, --token-only, --dis‐
        able-keyring, --disable-locks<span style="color:#f92672">]</span>.
-</code></pre></div><p>What I understand from this is that this command <em>should</em> provide us a decrypted device at <code>&lt;name&gt;</code> <em>if</em> we give it a valid keyfile and cooresponding LUKS device, which we <em>should</em> have. That's a lot of <em>should's</em>. We'll see if this works.</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; sudo cryptsetup luksOpen challenge1.img challenge1_decrypted --key-file file84
+</code></pre></div><p>What I understand from this is that this command <em>should</em> provide us a decrypted device at <code>&lt;name&gt;</code> <em>if</em> we give it a valid keyfile and cooresponding LUKS device, which we <em>should</em> have. That&rsquo;s a lot of <em>should&rsquo;s</em>. We&rsquo;ll see if this works.</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo cryptsetup luksOpen challenge1.img challenge1_decrypted --key-file file84
 </code></pre></div><p>Ok, it says it worked, but now what? Some more googling later I learn that a <em>mapping</em> generated by LUKS is stored in <code>/dev/mapper/</code>, and looking there sure enough:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; ls /dev/mapper/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; ls /dev/mapper/
 challenge1_decrypted  control
-</code></pre></div><p>Is this it? Did we do it? Did we create a decrypted device?? Let's try mounting it:</p>
-<pre><code>$&gt; sudo mkdir /mnt/challenge1
+</code></pre></div><p>Is this it? Did we do it? Did we create a decrypted device?? Let&rsquo;s try mounting it:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo mkdir /mnt/challenge1
 $&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
 $&gt;
-</code></pre><p>It worked! No errors! Let's <code>cd</code> to that directory and get our flag!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> ls
+</code></pre></div><p>It worked! No errors! Let&rsquo;s <code>cd</code> to that directory and get our flag!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> ls
 $&gt;
 </code></pre></div><p>Uh, what?</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; ls -la
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; ls -la
 total <span style="color:#ae81ff">4</span>
 drwxr-xr-x <span style="color:#ae81ff">1</span> vagrant vagrant    <span style="color:#ae81ff">0</span> Oct  <span style="color:#ae81ff">2</span> 17:42 .
 drwxr-xr-x <span style="color:#ae81ff">3</span> root    root    <span style="color:#ae81ff">4096</span> Oct <span style="color:#ae81ff">29</span> 16:18 ..
-</code></pre></div><p>There's nothing in there! It's empty! We came all this way&hellip; after all this work&hellip;</p>
-<p>At this point <a href="https://www.youtube.com/watch?v=D_KZSdBDofw&amp;t=1">I'm kindof feeling like this</a> but I refuse to give up!
+</code></pre></div><p>There&rsquo;s nothing in there! It&rsquo;s empty! We came all this way&hellip; after all this work&hellip;</p>
+<p>At this point <a href="https://www.youtube.com/watch?v=D_KZSdBDofw&amp;t=1">I&rsquo;m kindof feeling like this</a> but I refuse to give up!
 There has to be something!</p>
 <p>In frustration I call <code>mount</code>, which ends in the following line:</p>
 <pre><code>/dev/mapper/challenge1_decrypted on /mnt/challenge1 type btrfs (rw,relatime,space_cache,subvolid=256,subvol=/default)
@@ -1511,27 +1515,27 @@ Does this BTRFS have other subvolumes perhaps?</p>
 <pre><code>$&gt; sudo btrfs subvolume list /mnt/challenge1
 ID 256 gen 17 top level 5 path default
 ID 257 gen 13 top level 5 path non-default
-</code></pre><p>Ok, now we're getting somewhere! There's a <code>non-default</code> subvolume on our btrfs filesystem that we didn't see before. A quick google of &ldquo;how to mount btrfs subvlume&rdquo; <a href="https://thegeekdiary.com/how-to-create-and-mount-btrfs-snapshots/">takes me here</a>, where I learn the command to change the default subvolume that is mounted when a btrfs filesystem is mounted:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; btrfs subvolume set-default <span style="color:#ae81ff">257</span> /mnt/challenge1/
+</code></pre><p>Ok, now we&rsquo;re getting somewhere! There&rsquo;s a <code>non-default</code> subvolume on our btrfs filesystem that we didn&rsquo;t see before. A quick google of &ldquo;how to mount btrfs subvlume&rdquo; <a href="https://thegeekdiary.com/how-to-create-and-mount-btrfs-snapshots/">takes me here</a>, where I learn the command to change the default subvolume that is mounted when a btrfs filesystem is mounted:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; btrfs subvolume set-default <span style="color:#ae81ff">257</span> /mnt/challenge1/
 </code></pre></div><p>(257 is the subvolume ID). Now we unmount and remount the volume:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; sudo umount /mnt/challenge1
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo umount /mnt/challenge1
 $&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
 </code></pre></div><p>Now we see if there is anything inside:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">ls -la /mnt/challenge1/
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -la /mnt/challenge1/
 total <span style="color:#ae81ff">8</span>
 drwxr-xr-x <span style="color:#ae81ff">1</span> vagrant vagrant   <span style="color:#ae81ff">32</span> Oct  <span style="color:#ae81ff">2</span> 17:44 .
 drwxr-xr-x <span style="color:#ae81ff">4</span> root    root    <span style="color:#ae81ff">4096</span> Oct <span style="color:#ae81ff">29</span> 17:35 ..
 -rwxrwxrwx <span style="color:#ae81ff">1</span> vagrant vagrant  <span style="color:#ae81ff">220</span> Oct  <span style="color:#ae81ff">2</span> 17:09 instructions.rar
-</code></pre></div><p>Halleluja! We've finally reached the end and found our flag! Let's extract that tar file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> tar -xvf instructions.rar
+</code></pre></div><p>Halleluja! We&rsquo;ve finally reached the end and found our flag! Let&rsquo;s extract that tar file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> tar -xvf instructions.rar
 tar: This does not look like a tar archive
 tar: Exiting with failure status due to previous errors
 </code></pre></div><p>* Looks carefully *</p>
 <pre><code>tar: This does not look like a tar archive
 </code></pre><p>** Looks more carefully **</p>
 <pre><code>instructions.rar
-</code></pre><p>A .rar file?? Who uses rar files anymore?? Ok then, this shouldn't be too difficult, just got to install <code>rar</code> and uncompress it&hellip;</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; sudo apt install rar
+</code></pre><p>A .rar file?? Who uses rar files anymore?? Ok then, this shouldn&rsquo;t be too difficult, just got to install <code>rar</code> and uncompress it&hellip;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo apt install rar
 Reading package lists... Done
 Building dependency tree
 Reading state information... Done
@@ -1560,19 +1564,19 @@ Extracting from instructions.rar
 
 Extracting  instructions.txt                                          OK
 All OK
-</code></pre></div><p>Alright, we have our <code>instructions.txt</code>, which isn't as nice as the flag, but still something! Let's see what our final step is:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; cat instructions.txt
+</code></pre></div><p>Alright, we have our <code>instructions.txt</code>, which isn&rsquo;t as nice as the flag, but still something! Let&rsquo;s see what our final step is:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cat instructions.txt
 The flag is not here.
-</code></pre></div><p>What? That's it?? That's all you have for me Chuck, after all this work??? Maybe I'm missing some unprintable characters, let's see a hexdump of the file:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-sh" data-lang="sh">$&gt; xxd instructions.txt
+</code></pre></div><p>What? That&rsquo;s it?? That&rsquo;s all you have for me Chuck, after all this work??? Maybe I&rsquo;m missing some unprintable characters, let&rsquo;s see a hexdump of the file:</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; xxd instructions.txt
 00000000: <span style="color:#ae81ff">5468</span> <span style="color:#ae81ff">6520</span> 666c <span style="color:#ae81ff">6167</span> <span style="color:#ae81ff">2069</span> <span style="color:#ae81ff">7320</span> 6e6f <span style="color:#ae81ff">7420</span>  The flag is not
 00000010: <span style="color:#ae81ff">6865</span> <span style="color:#ae81ff">7265</span> 2e                             here.
 </code></pre></div><p>Nope! All 21 bytes are right there for me to see, nothing is hidden.</p>
 <p>:face_with_raised_eyebrow: emoji here.</p>
-<p>So this seems a lot like our previous problem, where initially we didn't see anything, but then we found out that the technology was capable of hiding things in plain sight. Let's take a step back and <a href="https://ss64.com/bash/rar.html">see if the rar command can hide additional files that we're not seeing</a>.</p>
+<p>So this seems a lot like our previous problem, where initially we didn&rsquo;t see anything, but then we found out that the technology was capable of hiding things in plain sight. Let&rsquo;s take a step back and <a href="https://ss64.com/bash/rar.html">see if the rar command can hide additional files that we&rsquo;re not seeing</a>.</p>
 <p>* 15 minutes of reading later *</p>
-<p>It doesn't look like it. Everything in rar is pretty up front, which means this text file really is all we get. But this <em>can't</em> be a dead end! Chuck would <em>not</em> be that cruel!</p>
-<p>So let's take <em>another</em> step back and look at the rar file. Putting it through a hexdump we see this:</p>
+<p>It doesn&rsquo;t look like it. Everything in rar is pretty up front, which means this text file really is all we get. But this <em>can&rsquo;t</em> be a dead end! Chuck would <em>not</em> be that cruel!</p>
+<p>So let&rsquo;s take <em>another</em> step back and look at the rar file. Putting it through a hexdump we see this:</p>
 <pre><code>$&gt; xxd instructions.rar
 00000000: 5261 7221 1a07 0100 3392 b5e5 0a01 0506  Rar!....3.......
 00000010: 0005 0101 8080 00b3 43d8 b72c 0203 0b95  ........C..,....
@@ -1588,9 +1592,9 @@ The flag is not here.
 000000b0: ddc4 3621 363b 1428 8be4 585e 6632 9923  ..6!6;.(..X^f2.#
 000000c0: be82 4c46 da72 08b2 a860 1b4d 4f88 0aa9  ..LF.r...`.MO...
 000000d0: d7ff ae78 1d77 5651 0305 0400            ...x.wVQ....
-</code></pre><p>So ignoring as much unreadable binary as we can, we go from the top and see that we have a rar file&hellip; it's got a file called instructions.txt it looks like, the contents say &ldquo;The flag is not here&rdquo; (haha, very cheeky)&hellip; but wait! What is this? <code>nottheflag.txt</code>?? Where does that come from? How do I read it's contents?</p>
-<p>I go back through the documentation for <code>rar</code> but can find <em>absolutely nothing</em> about hidden files in the format. Everything about the file comes out with that command, but <em>obviously</em> there is more to the story here. There are 220 bytes in this rar file, and I have a feeling that we'll need to <a href="https://www.rarlab.com/technote.htm">go through the rar file specification one byte at a time to see how we get it out</a>.</p>
-<p>So that's exactly what I'm going to do.</p>
+</code></pre><p>So ignoring as much unreadable binary as we can, we go from the top and see that we have a rar file&hellip; it&rsquo;s got a file called instructions.txt it looks like, the contents say &ldquo;The flag is not here&rdquo; (haha, very cheeky)&hellip; but wait! What is this? <code>nottheflag.txt</code>?? Where does that come from? How do I read it&rsquo;s contents?</p>
+<p>I go back through the documentation for <code>rar</code> but can find <em>absolutely nothing</em> about hidden files in the format. Everything about the file comes out with that command, but <em>obviously</em> there is more to the story here. There are 220 bytes in this rar file, and I have a feeling that we&rsquo;ll need to <a href="https://www.rarlab.com/technote.htm">go through the rar file specification one byte at a time to see how we get it out</a>.</p>
+<p>So that&rsquo;s exactly what I&rsquo;m going to do.</p>
 <p><code>IS THIS WHAT YOU WANTED, CHUCK? YOU WANTED ME TO READ A FILE BYTE BY BYTE AND COMPARE IT TO THE SPECIFICATION??</code></p>
 <p>Byte. After. Byte. We go through the version signature. Through the RAR header. One file, but a length longer than 21 bytes. Finally we get to byte 118 and we see <code>STM..:nottheflag.txt</code>. And this, my friends, is where we find our next clue:</p>
 <p>(From the above specification:)</p>
@@ -1602,7 +1606,7 @@ ACL	NTFS file permissions
 STM	NTFS alternate data stream
 RR	Recovery record</p>
 </blockquote>
-<p>That's what it is, some new alien technology defined by the STM service header: <em>an NTFS alternate data stream</em>.</p>
+<p>That&rsquo;s what it is, some new alien technology defined by the STM service header: <em>an NTFS alternate data stream</em>.</p>
 <p>WTH is an NTFS alternate data stream? Our friend <a href="https://blogs.technet.microsoft.com/askcore/2013/03/24/alternate-data-streams-in-ntfs/">Robert at Microsoft</a> explains profoundly:</p>
 <blockquote>
 <p>It is a data stream that is alternate.</p>
@@ -1610,44 +1614,54 @@ RR	Recovery record</p>
 <p>That makes so much more sense now! Thanks Robert from Microsoft!</p>
 <p>Annoyed, I continue reading the article with a sinking realization that this part will require a Windows VM of me.</p>
 <p><em><strong>chuck-sigh</strong></em></p>
-<p>I fire up <em>and install Windows</em> in a VM <em>because believe it or not, I don't have any reason to keep one handy</em>.</p>
+<p>I fire up <em>and install Windows</em> in a VM <em>because believe it or not, I don&rsquo;t have any reason to keep one handy</em>.</p>
 <p>This takes some time, and after paying my dues to the devil and letting Windows Telemetry play big brother on the VM, I finally have Windows machine to move this rar file over to.</p>
-<p>This is where things get a little awkward for me, because at the time of this write-up my website's ability to display images is&hellip; non-present. And because Windows got off the cool-kids bandwagon in the late nineties with their &lsquo;never use a CLI&rsquo; again mentality, I can't show you a lot of this on the command line.</p>
-<p>And obviously, it doesn't bug me.</p>
+<figure>
+    <img src="/images/hacktober_1.png"/> <figcaption>
+            <h4>Installing WinRAR</h4>
+        </figcaption>
+</figure>
+
 <p>So we <a href="https://www.cronocide.com/images/hacktober_1.png">install WinRAR</a> and go through the process of <a href="https://www.cronocide.com/images/hacktober_2.png">extracting the instructions.txt file to the desktop</a>.</p>
-<p>Now it's up to our friend Robert from Microsoft to help us view this <em>alternate NTFS stream</em> in Powershell. This part I <em>can</em> do from a command line!</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C<span style="color:#960050;background-color:#1e0010">:</span>\&gt; Get-item -Path C<span style="color:#960050;background-color:#1e0010">:</span>\Users\cronocide\Desktop\instructions\instructions.txt -stream *
+<figure>
+    <img src="/images/hacktober_2.png"/> <figcaption>
+            <h4>The power of extraction at work</h4>
+        </figcaption>
+</figure>
+
+<p>Now it&rsquo;s up to our friend Robert from Microsoft to help us view this <em>alternate NTFS stream</em> in Powershell. This part I <em>can</em> do from a command line!</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\&gt; Get-item -Path C:\Users\cronocide\Desktop\instructions\instructions.txt -stream *
 
 
-PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions\instructions.txt::$DATA
-PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions
+PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt::$DATA
+PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
 PSChildName   <span style="color:#960050;background-color:#1e0010">:</span> instructions.txt::$DATA
 PSDrive       <span style="color:#960050;background-color:#1e0010">:</span> C
 PSProvider    <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem
 PSIsContainer <span style="color:#960050;background-color:#1e0010">:</span> False
-FileName      <span style="color:#960050;background-color:#1e0010">:</span> C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions\instructions.txt
+FileName      <span style="color:#960050;background-color:#1e0010">:</span> C:\Users\Cronocide\Desktop\instructions\instructions.txt
 Stream        <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">:</span>$DATA
 Length        <span style="color:#960050;background-color:#1e0010">:</span> 21
 
-PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions\instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>notthefl
+PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>notthefl
                 ag.txt
-PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions
+PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
 PSChildName   <span style="color:#960050;background-color:#1e0010">:</span> instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>nottheflag.txt
 PSDrive       <span style="color:#960050;background-color:#1e0010">:</span> C
 PSProvider    <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem
 PSIsContainer <span style="color:#960050;background-color:#1e0010">:</span> False
-FileName      <span style="color:#960050;background-color:#1e0010">:</span> C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions\instructions.txt
+FileName      <span style="color:#960050;background-color:#1e0010">:</span> C:\Users\Cronocide\Desktop\instructions\instructions.txt
 Stream        <span style="color:#960050;background-color:#1e0010">:</span> nottheflag.txt
 Length        <span style="color:#960050;background-color:#1e0010">:</span> 73
-</code></pre></div><p>We can see right there that our &lsquo;nottheflag.txt&rsquo; is an alternate NTFS stream available to be read from instructions.txt, which can <em>only</em> be read on an NTFS filesystem. Now I know and trust Chuck, despite all of the pain he's put us through in this challenge, but I don't believe for a second that <code>nottheflag.txt</code> isn't the flag! It's got to be! There's nowhere else to go! There's nothing else to do! The game has to be over!</p>
+</code></pre></div><p>We can see right there that our &lsquo;nottheflag.txt&rsquo; is an alternate NTFS stream available to be read from instructions.txt, which can <em>only</em> be read on an NTFS filesystem. Now I know and trust Chuck, despite all of the pain he&rsquo;s put us through in this challenge, but I don&rsquo;t believe for a second that <code>nottheflag.txt</code> isn&rsquo;t the flag! It&rsquo;s got to be! There&rsquo;s nowhere else to go! There&rsquo;s nothing else to do! The game has to be over!</p>
 <p>Finally, we read the alternate stream:</p>
-<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide&gt; Get-content -Path C<span style="color:#960050;background-color:#1e0010">:</span>\Users\Cronocide\Desktop\instructions\instructions.txt -stream nottheflag.txt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\Cronocide&gt; Get-content -Path C:\Users\Cronocide\Desktop\instructions\instructions.txt -stream nottheflag.txt
 flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
 </code></pre></div><p>There it is. <a href="https://youtu.be/Ga1hJgE_BwY?t=63">We found the treasure</a>.</p>
 <pre><code>flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
-</code></pre><p>I sit back in my reclining office chair at my desk. It's dark outside. This challenge took my whole evening.</p>
+</code></pre><p>I sit back in my reclining office chair at my desk. It&rsquo;s dark outside. This challenge took my whole evening.</p>
 <p>But it was a good challenge. It was fun. And even though I had to read the rar specification byte by byte, I still learned a <em>ton</em> of cool new stuff.</p>
-<p>And at the end of the day, win or lose, that's what makes it all worth it.</p>
+<p>And at the end of the day, win or lose, that&rsquo;s what makes it all worth it.</p>
 <p>Thanks Chuck, this challenge was <em>awesome.</em></p>
 
   </main>
@@ -1667,6 +1681,9 @@ flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
     </div>
     <script src="https://www.cronocide.com/js/prism.js"></script>
 <script src="https://www.cronocide.com/js/dom-scripts.js"></script>
+
+  <script src="https://www.cronocide.comjs/asciinema-player.js"></script>
+
 
     
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">

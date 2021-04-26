@@ -71,7 +71,7 @@
       link.setAttribute('href', '#' + id);
       var headingText = heading.textContent;
       link.setAttribute('aria-label', 'This ' + headingText + ' section');
-      link.innerHTML = '<svg aria-hidden="true" class="link-icon" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#link"></use> </svg>';
+      link.innerHTML = '<svg aria-hidden="true" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#hash"></use> </svg>';
 
       container.appendChild(link);
 
@@ -96,41 +96,41 @@
 }());
 
 /* Switch and persist theme */
-(function () {
-  function CSSSupported (property, value) {
-    var prop = property + ':',
-        el = document.createElement('test'),
-        mStyle = el.style;
-    el.style.cssText = prop + value;
-    return mStyle[property];
-  }
-
-  var checkbox = document.getElementById('themer');
-  var inverter = document.getElementById('inverter');
-
-  if (!CSSSupported('filter', 'invert(100%)')) {
-    checkbox.parentNode.hidden = true;
-    return;
-  }
-
-  function darkTheme(media) {
-    inverter.setAttribute('media', media);
-    inverter.textContent = inverter.textContent.trim();
-    localStorage.setItem('darkTheme', media);
-  }
-
-  checkbox.addEventListener('change', function () {
-    darkTheme(this.checked ? 'screen' : 'none');
-  });
-  //checkbox.click();
-  if (localStorage.getItem('darkTheme') === null) {
-    localStorage.setItem('darkTheme', 'screen');
-  }
-  window.addEventListener('DOMContentLoaded', function () {
-    if ('filter' in document.body.style) {
-      if (localStorage.getItem('darkTheme') === 'screen') {
-        checkbox.click();
-      }
-    }
-  });
-}());
+// (function () {
+//   function CSSSupported (property, value) {
+//     var prop = property + ':',
+//         el = document.createElement('test'),
+//         mStyle = el.style;
+//     el.style.cssText = prop + value;
+//     return mStyle[property];
+//   }
+//
+//   var checkbox = document.getElementById('themer');
+//   var inverter = document.getElementById('inverter');
+//
+//   if (!CSSSupported('filter', 'invert(100%)')) {
+//     checkbox.parentNode.hidden = true;
+//     return;
+//   }
+//
+//   function darkTheme(media) {
+//     inverter.setAttribute('media', media);
+//     inverter.textContent = inverter.textContent.trim();
+//     localStorage.setItem('darkTheme', media);
+//   }
+//
+//   checkbox.addEventListener('change', function () {
+//     darkTheme(this.checked ? 'screen' : 'none');
+//   });
+//   //checkbox.click();
+//   if (localStorage.getItem('darkTheme') === null) {
+//     localStorage.setItem('darkTheme', 'screen');
+//   }
+//   window.addEventListener('DOMContentLoaded', function () {
+//     if ('filter' in document.body.style) {
+//       if (localStorage.getItem('darkTheme') === 'screen') {
+//         checkbox.click();
+//       }
+//     }
+//   });
+// }());
