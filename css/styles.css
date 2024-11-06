@@ -1,10 +1,53 @@
 /* Fonts */
 @font-face {
-    font-family: 'Miriam Libre';
-    src: url('https://www.cronocide.com/css/fonts/miriamlibre-bold.woff2') format('woff2'), url('https://www.cronocide.com/css/fonts/miriamlibre-bold.woff') format('woff');
+    font-family: 'Futura';
+    src: url('https://cronocide.com/css/fonts/Futura-Medium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('https://cronocide.com/css/fonts/Futura-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
 }
+
+@font-face {
+    font-family: 'Futura';
+    src: url('https://cronocide.com/css/fonts/Futura-Italic.woff') format('woff');
+    font-weight: normal;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('https://cronocide.com/css/fonts/Futura-Light.woff') format('woff');
+    font-weight: lighter;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('https://cronocide.com/css/fonts/Futura-Light-Italic.woff') format('woff');
+    font-weight: lighter;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'Futura';
+    src: url('https://cronocide.com/css/fonts/Futura-Bold-Italic.woff') format('woff');
+    font-weight: bold;
+    font-style: italic;
+}
+
+@font-face {
+    font-family: 'BigNoodleToo';
+    font-style: lighter;
+    font-weight: var(--font-default-weight);
+    src: local('BigNoodleToo'), url('https://cronocide.com/css/fonts/big-noodle-too-oblique.woff') format('woff');
+}
+
 *,
 *::before,
 *::after {
@@ -15,12 +58,15 @@
     padding: 0;
     box-sizing: border-box;
 }
+::selection {
+    background-color: #2e9ff5;
+}
 html {
     font-size: calc(1em + 0.33vw);
-    font-family: "San Francisco", "Helvetica Neue", "Lucida Grande";
+    font-family: "Futura", "San Francisco", "Lucida Grande", "Helvetica Neue";
     line-height: 1.5;
-    color: #111;
-    background-color: #fefefe;
+    color: #ffffff;
+    background-color: #292c33;
 }
 template {
   display: none !important;
@@ -38,9 +84,8 @@ h2 + *,
 h3 + *,
 h4 + *,
 p + * {
-    margin-top: 1.75rem;
+    margin-top: 1.2rem;
 }
-
 br,
 dt,
 dd,
@@ -59,9 +104,14 @@ p + p {
 .priority {
   margin-top: 0;
 }
+
+*:has(> .header-link){
+    margin-top: 1.2rem;
+}
+
 a {
     text-decoration: none;
-    border-bottom: 1px solid;
+    outline-offset: 2px;
 }
 abbr {
     text-decoration: none;
@@ -78,6 +128,10 @@ img {
 p img {
     margin: 0.75rem 0;
 }
+p a {
+    color: #2e9ff5;
+    border-bottom: none;
+}
 figure p img {
     margin: 0;
 }
@@ -92,8 +146,25 @@ p.http-status {
 [for="themer"] :focus + [aria-hidden] {
     /*outline: 4px solid #999;*/
 }
-a {
-  outline-offset: 2px;
+
+
+/* Animated HR */
+hr {
+    border-color: #7f7f7f;
+    margin: 1rem auto;
+    width: 0;
+}
+@keyframes drawLine {
+    from {
+      width: 0;
+    }
+    to {
+      width: 100%;
+    }
+  }
+hr.animate {
+    width: 100%;
+    animation: drawLine 1s ease-out forwards;
 }
 
 /* Katex math typesetting */
@@ -133,11 +204,14 @@ h1,
 h2,
 h3,
 h4 {
-    font-family: Miriam Libre, serif;
+    font-family: Futura, serif;
+    font-weight: bold;
     line-height: 1.125;
 }
 h1 {
-    font-size: 2rem;
+    font-family: BigNoodleToo, serif;
+    font-weight: unset;
+    font-size: 3.5rem;
 }
 h2 {
     font-size: 1.66rem;
@@ -148,7 +222,6 @@ h3 {
 h4,
 h5 {
     font-size: 1rem;
-    font-family: PT Sans, sans-serif;
 }
 h5 {
     font-size: 0.85rem;
@@ -167,11 +240,28 @@ pre,
 .file-tree {
     overflow-x: auto;
     padding: 1.5rem;
-    border: 1px solid;
+    border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #ffffff 3px;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
+}
+pre > code {
+    border: none;
 }
 code {
     font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
     font-size: 0.85em;
+    border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #7f7f7f 1px;
+    padding: 2px;
+    padding-top: 0;
+    padding-bottom: 0;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
 }
 .cmd {
     padding: 0.75rem;
@@ -228,13 +318,20 @@ blockquote .author {
 
 /* Buttons */
 button {
+    box-sizing: border-box;
     font-size: 1.25rem;
     border-radius: 0.33em;
     font-family: inherit;
-    background: #111;
+    font-weight: bold;
+    background: #2e9ff5;
+    border: 3px solid #2e9ff5;
     color: #fefefe;
     padding: 0.75rem;
-    border: 0;
+}   
+button:hover {
+    border-radius: 0.33em;
+    border: 3px solid #ffffff;
+    background: #288de5;
 }
 [data-launch] {
   font-size: 0.66rem !important;
@@ -276,19 +373,41 @@ table {
     table-layout: fixed;
     width: 100%;
     border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #ffffff 3px;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
 }
-th,
-td {
-    border: 2px solid;
-    padding: 0.5rem;
-    line-height: 1.25;
-    margin: 0;
+table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: 3px solid #ffffff;
+    border-radius: 0.33em;
+    overflow: hidden;
 }
-th {
-    font-weight: bold;
+
+table td, table th {
+    border: 1.5px solid #ffffff;
+    border-right: 3px solid #ffffff; 
+    padding: 8px;
 }
-th:empty {
-    border: 0;
+
+/* Add this to handle the border on the first row and first column */
+table tr:first-child td {
+    border-top: 3px solid #ffffff;
+}
+table tr td:first-child {
+    border-left: 1.5px solid #ffffff;
+}
+table tr:last-child td {
+    border-bottom: 1.5px solid #ffffff;
+}
+table tr td:last-child {
+    border-right: 1.5px solid #ffffff; 
+}
+table th:last-child {
+    border-right: 1.5px solid #ffffff; 
 }
 
 /* Tested using... table */
@@ -342,6 +461,20 @@ caption {
     top: 0;
     left: 0;
     border-right: 2px solid;
+    border-color: #7f7f7f;
+}
+/* Animated Border */
+@keyframes drawBorder {
+    from {
+      border: 0;
+    }
+    to {
+      height: 100%;
+    }
+  }
+.intro-and-nav.animate {
+    width: 100%;
+    animation: drawBorder 1s ease-out forwards;
 }
 .intro-and-nav > div {
     padding: 2.25rem;
@@ -360,7 +493,9 @@ caption {
 }
 .logo img {
     width: 100%;
-    max-width: 12rem;
+    /* max-width: 200px; */
+    align-self: center;
+    justify-self: center;
 }
 .library-desc {
     margin-top: 0.5rem;
@@ -369,7 +504,7 @@ caption {
     max-width: 25rem;
 }
 .main-and-footer {
-    margin-left: 15rem;
+    margin-left: 14em;
 }
 .main-and-footer > div {
     max-width: 60rem;
@@ -412,6 +547,7 @@ caption {
     flex-wrap: nowrap;
     align-items: baseline;
     font-weight: bold;
+    font-size: 1.3rem;
     padding: 0 1rem;
 }
 .pattern a:focus {
@@ -421,14 +557,6 @@ caption {
     margin-left: 0.125rem;
 }
 
-/* After */
-.pattern [aria-current] {
-  background-color: #111;
-  clip-path: polygon(0% 0%, 90% 0%, 100% 50%, 90% 100%, 0% 100%);
-  color: #fefefe;
-  padding-top: 0.5em;
-  padding-bottom: 0.5em;
-}
 
 /* Menu button */
 #menu-button {
@@ -436,15 +564,17 @@ caption {
     width: 100%;
     text-align: center;
 }
-#menu-button:focus {
-    outline: none;
-    /*box-shadow: inset 0 0 0 0.25rem #999;*/
-}
+
 
 /* Tables of contents */
 .toc {
     font-size: 0.85rem;
-    border: 1px solid;
+    border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #ffffff 3px;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
     padding: 1.5rem;
 }
 .toc h2 {
@@ -487,7 +617,7 @@ caption {
 
 /* Tags */
 .tags {
-    margin-top: 0;
+    margin-top: .35rem;
     font-size: 0.85rem;
 }
 .tags * {
@@ -499,7 +629,22 @@ caption {
 }
 .tags li {
     white-space: nowrap;
-    margin: 0 0.25rem 0 0;
+    /* clip-path: url(#slantBoxScaled); */
+    font-style: italic;
+    font-size: .8rem;
+    color: #fdbe2e;
+    background-color: #625434;
+    border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #fdbe2e 3px;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
+    padding: .2rem;
+    margin-right: .3rem;
+}
+.tags a {
+    border-bottom: none;
 }
 
 /* Date */
@@ -528,7 +673,7 @@ caption {
 }
 .note.warning {
     border-left: 0;
-    background-image: url(https://www.cronocide.com/css/images/stripe.svg);
+    background-image: url(https://cronocide.com/css/images/stripe.svg);
     background-size: 0.5rem auto;
     background-repeat: repeat-y;
 }
@@ -547,7 +692,7 @@ caption {
     width: 1rem;
     height: 1rem;
     margin-right: 0.25rem;
-    background-image: url(https://www.cronocide.com/css/images/icon-tick.svg);
+    background-image: url(https://cronocide.com/css/images/icon-tick.svg);
     background-size: 100% auto;
     position: absolute;
     left: -1.25rem;
@@ -568,27 +713,6 @@ main {
     counter-reset: fig;
     min-height: 100vh;
 }
-/* figcaption::before {
-    counter-increment: fig;
-    content: 'Figure ' counter(fig) ':\0020';
-    font-weight: bold;
-} */
-
-/* Code blocks */
-/* pre[class*=language-] {
-    background: none;
-    overflow-y: hidden;
-    overflow-x: auto;
-}
-code[class*="language-"], pre[class*="language-"] {
-  text-shadow: none;
-}
-pre[class*=language-][data-line] {
-    padding: 1em 0 0 2.25rem;
-}
-pre[class*=language-] code * {
-    margin-top: 0 !important;
-} */
 
 [data-codeblock-shortcode], .code-annotated code {
     display: inline-block;
@@ -603,9 +727,7 @@ pre[class*=language-] code * {
     counter-reset: annotation;
 }
 .highlight {
-    background: #ddd;
-    padding: 0.0625rem 0.33rem;
-    border-radius: 0.5rem;
+    border-radius: 0.33rem;
 }
 .numbered .highlight::after,
 .code-annotated.numbered + ol li::before  {
@@ -617,7 +739,6 @@ pre[class*=language-] code * {
     color: #fefefe;
     border-radius: 1rem;
     margin-left: 0.25rem;
-    padding: 0.125em 0.5em;
     vertical-align: 0.33em;
 }
 .code-annotated.numbered + ol {
@@ -844,6 +965,7 @@ h1 svg {
 
 /* Single page layout */
 .wrapper.print-version .main-and-footer {
+    align-items: center;
     margin-left: 0;
 }
 .wrapper.print-version .intro-and-nav {
@@ -917,10 +1039,14 @@ h1 svg {
 div.social {
   margin-top: 5px;
   text-align: center;
+  font-size: 1.8rem;
 }
 
-div.social a {
+div.social a > * {
   border-bottom: none;
+  pointer-events: none;
+  fill: #ffffff;
+  max-height: 1.8rem;
 }
 
 /* Media queries */
@@ -950,8 +1076,14 @@ div.social a {
     }
     #patterns-list {
       margin-top: 0.5rem;
-      border: 1px solid;
+      border-collapse: collapse;
+      border-collapse:separate;
+      border:solid #ffffff 3px;
+      border-radius:0.33em;
+      -moz-border-radius: 0.33em;
+      -webkit-border-radius: 0.33em;
     }
+
     .patterns h3 {
         font-size: 1.5rem;
         padding: 1.5rem 1rem 0.75rem;
@@ -976,7 +1108,7 @@ div.social a {
         padding: 1rem;
     }
     .pattern + .pattern {
-        border-top: 1px solid;
+        border-top: 3px solid;
         margin-top: 0;
     }
     #menu-button {
@@ -1019,6 +1151,7 @@ div.social a {
     }
     pre code {
         white-space: pre-wrap !important;
+        border: none;
     }
     .expandable-section {
         border: 0;

@@ -2,9 +2,46 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Tags on cronocide.com</title>
-    <link>https://www.cronocide.com/tags/</link>
+    <link>https://cronocide.com/tags/</link>
     <description>Recent content in Tags on cronocide.com</description>
-    <generator>Hugo -- gohugo.io</generator>
-    <language>en-us</language><atom:link href="https://www.cronocide.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
+    <atom:link href="https://cronocide.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>CTF</title>
+      <link>https://cronocide.com/tags/ctf/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      <guid>https://cronocide.com/tags/ctf/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Security</title>
+      <link>https://cronocide.com/tags/security/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      <guid>https://cronocide.com/tags/security/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Tutorial</title>
+      <link>https://cronocide.com/tags/tutorial/</link>
+      <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      <guid>https://cronocide.com/tags/tutorial/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Activity</title>
+      <link>https://cronocide.com/tags/activity/</link>
+      <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/tags/activity/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Gist</title>
+      <link>https://cronocide.com/tags/gist/</link>
+      <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/tags/gist/</guid>
+      <description></description>
+    </item>
   </channel>
 </rss>

@@ -50,35 +50,19 @@
   })
 }());
 
-/* Add "link here" links to <h2> headings */
-(function () {
-  var headings = document.querySelectorAll('main > h2');
+// Rip out prism inline styles
+function removePrismInlines() {
+  for (var element of document.querySelectorAll('pre.language-bash')) {
+    console.log(element)
+    element.style = null;
+  }
+  for (var element of document.querySelectorAll('pre.language-sh')) {
+    console.log(element)
+    element.style = null;
+  }
+}
+document.addEventListener('DOMContentLoaded', removePrismInlines);
 
-  Array.prototype.forEach.call(headings, function (heading) {
-    var id = heading.getAttribute('id');
-
-    if (id) {
-      var newHeading = heading.cloneNode(true);
-      newHeading.setAttribute('tabindex', '-1');
-
-      var container = document.createElement('div');
-      container.setAttribute('class', 'h2-container');
-      container.appendChild(newHeading);
-
-      heading.parentNode.insertBefore(container, heading);
-
-      var link = document.createElement('a');
-      link.setAttribute('href', '#' + id);
-      var headingText = heading.textContent;
-      link.setAttribute('aria-label', 'This ' + headingText + ' section');
-      link.innerHTML = '<svg aria-hidden="true" viewBox="0 0 50 50" focusable="false"> <use xlink:href="#hash"></use> </svg>';
-
-      container.appendChild(link);
-
-      heading.parentNode.removeChild(heading);
-    }
-  })
-}());
 
 /* Enable scrolling by keyboard of code samples */
 (function () {
@@ -94,43 +78,40 @@
     }
   });
 }());
+/* Auto-animate HRs */
+// listen for scroll event and call animate function
+document.addEventListener('DOMContentLoaded', animate);
+document.addEventListener('scroll', animate);
 
-/* Switch and persist theme */
-// (function () {
-//   function CSSSupported (property, value) {
-//     var prop = property + ':',
-//         el = document.createElement('test'),
-//         mStyle = el.style;
-//     el.style.cssText = prop + value;
-//     return mStyle[property];
-//   }
-//
-//   var checkbox = document.getElementById('themer');
-//   var inverter = document.getElementById('inverter');
-//
-//   if (!CSSSupported('filter', 'invert(100%)')) {
-//     checkbox.parentNode.hidden = true;
-//     return;
-//   }
-//
-//   function darkTheme(media) {
-//     inverter.setAttribute('media', media);
-//     inverter.textContent = inverter.textContent.trim();
-//     localStorage.setItem('darkTheme', media);
-//   }
-//
-//   checkbox.addEventListener('change', function () {
-//     darkTheme(this.checked ? 'screen' : 'none');
-//   });
-//   //checkbox.click();
-//   if (localStorage.getItem('darkTheme') === null) {
-//     localStorage.setItem('darkTheme', 'screen');
-//   }
-//   window.addEventListener('DOMContentLoaded', function () {
-//     if ('filter' in document.body.style) {
-//       if (localStorage.getItem('darkTheme') === 'screen') {
-//         checkbox.click();
-//       }
-//     }
-//   });
-// }());
+// check if element is in view
+function inView(element) {
+  // get window height
+  var elementHeight = element.clientHeight;
+  var windowHeight = window.innerHeight;
+  // get number of pixels that the document is scrolled
+  var scrollY = window.scrollY;
+  // get current scroll position (distance from the top of the page to the bottom of the current viewport)
+  var scrollPosition = scrollY + windowHeight;
+  // get element position (distance from the top of the page to the bottom of the element)
+  var elementPosition = element.getBoundingClientRect().top + scrollY + elementHeight;
+  // is scroll position greater than element position? (is element in view?)
+  if (scrollPosition > elementPosition) {
+    return true;
+  }
+  return false;
+}
+
+// animate element when it is in view
+function animate() {
+  // is element in view?
+  for (var element of document.querySelectorAll('hr')) {
+    if (inView(element)) {
+        // element is in view, add class to element
+        element.classList.add('animate');
+    }
+  }
+  if (inView(document.querySelector('.intro-and-nav'))) {
+      // element is in view, add class to element
+      element.classList.add('animate');
+  }
+}

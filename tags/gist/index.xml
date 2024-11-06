@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Gist on cronocide.com</title>
+    <link>https://cronocide.com/tags/gist/</link>
+    <description>Recent content in Gist on cronocide.com</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cronocide.com/tags/gist/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Enable 2FA SSH for Mac</title>
+      <link>https://cronocide.com/post/e2sfm/</link>
+      <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/e2sfm/</guid>
+      <description>&lt;p&gt;I’ve been using two-factor authentication with &lt;a href=&#34;https://authy.com/&#34;&gt;Authy&lt;/a&gt; now for awhile and have really enjoyed the flexibility of being able to control all of my logins with 2FA. I got to thinking to myself “Wouldn’t it be cool if I could use 2FA on my SSH logins?”&lt;/p&gt;&#xA;&lt;p&gt;Well, it turns out that you can! I recently followed a tutorial by &lt;a href=&#34;https://servinglinux.com/articles/entry-pdf-export/1-secure-ssh-with-2fa/&#34;&gt;servinglinux.com&lt;/a&gt; and with little adaptation was able to get 2FA working beautifully on my Macs.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Scrubbing File Metadata with exiftool</title>
+      <link>https://cronocide.com/post/sfmwe/</link>
+      <pubDate>Thu, 16 Nov 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/sfmwe/</guid>
+      <description>&lt;p&gt;The files that we upload and send all over the internet have a lot of data attached to them that we often forget about. This &lt;a href=&#34;https://en.wikipedia.org/wiki/Metadata&#34;&gt;metadata&lt;/a&gt; can tell others a lot about us that we don’t necessarily need other people to know. Picture files like JPEGs, PNGs, and even GIFs can hold metadata with custom values that show information about the history of the file.&lt;/p&gt;&#xA;&lt;p&gt;In my case, I hate sending any technical information about my system to potential employers with embedded metadata in my job application. Since I use several different pieces of software to compose my resume and cover letters, I’d rather have that custom data scrubbed from the PDF files I make before I send it off to potential employers.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Searching all your Mac’s downloads</title>
+      <link>https://cronocide.com/post/saymd/</link>
+      <pubDate>Thu, 26 Oct 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/saymd/</guid>
+      <description>&lt;p&gt;Now and then I’ll download something and store it somewhere I can’t find later. Usually I rename downloaded files to something closer to what I think they ought to be called, and then forget what clever name I gave them. Sometimes I delete files that I can’t find the source for. For one reason or another, I lose downloads sometimes.&lt;/p&gt;&#xA;&lt;p&gt;Fortunately your Mac keeps track of all the files you download. It keeps a database of the files coming into it and checks the files before letting you do much with them. I wrote a quick script to let you search these downloads and wanted to share it. Feel free to contribute anything you think would be helpful in the comments.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Swapping Bytes with dd</title>
+      <link>https://cronocide.com/post/sbwd/</link>
+      <pubDate>Thu, 19 Oct 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/sbwd/</guid>
+      <description>&lt;p&gt;I was reading in the &lt;code&gt;man&lt;/code&gt; page for &lt;code&gt;dd&lt;/code&gt; and found that some of the conversion options for it are kind of fun. One of these options, the swab conversion, swaps every two bytes of the input file and sticks them in the output file. The resulting file is usually not readable (if it is a binary) and pretty obfuscated if it is text. The usage is like this:&lt;/p&gt;&#xA;&lt;p&gt;&lt;code&gt;dd if=(input file) of=(output file) conv=swab&lt;/code&gt;&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Installing Homebrew on Mac</title>
+      <link>https://cronocide.com/post/ihom/</link>
+      <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/ihom/</guid>
+      <description>&lt;p&gt;I often receive complaints from developers and administrators about the lack of a centralized package system on the Mac. While Apple did provide &lt;a href=&#34;https://en.wikipedia.org/wiki/Installer_(macOS)&#34;&gt;installer&lt;/a&gt;, the Darwin-era package installation app, it did not really have any sort of repository system until the App Store was released with Snow Leopard. &lt;a href=&#34;https://en.wikipedia.org/wiki/MacPorts&#34;&gt;MacPorts&lt;/a&gt;, the successor of DarwinPorts, was the de-facto package manager for enthusiasts for a long time. But in recent years a lot of the community has switched over to Homebrew for their package management.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Setting up a Vagrant Box on Mac</title>
+      <link>https://cronocide.com/post/suavbom/</link>
+      <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/suavbom/</guid>
+      <description>&lt;p&gt;This year I’ll be working with several different operating systems for school. I want to run each of them as natively as I can on my production machine without having to un-boot my production Mac environment. Virtualization is the obvious answer.&lt;/p&gt;&#xA;&lt;p&gt;If you’re anything like me you’ve always been turned off by the graphical interfaces for Virtualbox and VMWare. Personally, I’ve always preferred to work in a command-line environment anyway. I’m going to use something called &lt;code&gt;vagrant&lt;/code&gt; to boot a pre-configured VM and get me SSH’ed into it.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Edit Mac Terminal Prompt</title>
+      <link>https://cronocide.com/post/emtp/</link>
+      <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/emtp/</guid>
+      <description>&lt;p&gt;As you SSH around different devices running varying operating systems and shells you see quite a variety of shell prompts. I’ve decided that my prompt should give me the username and host of the machine I am trying to connect to, as well as the full path of the working directory. This way the prompt is always ready to be copied for an &lt;code&gt;scp&lt;/code&gt; argument. I’ve decided that I want to standardize my prompts with this information, and it’s pretty easy to do.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

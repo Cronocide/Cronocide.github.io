@@ -2,56 +2,76 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://www.cronocide.com/</loc>
+    <loc>https://cronocide.com/resume/</loc>
+    <lastmod>2024-10-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/</loc>
     <lastmod>2020-04-05T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/byfswtes/</loc>
+    <loc>https://cronocide.com/apps/</loc>
+    <lastmod>2020-04-05T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/post/byfswtes/</loc>
     <lastmod>2019-03-26T08:47:11+01:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/hacktober2019/</loc>
+    <loc>https://cronocide.com/tags/ctf/</loc>
     <lastmod>2019-03-26T08:47:11+01:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/</loc>
+    <loc>https://cronocide.com/post/hacktober2019/</loc>
     <lastmod>2019-03-26T08:47:11+01:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/eiomfe17/</loc>
+    <loc>https://cronocide.com/post/</loc>
+    <lastmod>2019-03-26T08:47:11+01:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/tags/security/</loc>
+    <lastmod>2019-03-26T08:47:11+01:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/tags/</loc>
+    <lastmod>2019-03-26T08:47:11+01:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/tags/tutorial/</loc>
+    <lastmod>2019-03-26T08:47:11+01:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/post/eiomfe17/</loc>
     <lastmod>2018-01-01T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/batacwror/</loc>
+    <loc>https://cronocide.com/tags/activity/</loc>
     <lastmod>2017-12-31T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/e2sfm/</loc>
+    <loc>https://cronocide.com/post/batacwror/</loc>
+    <lastmod>2017-12-31T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/post/e2sfm/</loc>
     <lastmod>2017-11-28T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/sfmwe/</loc>
+    <loc>https://cronocide.com/tags/gist/</loc>
+    <lastmod>2017-11-28T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>https://cronocide.com/post/sfmwe/</loc>
     <lastmod>2017-11-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/saymd/</loc>
+    <loc>https://cronocide.com/post/saymd/</loc>
     <lastmod>2017-10-26T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/sbwd/</loc>
+    <loc>https://cronocide.com/post/sbwd/</loc>
     <lastmod>2017-10-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/ihom/</loc>
+    <loc>https://cronocide.com/post/ihom/</loc>
     <lastmod>2017-09-16T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/saedfafc/</loc>
+    <loc>https://cronocide.com/post/saedfafc/</loc>
     <lastmod>2017-08-29T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/suavbom/</loc>
+    <loc>https://cronocide.com/post/suavbom/</loc>
     <lastmod>2017-08-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/post/emtp/</loc>
+    <loc>https://cronocide.com/post/emtp/</loc>
     <lastmod>2017-07-19T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>https://www.cronocide.com/about/</loc>
-    <priority>0</priority>
+    <loc>https://cronocide.com/contact/</loc>
   </url><url>
-    <loc>https://www.cronocide.com/repo/</loc>
-    <priority>0</priority>
+    <loc>https://cronocide.com/repo/</loc>
   </url><url>
-    <loc>https://www.cronocide.com/categories/</loc>
-  </url><url>
-    <loc>https://www.cronocide.com/tags/</loc>
+    <loc>https://cronocide.com/categories/</loc>
   </url>
 </urlset>
