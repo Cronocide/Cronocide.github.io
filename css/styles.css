@@ -140,12 +140,7 @@ p.http-status {
     text-align: center;
     font-weight: bold;
 }
-:focus:not([tabindex="-1"]),
-[data-expands]:focus svg,
-.patterns a:focus .text,
-[for="themer"] :focus + [aria-hidden] {
-    /*outline: 4px solid #999;*/
-}
+
 
 
 /* Animated HR */
@@ -300,6 +295,13 @@ main dt {
 main dd {
   padding-left: 2rem;
 }
+main > h1,
+main > h2,
+main > h3,
+main > h4,
+main > h5 {
+    margin-top: 1.2rem;
+}
 dd ul {
   margin-left: 0;
 }
@@ -351,20 +353,6 @@ button:hover {
 label {
   display: inline-block;
   font-weight: bold;
-}
-[for="themer"] {
-  background: #111;
-  border-radius: 0.33em;
-  color: #fefefe;
-  padding: 0.25em 0.75em;
-  margin: 0.5rem;
-  cursor: pointer;
-}
-[for="themer"] [aria-hidden]::before {
-  content: 'dark';
-}
-[for="themer"] :checked + [aria-hidden]::before {
-  content: 'light';
 }
 
 /* Tables */
@@ -1037,9 +1025,10 @@ h1 svg {
 }
 
 div.social {
-  margin-top: 5px;
+  margin-top: .6rem;
   text-align: center;
   font-size: 1.8rem;
+  max-height: 1.8rem;
 }
 
 div.social a > * {
@@ -1048,6 +1037,21 @@ div.social a > * {
   fill: #ffffff;
   max-height: 1.8rem;
 }
+.pagenav {
+    display: flex;
+    justify-content: space-between;
+}
+.pagenav-prev {
+    margin-top: 1.2rem;
+}
+.pagenav-next {
+    text-align: right;
+    margin-left: auto;
+}
+.pagenav > * > a {
+    color: #2e9ff5;
+}
+
 
 /* Media queries */
 @media screen and (max-width: 45em) {
@@ -1083,7 +1087,6 @@ div.social a > * {
       -moz-border-radius: 0.33em;
       -webkit-border-radius: 0.33em;
     }
-
     .patterns h3 {
         font-size: 1.5rem;
         padding: 1.5rem 1rem 0.75rem;
@@ -1111,6 +1114,12 @@ div.social a > * {
         border-top: 3px solid;
         margin-top: 0;
     }
+    .pagenav {
+        display: block;
+    }
+    .pagenav-next {
+        margin-left: inherit;
+    }
     #menu-button {
         display: block;
     }
@@ -1126,6 +1135,7 @@ div.social a > * {
     code {
       word-break: break-all;
     }
+    
 }
 @media print {
     .wrapper:not(.print-version) .intro-and-nav,

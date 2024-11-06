@@ -53,11 +53,9 @@
 // Rip out prism inline styles
 function removePrismInlines() {
   for (var element of document.querySelectorAll('pre.language-bash')) {
-    console.log(element)
     element.style = null;
   }
   for (var element of document.querySelectorAll('pre.language-sh')) {
-    console.log(element)
     element.style = null;
   }
 }
