@@ -20,7 +20,7 @@
       <link>https://cronocide.com/apps/</link>
       <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://cronocide.com/apps/</guid>
-      <description>&lt;iframe src=&#34;https://dashboard.cronocide.com&#34; class=&#34;main&#34; style=&#34;width:100%;height:60rem&#34;&gt;</description>
+      <description>&lt;iframe src=&#34;https://dashboard.cronocide.com&#34; class=&#34;main&#34; style=&#34;width:100%;height:60rem&#34; frameBorder=&#34;0&#34;&gt;</description>
     </item>
     <item>
       <title>Building your first SIEM with the Elastic Stack</title>
