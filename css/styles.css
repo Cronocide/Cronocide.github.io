@@ -1135,8 +1135,33 @@ div.social a > * {
     code {
       word-break: break-all;
     }
-    
+    div.social {
+        margin-top: .6rem;
+        text-align: center;
+        font-size: 1.8rem;
+        max-height: 1.8rem;
+        display: block;
+      }
+      div.social a > * {
+        border-bottom: none;
+        pointer-events: none;
+        fill: #ffffff;
+        max-height: 1.8rem;
+        display: block;
+      }
 }
+/* Safari Fixes */
+@supports (-webkit-appearance: none) {
+    div.social {
+        display: flex;
+        justify-content: center;
+    }
+    div.social a > * {
+        display: inline;
+        width: 1.8rem;
+        margin: .2rem;
+    }
+  }
 @media print {
     .wrapper:not(.print-version) .intro-and-nav,
     .wrapper:not(.print-version) [role="contentinfo"] {
