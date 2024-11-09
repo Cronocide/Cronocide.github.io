@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
+  <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.135.0">
-  <link rel="canonical" href="https://cronocide.com/post/suavbom/">
+  <link rel="canonical" href="http://localhost:1313/post/twwtbadb/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -16,13 +16,13 @@
   <meta name="msapplication-TileColor" content="#ffffff">
   <meta name="theme-color" content="#ffffff">
   
-  <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/asciinema-player.css" />
-  <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/prism.css" media="none" onload="this.media='all';">
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/asciinema-player.css" />
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/prism.css" media="none" onload="this.media='all';">
   
   
-  <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/styles.css">
+  <link rel="stylesheet" type="text/css" href="http://localhost:1313/css/styles.css">
   
-  <title>Setting up a Vagrant Box on Mac | cronocide.com</title>
+  <title>The worst way to build a dashboard | localhost:1313</title>
 </head>
 
   <body>
@@ -131,7 +131,7 @@
   <div>
     <div class="intro">
       <a class="logo" href="/" aria-label="cronocide.com home page">
-        <img src="https://cronocide.com/images/border-silver-blank.png" alt="">
+        <img src="http://localhost:1313/images/border-silver-blank.png" alt="">
       </a>
       <h1>Cronocide</h1>
       
@@ -170,7 +170,7 @@
     <li class="pattern">
       
       
-        <a href="https://apps.cronocide.com/login" >
+        <a href="https://apps.localhost:1313/login" >
         <span class="text">Applications</span>
       </a>
     </li>
@@ -195,7 +195,7 @@
 </nav>
 
     <div class="social" role="social">
-  <a href="https://cronocide.com/index.xml"><object data="/images/rss.svg" type="image/svg+xml"></object></a>
+  <a href="http://localhost:1313/index.xml"><object data="/images/rss.svg" type="image/svg+xml"></object></a>
   <a href="https://linkedin.com/in/danieldayley"><object data="/images/linkedin.svg" type="image/svg+xml"></object></a>
   <a href="mailto:website@cronocide.com"><object data="/images/email.svg" type="image/svg+xml"></object></a>
   <a href="https://github.com/Cronocide"><object data="/images/github.svg" type="image/svg+xml"></object></a>
@@ -210,36 +210,19 @@
           
   <main id="main">
     <h1>
-      Setting up a Vagrant Box on Mac
+      The worst way to build a dashboard
     </h1>
 
     <div class="date">
       
       
-      <span aria-hidden="true">Aug 23, 2017</span>
+      <span aria-hidden="true">Nov 7, 2024</span>
       
         
       
     </div>
 
     
-      <div class="tags">
-        <strong aria-hidden="true">Tags: </strong>
-        <ul aria-label="tags">
-          
-            <li>
-              
-              <a href="https://cronocide.com/tags/gist/">Gist</a>
-            </li>
-          
-            <li>
-              
-              <a href="https://cronocide.com/tags/tutorial/">Tutorial</a>
-            </li>
-          
-        </ul>
-      </div>
-    
 
     
       
@@ -247,30 +230,18 @@
 
     
 
-    <p>This year I’ll be working with several different operating systems for school. I want to run each of them as natively as I can on my production machine without having to un-boot my production Mac environment. Virtualization is the obvious answer.</p>
-<p>If you’re anything like me you’ve always been turned off by the graphical interfaces for Virtualbox and VMWare. Personally, I’ve always preferred to work in a command-line environment anyway. I’m going to use something called <code>vagrant</code> to boot a pre-configured VM and get me SSH’ed into it.</p>
-<p>Vagrant’s typical use it to deploy pre-configured VM environments for development and production virtualized environments. I’ve used it before to get pre-built dev environments for weird platforms set up. Definitely check out <a href="https://www.vagrantup.com/">their site</a> to learn more about what this can do for you.</p>
-<p>Basically, vagrant uses the virtualbox or VMWare engine to run the virtual machines like normal. However it all runs silently in the background. Theoretically you could use this to run whole servers on your machine invisibly, no matter the OS. Vagrant just gives you a uniform interface for these virtual machines (an SSH shell).</p>
-<a class="header-link" href="#installation-and-configuration"><h2 id="installation-and-configuration">Installation and Configuration</a> </h2>
-<ol>
-<li>Install <code>brew</code> if you haven’t already</li>
-<li>(Optional) <a href="https://app.vagrantup.com/ubuntu">Hashicorp’s own website</a> has plenty of vanilla virtual environments that you can download and build by default. If you download a virtual machine image from another source, make sure you only get virtual machines from sources you trust.</li>
-<li>Open your favorite terminal and run
-<code>brew cask install virtualbox</code>
-This will install the command line dependencies of virtualbox. I prefer virtualbox over VMWare personally, but if you want you can install the VMWare dependencies for Vagrant and it should work just as fine.</li>
-<li>Once this finishes, go ahead and run
-<code>brew cask install vagrant</code></li>
-<li>Once that nonsense is finished then we need to initialize a new vagrantfile. Make sure you <code>cd</code> into the directory where you want your vagrant configuration files stored. They’re invisible (.vagrant) so I just kept mine in my home directory.</li>
-<li>To initialize a virtual machine from one of Hashicorp’s preconfigured vanilla boxes, just use the identifier. For now I need an Ubuntu box, so I’ll use
-<code>vagrant init ubuntu/xenial64</code></li>
-<li>Upon starting up the virtual machine for the first time the VM will need to be initialized. This will happen automatically when we start it up for the first time. To fire up the virtual machine, run
-<code>vagrant up</code></li>
-<li>If you are using one from the Hashicorp site, you’ll have to wait for it to download the virtualbox file before it launches. If you installed VMWare instead, it should be downloading the VMWare compatible virtual machine.</li>
-<li>Once the virtual machine is up, if it has been configured with the usual vagrant:vagrant credentials, you should be able to log right in with
-<code>vagrant ssh</code></li>
-<li>From there, you will be SSH’ed in like normal, and can close and open the connection like a normal remote session. Make sure that you use <code>vagrant down</code> to shut down your vagrant box when you are done using it.</li>
-</ol>
-<p>After that you should be good to go! This tutorial is not comprehensive by any means, so if you have any questions please let me know in the comments and I’ll see what I can do to help!</p>
+    <p>For the last several years I&rsquo;ve been collecting ideas about what I wanted to change about my &lsquo;website&rsquo;. At it&rsquo;s heart my website isn&rsquo;t more than about 3 pages that include my name and contact info, as well as helpful links. But as my self-hosting hobby has grown to bear the fruit of services that my friends and family have come to rely and depend on, I realized that my website needed to be more than just a single-page resume with my name and socials.</p>
+<p>My self-hosting architecture floats on a layer of <a href="https://www.consul.io/">Consul</a> services that are typically run on <a href="https://www.nomadproject.io/">Nomad</a>. Nomad affords me the jank that I need to get a lot of my services up and going reliably in a couple of hours. Unfortunately it also makes it easy to set up reproducible workloads in a very poor way. This is mainly due to the flexibility that <a href="https://developer.hashicorp.com/nomad/docs/job-specification">Nomad jobs</a> offer you in deploying an application stack. You can, for example, launch containers with overridden entrypoints, arguments, and commands, as well as inject scripts and artifacts downloaded all before the container is launched. And <em>that&rsquo;s just a single container task</em>. When you combine Nomad&rsquo;s ability to run shell scripts, download artifacts, and render templates, you get a system that is capable of doing almost any evil scheming your lazy side can come up with.</p>
+<figure><img src="/images/hntbadb1.drawio.svg"><figcaption>
+      <h4>Site served up over github pages. Simple enough, right?</h4>
+    </figcaption>
+</figure>
+
+<figure><img src="/images/hntbadb2.drawio.svg"><figcaption>
+      <h4>And where did that take you? Back to Github Pages.</h4>
+    </figcaption>
+</figure>
+
 
 
   </main>
@@ -280,8 +251,8 @@ This will install the command line dependencies of virtualbox. I prefer virtualb
 
 
           <div class="pagenav">
-<div class="pagenav-prev" ><span>← </span><a href="/post/emtp/">Edit Mac Terminal Prompt</a></div>
-<div class="pagenav-next" ><a href="/post/saedfafc/">Saving an ESXi Datastore from a Foreign Config</a><span> →</span></div>
+<div class="pagenav-prev" ><span>← </span><a href="/resume/">Resume</a></div>
+
 </div>
           <footer role="contentinfo">
   
@@ -292,8 +263,8 @@ This will install the command line dependencies of virtualbox. I prefer virtualb
         </div>
       </div>
     </div>
-    <script src="https://cronocide.com/js/prism.js"></script>
-<script src="https://cronocide.com/js/dom-scripts.js"></script>
+    <script src="http://localhost:1313/js/prism.js"></script>
+<script src="http://localhost:1313/js/dom-scripts.js"></script>
     
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
