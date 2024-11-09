@@ -499,6 +499,11 @@ caption {
     margin: 0 auto;
     padding: 2.25rem;
 }
+.iframe-and-footer {
+    margin-left: 14rem;
+    max-width: 80rem;
+    padding: 2.25rem;
+}
 [role="contentinfo"] {
     font-size: 0.85rem;
     margin-top: 4rem;
@@ -1051,7 +1056,12 @@ div.social a > * {
 .pagenav > * > a {
     color: #2e9ff5;
 }
-
+#iframe-anchor {
+    padding:0px;
+    margin:0 auto;
+    width:100%;
+    height:60rem;
+}
 
 /* Media queries */
 @media screen and (max-width: 45em) {
@@ -1120,6 +1130,11 @@ div.social a > * {
     .pagenav-next {
         margin-left: inherit;
     }
+    .iframe-and-footer {
+        margin-left: 0rem;
+        max-width: 80rem;
+        padding: 2.25rem;
+    }
     #menu-button {
         display: block;
     }
@@ -1141,14 +1156,14 @@ div.social a > * {
         font-size: 1.8rem;
         max-height: 1.8rem;
         display: block;
-      }
-      div.social a > * {
+    }
+    div.social a > * {
         border-bottom: none;
         pointer-events: none;
         fill: #ffffff;
         max-height: 1.8rem;
         display: block;
-      }
+    }
 }
 /* Safari Fixes */
 @supports (-webkit-appearance: none) {
