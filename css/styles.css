@@ -503,6 +503,7 @@ caption {
     margin-left: 14rem;
     max-width: 80rem;
     padding: 2.25rem;
+    padding-bottom: 0;
 }
 [role="contentinfo"] {
     font-size: 0.85rem;
@@ -704,7 +705,7 @@ figcaption {
 main {
     display: block;
     counter-reset: fig;
-    min-height: 100vh;
+    /* min-height: 80vh; */
 }
 
 [data-codeblock-shortcode], .code-annotated code {
@@ -1060,7 +1061,8 @@ div.social a > * {
     padding:0px;
     margin:0 auto;
     width:100%;
-    height:60rem;
+    min-height: 30rem;
+    height: calc(100vh - 8rem);
 }
 
 /* Media queries */
@@ -1133,6 +1135,7 @@ div.social a > * {
     .iframe-and-footer {
         margin-left: 0rem;
         max-width: 80rem;
+        padding-bottom: 0rem;
         padding: 2.25rem;
     }
     #menu-button {
