@@ -9,6 +9,13 @@
     <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title></title>
+      <link>https://cronocide.com/repo/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/repo/</guid>
+      <description>&lt;h1 id=&#34;apt-repository&#34;&gt;Apt Repository&lt;/h1&gt;&#xA;&lt;hr&gt;&#xA;&lt;p&gt;This repository has packages I&amp;rsquo;ve built for Linux and iOS.&#xA;These packages are offered &lt;em&gt;AS IS&lt;/em&gt; and include &lt;em&gt;no warranty&lt;/em&gt; or obligation of support.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;cydia://url/https://cydia.saurik.com/api/share#?source=https://cronocide.com/repo&#34;&gt;Add to Cydia&lt;/a&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;packages&#34;&gt;Packages&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;Name&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Version&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Arch&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://cronocide.com/repo/pool/main/c/com.cronocide.hostname/com.cronocide.hostname_1.0.0_iphoneos-arm.deb&#34;&gt;hostname&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;1.0.0&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;iphoneos-arm&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
+    </item>
+    <item>
       <title>Contact</title>
       <link>https://cronocide.com/contact/</link>
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
@@ -112,13 +119,6 @@
       <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
       <guid>https://cronocide.com/post/emtp/</guid>
       <description>&lt;p&gt;As you SSH around different devices running varying operating systems and shells you see quite a variety of shell prompts. I’ve decided that my prompt should give me the username and host of the machine I am trying to connect to, as well as the full path of the working directory. This way the prompt is always ready to be copied for an &lt;code&gt;scp&lt;/code&gt; argument. I’ve decided that I want to standardize my prompts with this information, and it’s pretty easy to do.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://cronocide.com/repo/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://cronocide.com/repo/</guid>
-      <description>&lt;h1 id=&#34;apt-repository&#34;&gt;Apt Repository&lt;/h1&gt;&#xA;&lt;p&gt;This repository has packages I&amp;rsquo;ve built for Linux and iOS.&#xA;These packages are offered &lt;em&gt;AS IS&lt;/em&gt; and include &lt;em&gt;no warranty&lt;/em&gt; or obligation of support.&lt;/p&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;&lt;a href=&#34;cydia://url/https://cydia.saurik.com/api/share#?source=https://cronocide.com/repo&#34;&gt;Add to Cydia&lt;/a&gt;&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;&#xA;&lt;h2 id=&#34;packages&#34;&gt;Packages&lt;/h2&gt;&#xA;&lt;table&gt;&#xA;  &lt;thead&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;th style=&#34;text-align: left&#34;&gt;Name&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Version&lt;/th&gt;&#xA;          &lt;th style=&#34;text-align: center&#34;&gt;Arch&lt;/th&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/thead&gt;&#xA;  &lt;tbody&gt;&#xA;      &lt;tr&gt;&#xA;          &lt;td style=&#34;text-align: left&#34;&gt;&lt;a href=&#34;https://cronocide.com/repo/pool/main/c/com.cronocide.hostname/com.cronocide.hostname_1.0.0_iphoneos-arm.deb&#34;&gt;hostname&lt;/a&gt;&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;1.0.0&lt;/td&gt;&#xA;          &lt;td style=&#34;text-align: center&#34;&gt;iphoneos-arm&lt;/td&gt;&#xA;      &lt;/tr&gt;&#xA;  &lt;/tbody&gt;&#xA;&lt;/table&gt;</description>
     </item>
   </channel>
 </rss>
