@@ -9,6 +9,13 @@
     <lastBuildDate>Tue, 01 Oct 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/index.xml" rel="self" type="application/rss+xml" />
     <item>
+      <title>Contact</title>
+      <link>https://cronocide.com/contact/</link>
+      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/contact/</guid>
+      <description>&lt;hr&gt;</description>
+    </item>
+    <item>
       <title>Resume</title>
       <link>https://cronocide.com/resume/</link>
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
@@ -105,13 +112,6 @@
       <pubDate>Wed, 19 Jul 2017 00:00:00 +0000</pubDate>
       <guid>https://cronocide.com/post/emtp/</guid>
       <description>&lt;p&gt;As you SSH around different devices running varying operating systems and shells you see quite a variety of shell prompts. I’ve decided that my prompt should give me the username and host of the machine I am trying to connect to, as well as the full path of the working directory. This way the prompt is always ready to be copied for an &lt;code&gt;scp&lt;/code&gt; argument. I’ve decided that I want to standardize my prompts with this information, and it’s pretty easy to do.&lt;/p&gt;</description>
-    </item>
-    <item>
-      <title></title>
-      <link>https://cronocide.com/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>https://cronocide.com/contact/</guid>
-      <description></description>
     </item>
     <item>
       <title></title>
