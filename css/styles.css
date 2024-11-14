@@ -1181,8 +1181,11 @@ div.social a > * {
     .iframe-and-footer {
         margin-left: 0rem;
         max-width: 80rem;
-        padding-bottom: 0rem;
-        padding: 2.25rem;
+        padding: 0rem;
+    }
+    .iframe-and-footer > div > #main > h1 {
+        padding-left: 2.25rem;
+        display: block;
     }
     #menu-button {
         display: block;

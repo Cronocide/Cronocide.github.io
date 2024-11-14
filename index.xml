@@ -34,7 +34,7 @@
       <link>https://cronocide.com/apps/</link>
       <pubDate>Sun, 05 Apr 2020 00:00:00 +0000</pubDate>
       <guid>https://cronocide.com/apps/</guid>
-      <description>&lt;div class=&#34;tags blue-tag&#34;&gt;&lt;ul aria-label=&#34;tags&#34;&gt;&lt;li&gt;&lt;a href=&#34;https://apps.cronocide.com/.pomerium/sign_out?pomerium_redirect_uri=https://cronocide.com/&#34;&gt;Logout&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&#xA;&lt;iframe id=&#34;iframe-anchor&#34; src=&#34;https://apps.cronocide.com/&#34; class=&#34;main&#34; style=&#34;width:100%&#34; frameBorder=&#34;0&#34;&gt;</description>
+      <description>&lt;div class=&#34;tags blue-tag&#34;&gt;&lt;ul aria-label=&#34;tags&#34;&gt;&lt;li&gt;&lt;a href=&#34;https://apps.cronocide.com/.pomerium/sign_out?pomerium_redirect_uri=https://cronocide.com/&#34;&gt;Logout&lt;/a&gt;&lt;/li&gt;&lt;/ul&gt;&lt;/div&gt;&#xA;&lt;iframe id=&#34;iframe-anchor&#34; src=&#34;https://apps.cronocide.com/&#34; class=&#34;main&#34; style=&#34;width:100%&#34; frameBorder=&#34;0&#34;&gt;&lt;/iframe&gt;</description>
     </item>
     <item>
       <title>Building your first SIEM with the Elastic Stack</title>
