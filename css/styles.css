@@ -207,6 +207,7 @@ h1 {
     font-family: BigNoodleToo, serif;
     font-weight: unset;
     font-size: 3.5rem;
+    vertical-align: middle;
 }
 h2 {
     font-size: 1.66rem;
@@ -505,6 +506,22 @@ caption {
     padding: 2.25rem;
     padding-bottom: 0;
 }
+
+.iframe-and-footer > div > #main > h1 {
+    display: inline-block;
+    overflow: revert;
+}
+
+.iframe-and-footer > div > #main > div {
+    display: inline-block;
+    vertical-align: text-top;
+    background-color: unset;
+}
+
+.iframe-and-footer > div > #main > div > ul {
+    margin-left: 2rem;
+}
+
 [role="contentinfo"] {
     font-size: 0.85rem;
     margin-top: 4rem;
@@ -645,6 +662,21 @@ caption {
     padding-bottom: 0rem;
     padding-top: .15rem;
     margin-right: .3rem;
+}
+.blue-tag li {
+    color: #ffffff;
+    background-color: #2e9ff5;
+    border:solid #2e9ff5 3px;
+    font-style: normal;
+    font-weight: bold;
+    max-width: 6rem;
+    width: 6rem;
+    text-align: center;
+}
+.blue-tag li:hover {
+    border-radius: 0.33em;
+    border: 3px solid #ffffff;
+    background: #288de5;
 }
 .tags a {
     border-bottom: none;
@@ -868,7 +900,7 @@ p:empty {
     background: #efefef;
 }
 .site-error strong {
-    color: #C83737;
+    color: #d03c38;
 }
 
 /* SVG icons */
