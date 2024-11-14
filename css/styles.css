@@ -516,6 +516,7 @@ caption {
     display: inline-block;
     vertical-align: text-top;
     background-color: unset;
+    padding-bottom: 1rem;
 }
 
 .iframe-and-footer > div > #main > div > ul {
