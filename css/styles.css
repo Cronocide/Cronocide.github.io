@@ -1,3 +1,6 @@
+/* Debugging */
+/* * {outline: 1px solid #f00 !important;} */
+
 /* Fonts */
 @font-face {
     font-family: 'Futura';
@@ -47,7 +50,6 @@
     font-weight: var(--font-default-weight);
     src: local('BigNoodleToo'), url('https://cronocide.com/css/fonts/big-noodle-too-oblique.woff') format('woff');
 }
-
 *,
 *::before,
 *::after {
@@ -1062,6 +1064,36 @@ h1 svg {
   max-width: 100%;
 }
 
+/* Card layouts */
+.card-icon {
+    max-width: 3rem;
+    display: inline-block;
+}
+.card-description {
+    display: inline-block;
+    padding-top: .2rem;
+    padding-left: .5rem;
+    vertical-align: top;
+}
+.card > a > h2 {
+    display: block;
+    width: fit-content;
+}
+.card {
+    border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #ffffff 3px;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
+    padding: 1rem;
+    width: 31%;
+    min-width: fit-content;
+    display: inline-block;
+    margin-left: 1rem;
+    padding-right: .5rem;
+    padding-bottom: 0.6rem;
+}
 /* Utilities */
 .vh {
   clip: rect(1px, 1px, 1px, 1px);
@@ -1202,6 +1234,9 @@ div.social a > * {
     code {
       word-break: break-all;
     }
+    .card {
+        min-width: 94%;
+    }
     div.social {
         margin-top: .6rem;
         text-align: center;
@@ -1243,6 +1278,9 @@ div.social a > * {
     main a::after {
         content: " (" attr(href) ")";
         word-break: break-word;
+    }
+    .tags > li > a {
+        content: '';
     }
     main nav a::after {
         content: '';
