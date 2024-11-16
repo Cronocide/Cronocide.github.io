@@ -157,6 +157,7 @@
         <a href="/" >
         <span class="text">About</span>
       </a>
+     
     </li>
   
     <li class="pattern">
@@ -165,6 +166,7 @@
         <a href="/post/" >
         <span class="text">All Posts</span>
       </a>
+     
     </li>
   
     <li class="pattern">
@@ -173,6 +175,7 @@
         <a href="https://apps.localhost:1313/login" >
         <span class="text">Applications</span>
       </a>
+     
     </li>
   
     <li class="pattern">
@@ -181,6 +184,7 @@
         <a href="/resume/" >
         <span class="text">Resume</span>
       </a>
+     
     </li>
   
     <li class="pattern">
@@ -189,6 +193,7 @@
         <a href="/contact/" >
         <span class="text">Contact</span>
       </a>
+     
     </li>
   
   </ul>
@@ -223,20 +228,67 @@
     </div>
 
     
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              
+              <a href="http://localhost:1313/tags/rant/">Rant</a>
+            </li>
+          
+        </ul>
+      </div>
+    
 
     
       
 
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Table of contents</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#background">
+            Background
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#logging-into-nothing">
+            Logging into nothing
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
 
     
 
-    <p>For the last several years I&rsquo;ve been collecting ideas about what I wanted to change about my &lsquo;website&rsquo;. At it&rsquo;s heart my website isn&rsquo;t more than about 3 pages that include my name and contact info, as well as helpful links. But as my self-hosting hobby has grown to bear the fruit of services that my friends and family have come to rely and depend on, I realized that my website needed to be more than just a single-page resume with my name and socials.</p>
-<p>My self-hosting architecture floats on a layer of <a href="https://www.consul.io/">Consul</a> services that are typically run on <a href="https://www.nomadproject.io/">Nomad</a>. Nomad affords me the jank that I need to get a lot of my services up and going reliably in a couple of hours. Unfortunately it also makes it easy to set up reproducible workloads in a very poor way. This is mainly due to the flexibility that <a href="https://developer.hashicorp.com/nomad/docs/job-specification">Nomad jobs</a> offer you in deploying an application stack. You can, for example, launch containers with overridden entrypoints, arguments, and commands, as well as inject scripts and artifacts downloaded all before the container is launched. And <em>that&rsquo;s just a single container task</em>. When you combine Nomad&rsquo;s ability to run shell scripts, download artifacts, and render templates, you get a system that is capable of doing almost any evil scheming your lazy side can come up with.</p>
+    <hr>
+<a class="header-link" href="#background"><h2 id="background">Background</a> </h2>
+<p>For the last several years I&rsquo;ve been collecting ideas about what I wanted to change about my &lsquo;website&rsquo;. At it&rsquo;s heart my website isn&rsquo;t more than about 3 pages that include my name and contact info, as well as helpful links. But as my self-hosting hobby has grown to bear the fruit of services that my friends and family have come to rely and depend on, I realized that my website needed to be more than just a single-page resume with my name and socials.</p>
+<p>My self-hosting architecture floats on a layer of <a href="https://www.consul.io/">Consul</a> services that are mostly run on <a href="https://www.nomadproject.io/">Nomad</a>. Nomad affords me the jank that I need to get a lot of my services up and going reliably in a couple of hours with the reproducibility to do it again when it all inevitably blows up. Unfortunately it also makes it easy to set up reproducible workloads in a very poor way. This is mainly due to the flexibility that <a href="https://developer.hashicorp.com/nomad/docs/job-specification">Nomad jobs</a> offer you in deploying an application stack. You can, for example, launch containers with overridden entrypoints, arguments, and commands, as well as inject scripts and artifacts downloaded all before the container is launched. And <em>that&rsquo;s just a single container task</em>. When you combine Nomad&rsquo;s ability to run shell scripts, download artifacts, and render templates, you get a system that is capable of doing almost any evil scheming your lazy side can come up with.</p>
+<p>Historically my homelab experienced enough volatile downtime that any sites run on it would never see a single visit. A few years back I set up my <a href="https://web.archive.org/web/20191019212123/http://www.cronocide.com:80/">first hugo-rendered website</a> on Github Pages, and didn&rsquo;t feel like I was ready to move away from that hosting model just yet:</p>
 <figure><img src="/images/hntbadb1.drawio.svg"><figcaption>
       <h4>Site served up over github pages. Simple enough, right?</h4>
     </figcaption>
 </figure>
 
+<p>However, I have a secondary goal with my website that&rsquo;s been nagging at the back of my mind for while. I want to be able to expose links to my self-hosted services I&rsquo;m running. My <a href="https://www.pomerium.com/">Pomerium</a> reverse proxy, combined with my OIDC processor Auth0 for social login. Login and access control are already solved problems for me, so I could technically just aggregate all my services from the Consul Service Catalog and spit them out on my site. It would put all my links in one place, but most of those links are to private control panels that I don&rsquo;t really want discovered over the internet.</p>
+<p>I could easily require authentication to the page to stop crawlers and internet bad guys from finding my management domains. Authorized users like my friends and family would also see those links, and be greeted by a 403 when they tried to click on them. I wasn&rsquo;t a fan of this quality of user experience and wanted to go the extra mile to remove those links from showing up at all.</p>
+<p><strong>What follows are the sins I&rsquo;ve committed against myself and my fellow craftsmen in acheiving the <a href="https://apps.cronocide.com/login">Applications</a> page on my site.</strong></p>
+<hr>
+<a class="header-link" href="#logging-into-nothing"><h2 id="logging-into-nothing">Logging into nothing</a> </h2>
 <figure><img src="/images/hntbadb2.drawio.svg"><figcaption>
       <h4>And where did that take you? Back to Github Pages.</h4>
     </figcaption>
@@ -251,10 +303,11 @@
 
 
           <div class="pagenav">
-<div class="pagenav-prev" ><span>← </span><a href="/resume/">Resume</a></div>
 
+<div class="pagenav-next" ><a href="/post/boi2024/">Shoot Into the Wild Bluesky</a><span> →</span></div>
 </div>
           <footer role="contentinfo">
+  <hr>
   
     Opinions expressed are not representative of <a href="https://linkedin.com/in/danieldayley">my current, former, and future employers</a>.
   
@@ -262,6 +315,7 @@
 
         </div>
       </div>
+      
     </div>
     <script src="http://localhost:1313/js/prism.js"></script>
 <script src="http://localhost:1313/js/dom-scripts.js"></script>
@@ -270,6 +324,5 @@
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
 <script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
 
-    
   </body>
 </html>
