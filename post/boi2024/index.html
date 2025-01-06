@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.139.4">
-  <link rel="canonical" href="https://cronocide.com/post/eiomfe17/">
+  <link rel="canonical" href="https://cronocide.com/post/boi2024/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,7 +22,7 @@
   
   <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/styles.css">
   
-  <title>Enable iMessage on Mac for ESXi (in 2017) | cronocide.com</title>
+  <title>Shoot Into the Wild Bluesky | cronocide.com</title>
 </head>
 
   <body>
@@ -215,13 +215,13 @@
           
   <main id="main">
     <h1>
-      Enable iMessage on Mac for ESXi (in 2017)
+      Shoot Into the Wild Bluesky
     </h1>
 
     <div class="date">
       
       
-      <span aria-hidden="true">Jan 1, 2018</span>
+      <span aria-hidden="true">Nov 15, 2024</span>
       
         
       
@@ -237,6 +237,11 @@
               <a href="https://cronocide.com/tags/tutorial/">Tutorial</a>
             </li>
           
+            <li>
+              
+              <a href="https://cronocide.com/tags/rant/">Rant</a>
+            </li>
+          
         </ul>
       </div>
     
@@ -244,67 +249,81 @@
     
       
 
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Table of contents</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#bluesky-is-still-pretty-janky">
+            Bluesky is still pretty janky
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#owning-your-data--owning-your-name">
+            Owning your data != owning your name
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#owning-your-name">
+            Owning your name
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
 
     
 
-    <p>Running virtual Macs on ESXi is a great way to become familiar with the operating system and server software without buying your own Mac lab. To install MacOS on ESXI 5.5 and above is pretty trivial, since VMWare’s hypervisor almost natively supports the OS. There are several steps that must be done however before the OS will boot properly, and even still, before iMessage will work.</p>
-<p>To install MacOS you will need a legitimate installer for the operating system, <a href="https://support.apple.com/en-us/HT201372">which can be produced by any Mac</a> that has purchased the OS.
-<em>Note: just because your Mac came with a specific version of MacOS doesn’t mean that you have it available in the app store. You must ‘purchase’ it for free before you can make installers for it.</em></p>
-<p>This guide assumes that you are using ESXi 6.5, but <a href="https://github.com/DrDonk/unlocker/commits/master">specific versions of Unlocker</a> can be downloaded for any version of ESXi that you’re running. Let’s assume you’ve gotten as far as installing and configuring ESXi 6.5 and are ready to make your Mac VM run. I’ll assume you know a thing or two about ESXi as well.</p>
-<ol>
-<li>Create a new VM with 128 mb of video memory and at least 4gb of RAM. These are practically the only requirements to boot macOS, but you can customize it as you like.</li>
-<li>Enable SSH on your ESXi host through the web console.</li>
-<li>SSH into your host and <code>cd</code> into your datastore (<code>/vmfs/volumes/yourdatastorename</code>).</li>
-<li>Download Unlocker 2.1.0 from Dave Parson’s Github: <code>wget https://github.com/DrDonk/unlocker/archive/c6ff390a8793a3cf37f91cad33c5cda803e59165.zip</code>
-This script will modify ESXi’s local.sh that will allow MacOS to boot fully.</li>
-<li>Extract the zip file with <code>gunzip</code>:
-<code>gunzip c6ff390a8793a3cf37f91cad33c5cda803e59165.zip</code></li>
-<li><code>cd</code> inside the newly spawned directory and make the esxi script bootable:
-<code>chmod +x esxi-install.sh</code></li>
-<li>Run the script:
-<code>./esxi-install.sh</code></li>
-<li>Reboot the host.
-<code>reboot</code></li>
-<li>After the host comes back up, you should be able to successfully install MacOS into the VM. Upload your install ISO for macOS that you made before and attach it to the CD drive of the VM. Run through the installer like normal and get your Mac to the desktop.</li>
-<li>Power down the mac and SSH back into the host. <code>cd</code> back into your datastore (<code>/vmfs/volumes/yourdatastorename</code>). You should see a folder with the name of your VM. CD into that folder. Do an ls and you should see a VMX file of your Mac:
-<code>ExampleMac.vmx</code></li>
-<li>Back up this file before making any changes to it:
-<code>cp ExampleMac.vmx ExampleMac.vmx.orig</code></li>
-<li>Now comes the fun part. You’ve already proven that your virtual Mac will install and run, but a lot of features won’t work on it until we can convince it that several of the fake values from our SMC are Apple-esque enough for it. Without these values iMessage will not work. By manually adding the values to the VMX file we make the VM think it’s a Mac.</li>
-<li>Open up the vmx file with vi:
-<code>vi ExampleMac.vmx</code></li>
-<li>Find and replace <code>ethernet0.addressType = &quot;generated&quot;</code> and replace it with <code>ethernet0.addressType = &quot;static&quot;</code></li>
-<li>Find and replace <code>ethernet0.GeneratedAddress</code> with <code>ethernet0.Address</code></li>
-<li>Look up a random Apple-owned MAC address for your virtual Mac. <a href="https://hwaddress.com/company/apple-inc">This</a> is a good place to look through all the Apple owned MAC addresses.</li>
-<li>Convert that string to lowercase and replace your address listed under <code>ethernet0.Address</code> so it looks like so:
-<code>ethernet0.Address = &quot;d8:a2:5e:00:00:00&quot;</code></li>
-<li>Add the following lines at the end of the file. This will make your virtual Mac a Mac Pro, the one that’s shaped like a trash can. You can generate values for other Macs with <a href="http://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a> and use those values here instead:
-<code>ethernet0.checkMACAddress = &quot;FALSE&quot;</code>
-<code>board-id.reflectHost = &quot;FALSE&quot;</code>
-<code>board-id = &quot;F5KLA770F9VM2BC3A&quot;</code>
-<code>hw.model.reflectHost = &quot;FALSE&quot;</code>
-<code>hw.model = &quot;MacPro6,1&quot;</code>
-<code>serialNumber.reflectHost = &quot;FALSE&quot;</code>
-<code>serialNumber = &quot;F5KLA770F9VM&quot;</code>
-<code>smbios.reflectHost = &quot;FALSE&quot;</code>
-<code>efi.nvram.var.ROM.reflectHost = &quot;FALSE&quot;</code>
-<code>efi.nvram.var.MLB.reflectHost = &quot;FALSE&quot;</code>
-<code>efi.nvram.var.ROM = &quot;3c0754a2f9be&quot;</code>
-<code>efi.nvram.var.MLB = &quot;C0720270FQVDKP2AT&quot;</code></li>
-<li>Save your changes to the VMX file and start it up. If your VM fails to start don’t worry, you can usually fix whatever it doesn’t like by reading the error message posted in the logs at the bottom. If that doesn’t work, you can restore your vmx file from the backup you created.
-<figure><img src="/images/eiomfe17_Failed_Tasks.png"><figcaption>
-      <h4>If you have a problem, it will show up here.</h4>
-    </figcaption>
-</figure>
-</li>
-<li>Once the Mac has started up fire up iMessage and log in. If all goes as planned you should be presented with a fresh message pad to send iMessages from.
-<figure><img src="/images/eiomfe17_imessage.png"><figcaption>
-      <h4>Ready to send iMessages from ESXi</h4>
-    </figcaption>
-</figure>
-</li>
-</ol>
-<p>I know this was a quick and dirty tutorial and a lot of details have been skipped, so if you get stuck on any part please let me know in the comments and I’ll help you out!</p>
+    <hr>
+<p>I&rsquo;ve been on a journey to complete my <a href="https://bsky.app/">Bluesky</a> account setup for over a year now. The content loss I experienced as a result of the evaporation of my Infosec Twitter community in 2022 was largely mitigated by my massive <em>(and unhealthy)</em> Reddit diet at the time, but when <a href="https://www.engadget.com/apollo-and-other-popular-third-party-reddit-apps-have-shut-down-123149140.html">they shut down 3rd party apps</a> I knew the time had come for me to do some <em>major</em> social media readjustments. I started the setup of <a href="https://bsky.app/profile/cronoci.de">my Bluesky account</a> back in 2023 but only barely got around to finishing setting it up today. As I re-read the docs for setting up the account I re-organized the information around the ideas of ownership in Bluesky and thought I would jot down some quick learnings on the process.</p>
+<a class="header-link" href="#bluesky-is-still-pretty-janky"><h2 id="bluesky-is-still-pretty-janky">Bluesky is still pretty janky</a> </h2>
+<p>My first prevailing observation of this process is that the Bluesky system is still in it&rsquo;s infancy. It feels a lot more like a senior college project than a glabal-scale social network. There were several parts of the process that felt somewhat untrustworthy (like <a href="https://aaronparecki.com/2023/03/07/3/bluesky-custom-domain">forcing domain ownership verification through the API when the mobile app doesn&rsquo;t work</a>) and some parts that felt more unclear than they needed to be. While Bluesky&rsquo;s documentation on their federation model is still <a href="https://bsky.social/about/blog/5-5-2023-federation-architecture">much better</a> than it was <a href="https://atproto.com/guides/overview">before</a>, there are still a lot of peices that make you wonder what the &ldquo;final product&rdquo; vision is for this system. For now it&rsquo;s a twitter clone, but with Mastodon and activityPub gaining popularity, who knows how it will shift to compete in the future?</p>
+<a class="header-link" href="#owning-your-data--owning-your-name"><h2 id="owning-your-data--owning-your-name">Owning your data <code>!=</code> owning your name</a> </h2>
+<p>I set up a Bluesky <a href="https://github.com/bluesky-social/pds">Personal Data Server</a> (PDS) on the first day the code was published. I wasn&rsquo;t particularly excited about the data sovereignty aspect of it, I just wanted to see how the new &ldquo;federated&rdquo; Bluesky worked (and I had the time to throw it up quickly). As long as your TLS and DNS are quickly tuned, the setup of this particular server is really straightforward. You can set up a new account on the server by using administrative credentials to create an invite code, then using that invite code in the mobile app to create a new user.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>┌───Nov <span style="color:#ae81ff">15</span> 14:29:18────┐
+</span></span><span style="display:flex;"><span>cronocide@zen:~/Desktop$▶ curl -Lv -XPOST <span style="color:#e6db74">&#34;https://mydomain.com/xrpc/com.atproto.server.createInviteCode&#34;</span> <span style="color:#ae81ff">\
+</span></span></span><span style="display:flex;"><span><span style="color:#ae81ff"></span>--basic -u <span style="color:#e6db74">&#34;admin&#34;</span> -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;useCount&#34;: 1}&#39;</span>
+</span></span><span style="display:flex;"><span>└─Nov <span style="color:#ae81ff">15</span> 14:29:36 •519─┘
+</span></span><span style="display:flex;"><span>Enter host password <span style="color:#66d9ef">for</span> user <span style="color:#e6db74">&#39;admin&#39;</span>: ****************
+</span></span><span style="display:flex;"><span><span style="color:#f92672">{</span><span style="color:#e6db74">&#34;code&#34;</span>:<span style="color:#e6db74">&#34;mydomain-com-ymy4c-lvgu5&#34;</span><span style="color:#f92672">}</span>
+</span></span></code></pre></div><p>However, this new account will only store data for your account, not implicitely set your handle. <em>Your account&rsquo;s default suffix is the domain of the PDS you set up the account on</em>. So if you set up the account on mydomain.com, your data is stored on the <code>mydomain.com</code> PDS server, but your handle will be <code>username.mydomain.com</code>.</p>
+<p>To set up example.com as your handle, you need to do several additional steps:</p>
+<ul>
+<li>Get the <a href="https://github.com/did-method-plc/did-method-plc">DID record</a> from the account that was registered with your PDS server, <code>username.mydomain.com</code>. You can do this with a call to <code>/xrpc/com.atproto.sync.listRepos?limit=100</code></li>
+<li>Create DNS or <code>.well-known</code> records for the <a href="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial">At Protocol</a> to use to verify your domain ownership</li>
+<li>Force the PDS to change your name to the shortened root domain name <code>mydomain.com</code>, either through the mobile app or through the PDS CLI.</li>
+<li>Restart everything just in case</li>
+</ul>
+<a class="header-link" href="#owning-your-name"><h2 id="owning-your-name">Owning your name</a> </h2>
+<p>One of the cool things about Bluesky is that it equates (or at least tries to equate) domain ownership with handle reservations. I like this a lot, as Twitter handle ownership was seen as something of an internet authority back in it&rsquo;s hayday. My initial server was readily available at <code>bluesky.cronocide.com</code>, but I soon learned that meant my handle would be <code>cronocide.bluesky.cronocide.com</code>. That&rsquo;s not very sexy, so I aimed to get it down to just <code>cronoci.de</code>.</p>
+<p>Routing a Bluesky PDS server (in 2024) currently requires two routes to work:</p>
+<ul>
+<li><code>/xrpc</code> - This route is the root path for all PDS operations (except root domain handle changes)</li>
+<li><code>/.well-known/atproto-did</code> - This is needed if you want to shorten <code>username.mydomain.com</code> to <code>mydomain.com</code></li>
+</ul>
+<p>Knowing this makes the reverse proxy setup much easier. The second item there is static data: it&rsquo;s a <code>text/plain</code> payload that includes the DID of the user account that assigned to your user when you created the account. The <code>/xrpc</code> routes are translated straight across to your PDS server to make the domain work. Validating your root name is <em>supposed</em> to use a <a href="https://bsky.social/about/blog/4-28-2023-domain-handle-tutorial">DNS TXT record</a> <em>as well as</em> the <code>.well-known</code> bit to verify your ownership of a domain in order to make it work. I couldn&rsquo;t get either method to work in the mobile app for some reason; it kept giving me the error <code>Unable to resolve handle</code>. Following this post I got a CLI token from the PDS server and <em>manually</em> changed my name, which scarily seemed to work without saying anything:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>┌────Nov <span style="color:#ae81ff">15</span> 16:11:28────┐
+</span></span><span style="display:flex;"><span>cronocide@zen:~/Desktop$▶ curl -Lv -XPOST <span style="color:#e6db74">&#34;https://mydomain.com/xrpc/com.atproto.identity.updateHandle&#34;</span> -H <span style="color:#e6db74">&#34;Authorization: Bearer &lt;token&gt;&#34;</span> -H <span style="color:#e6db74">&#34;Content-Type: application/json&#34;</span> -d <span style="color:#e6db74">&#39;{&#34;handle&#34;: &#34;mydomain.com&#34;}&#39;</span>
+</span></span><span style="display:flex;"><span>└──Nov <span style="color:#ae81ff">15</span> 16:12:11 •534─┘
+</span></span><span style="display:flex;"><span>┌───Nov <span style="color:#ae81ff">15</span> 16:12:13─────┐
+</span></span><span style="display:flex;"><span>cronocide@zen:~/Desktop$▶  ???
+</span></span></code></pre></div><p>It&rsquo;s hard to tell if the mobile and web app slowness I&rsquo;m seeing are due to some misconfiguration I&rsquo;ve done on my end, or if it&rsquo;s just strain from the <a href="https://www.nytimes.com/2024/11/12/style/bluesky-users-election.html">current influx</a> of users on the network. I&rsquo;m not sure how many of these users are material, since I made three or four in the process of figuring out the PDS setup alone, but then again I don&rsquo;t imagine most users are going out of their way to set up a Personal Data Server for their accounts out of the gates. Either way, my PDS seems to be up and working for now. Let&rsquo;s wait and see if I have to wipe my data because I chose the wrong storage class for the PDS.</p>
+<p>Anyway, we&rsquo;re off to the skies with this new social network!</p>
 
 
   </main>
@@ -314,8 +333,8 @@ This script will modify ESXi’s local.sh that will allow MacOS to boot fully.</
 
 
           <div class="pagenav">
-<div class="pagenav-prev" ><span>← </span><a href="/post/batacwror/">Building a Tabletop Arcade Cabinet with RetroArch on RetroPi</a></div>
-<div class="pagenav-next" ><a href="/post/hacktober2019/">Hacktober 2019 - Filesystems</a><span> →</span></div>
+
+<div class="pagenav-next" ><a href="/post/yir2024/">2024: My Year in Review</a><span> →</span></div>
 </div>
           <footer role="contentinfo">
   <hr>

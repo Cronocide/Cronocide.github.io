@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.139.4">
-  <link rel="canonical" href="https://cronocide.com/post/eiomfe17/">
+  <link rel="canonical" href="https://cronocide.com/post/yir2024/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,7 +22,7 @@
   
   <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/styles.css">
   
-  <title>Enable iMessage on Mac for ESXi (in 2017) | cronocide.com</title>
+  <title>2024: My Year in Review | cronocide.com</title>
 </head>
 
   <body>
@@ -215,13 +215,13 @@
           
   <main id="main">
     <h1>
-      Enable iMessage on Mac for ESXi (in 2017)
+      2024: My Year in Review
     </h1>
 
     <div class="date">
       
       
-      <span aria-hidden="true">Jan 1, 2018</span>
+      <span aria-hidden="true">Jan 4, 2025</span>
       
         
       
@@ -234,7 +234,7 @@
           
             <li>
               
-              <a href="https://cronocide.com/tags/tutorial/">Tutorial</a>
+              <a href="https://cronocide.com/tags/rant/">Rant</a>
             </li>
           
         </ul>
@@ -244,67 +244,75 @@
     
       
 
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Table of contents</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#projects-that-crossed-the-finish-line">
+            Projects that crossed the finish line
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#books-i-read-this-year">
+            Books I read this year
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
 
     
 
-    <p>Running virtual Macs on ESXi is a great way to become familiar with the operating system and server software without buying your own Mac lab. To install MacOS on ESXI 5.5 and above is pretty trivial, since VMWare’s hypervisor almost natively supports the OS. There are several steps that must be done however before the OS will boot properly, and even still, before iMessage will work.</p>
-<p>To install MacOS you will need a legitimate installer for the operating system, <a href="https://support.apple.com/en-us/HT201372">which can be produced by any Mac</a> that has purchased the OS.
-<em>Note: just because your Mac came with a specific version of MacOS doesn’t mean that you have it available in the app store. You must ‘purchase’ it for free before you can make installers for it.</em></p>
-<p>This guide assumes that you are using ESXi 6.5, but <a href="https://github.com/DrDonk/unlocker/commits/master">specific versions of Unlocker</a> can be downloaded for any version of ESXi that you’re running. Let’s assume you’ve gotten as far as installing and configuring ESXi 6.5 and are ready to make your Mac VM run. I’ll assume you know a thing or two about ESXi as well.</p>
-<ol>
-<li>Create a new VM with 128 mb of video memory and at least 4gb of RAM. These are practically the only requirements to boot macOS, but you can customize it as you like.</li>
-<li>Enable SSH on your ESXi host through the web console.</li>
-<li>SSH into your host and <code>cd</code> into your datastore (<code>/vmfs/volumes/yourdatastorename</code>).</li>
-<li>Download Unlocker 2.1.0 from Dave Parson’s Github: <code>wget https://github.com/DrDonk/unlocker/archive/c6ff390a8793a3cf37f91cad33c5cda803e59165.zip</code>
-This script will modify ESXi’s local.sh that will allow MacOS to boot fully.</li>
-<li>Extract the zip file with <code>gunzip</code>:
-<code>gunzip c6ff390a8793a3cf37f91cad33c5cda803e59165.zip</code></li>
-<li><code>cd</code> inside the newly spawned directory and make the esxi script bootable:
-<code>chmod +x esxi-install.sh</code></li>
-<li>Run the script:
-<code>./esxi-install.sh</code></li>
-<li>Reboot the host.
-<code>reboot</code></li>
-<li>After the host comes back up, you should be able to successfully install MacOS into the VM. Upload your install ISO for macOS that you made before and attach it to the CD drive of the VM. Run through the installer like normal and get your Mac to the desktop.</li>
-<li>Power down the mac and SSH back into the host. <code>cd</code> back into your datastore (<code>/vmfs/volumes/yourdatastorename</code>). You should see a folder with the name of your VM. CD into that folder. Do an ls and you should see a VMX file of your Mac:
-<code>ExampleMac.vmx</code></li>
-<li>Back up this file before making any changes to it:
-<code>cp ExampleMac.vmx ExampleMac.vmx.orig</code></li>
-<li>Now comes the fun part. You’ve already proven that your virtual Mac will install and run, but a lot of features won’t work on it until we can convince it that several of the fake values from our SMC are Apple-esque enough for it. Without these values iMessage will not work. By manually adding the values to the VMX file we make the VM think it’s a Mac.</li>
-<li>Open up the vmx file with vi:
-<code>vi ExampleMac.vmx</code></li>
-<li>Find and replace <code>ethernet0.addressType = &quot;generated&quot;</code> and replace it with <code>ethernet0.addressType = &quot;static&quot;</code></li>
-<li>Find and replace <code>ethernet0.GeneratedAddress</code> with <code>ethernet0.Address</code></li>
-<li>Look up a random Apple-owned MAC address for your virtual Mac. <a href="https://hwaddress.com/company/apple-inc">This</a> is a good place to look through all the Apple owned MAC addresses.</li>
-<li>Convert that string to lowercase and replace your address listed under <code>ethernet0.Address</code> so it looks like so:
-<code>ethernet0.Address = &quot;d8:a2:5e:00:00:00&quot;</code></li>
-<li>Add the following lines at the end of the file. This will make your virtual Mac a Mac Pro, the one that’s shaped like a trash can. You can generate values for other Macs with <a href="http://mackie100projects.altervista.org/download-clover-configurator/">Clover Configurator</a> and use those values here instead:
-<code>ethernet0.checkMACAddress = &quot;FALSE&quot;</code>
-<code>board-id.reflectHost = &quot;FALSE&quot;</code>
-<code>board-id = &quot;F5KLA770F9VM2BC3A&quot;</code>
-<code>hw.model.reflectHost = &quot;FALSE&quot;</code>
-<code>hw.model = &quot;MacPro6,1&quot;</code>
-<code>serialNumber.reflectHost = &quot;FALSE&quot;</code>
-<code>serialNumber = &quot;F5KLA770F9VM&quot;</code>
-<code>smbios.reflectHost = &quot;FALSE&quot;</code>
-<code>efi.nvram.var.ROM.reflectHost = &quot;FALSE&quot;</code>
-<code>efi.nvram.var.MLB.reflectHost = &quot;FALSE&quot;</code>
-<code>efi.nvram.var.ROM = &quot;3c0754a2f9be&quot;</code>
-<code>efi.nvram.var.MLB = &quot;C0720270FQVDKP2AT&quot;</code></li>
-<li>Save your changes to the VMX file and start it up. If your VM fails to start don’t worry, you can usually fix whatever it doesn’t like by reading the error message posted in the logs at the bottom. If that doesn’t work, you can restore your vmx file from the backup you created.
-<figure><img src="/images/eiomfe17_Failed_Tasks.png"><figcaption>
-      <h4>If you have a problem, it will show up here.</h4>
-    </figcaption>
-</figure>
-</li>
-<li>Once the Mac has started up fire up iMessage and log in. If all goes as planned you should be presented with a fresh message pad to send iMessages from.
-<figure><img src="/images/eiomfe17_imessage.png"><figcaption>
-      <h4>Ready to send iMessages from ESXi</h4>
-    </figcaption>
-</figure>
-</li>
-</ol>
-<p>I know this was a quick and dirty tutorial and a lot of details have been skipped, so if you get stuck on any part please let me know in the comments and I’ll help you out!</p>
+    <hr>
+<p>This year I&rsquo;ve noticed a fashion of posting &lsquo;year in review&rsquo; blog posts to herald in the new year. I rarely find time to write about anything worth reading about during most normal weeks, but decided that reviewing some of my year&rsquo;s highlights might be an easier post than most.</p>
+<a class="header-link" href="#projects-that-crossed-the-finish-line"><h2 id="projects-that-crossed-the-finish-line">Projects that crossed the finish line</a> </h2>
+<p>At any moment I have dozens of projects that I am <em>whole heartedly</em> committed to finishing, but the reality is that few of these projects reach a level of maturity to be called an MVP (let alone &lsquo;finished&rsquo;). Here are a couple that made it to <em>at least</em> MVP this year:</p>
+<a class="header-link" href="#windows-free-at-last"><h3 id="windows-free-at-last">Windows-free at last</a> </h3>
+<p>This fight is hard-won after a lifetime of fighting: my household is now completely Windows-free. This year I switched my gaming machine over to <a href="https://bazzite.gg/">bazzite</a> and found it so rock-solid that I erased my Windows VM for good. My wife&rsquo;s Surface Pro was ready to retire, so we replaced it with a Macbook Air and gave the Surface Pro as shiny new Linux distribution. I&rsquo;m a little nervous about bazzite&rsquo;s future with the <a href="https://www.forbes.com/sites/jasonevangelho/2024/12/19/lenovo-all-but-confirms-new-steamos-handheld-with-surprise-event/">Valve finally opening up SteamOS</a> to the rest of the world. More Linux in the world can&rsquo;t be a bad thing, but I worry that Valve may begin to focus their Linux contributions to Steam on this single distribution, rather than continuing to make their tools (mostly) distribution agnostic.</p>
+<a class="header-link" href="#application-dashboard"><h3 id="application-dashboard">Application dashboard</a> </h3>
+<p>The Applications tab you see on the left is both dynamically generated and limited in scope to apps that you have access to. It&rsquo;s hacked together with consul-template and node, and doesn&rsquo;t work particularly well but it&rsquo;s better than nothing. Eventually I&rsquo;d like to replace it with an IDP-generated dashboard, but that will have to be a project for this year or next year.</p>
+<a class="header-link" href="#level-up-your-homelab-without-kubernetes"><h3 id="level-up-your-homelab-without-kubernetes">Level Up Your Homelab Without Kubernetes</a> </h3>
+<p>I presented a talk at <a href="https://saintcon.org/">SaintCon 2024</a> titled &lsquo;Level Up Your Homelab Without Kubernetes&rsquo; on the basic architecture of the lab I&rsquo;ve been running happily for the last several years. It required a complete rebuild of the lab stack, which has had some major changes in the past few years. The working demo <a href="https://github.com/Cronocide/hashistack_demo">can be found on my Github</a>. A lot of the best practices I implemented in this project have yet to make it to my personal lab, so I hope I can get to that this year.</p>
+<a class="header-link" href="#books-i-read-this-year"><h2 id="books-i-read-this-year">Books I read this year</a> </h2>
+<p>I love reading (or rather listening) to books of several genres. I enjoy classics, epics, self-help books, and the occasional young-adult fantasy novel. Maintaining my reading habit was a lot easier this year as I was finally able to fire up my Audiobookshelf server and get a pipeline started for downloading audiobooks at scale. My wife and friends have also enjoyed this improvement and I hope it will continue to work well for a couple of years at least.</p>
+<a class="header-link" href="#animal-farm"><h3 id="animal-farm">Animal Farm</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/170448.Animal_Farm">Goodreads</a>)</p>
+<p>I&rsquo;ve been meaning to attempt many of Orwell&rsquo;s books since I swore off 1984 after my first reading, and this was my first. This book was also my first inagural test of my new Audiobookshelf server. I can&rsquo;t add any meaningful commentary to the corpus of discussion that this book has already cultivated, but I can see why the work is often considered less alegorical than it is fantastic. It really did feel like a McCarthyistic fairy tail, but made it&rsquo;s points clearly and elequently. As technocracy becomes the reigning class in our time, the powerlessness of the less-educated classes is starkly illustrated by the work. Current events put it&rsquo;s lessons into modern relevance, which is usually true when discussing any work by Orwell.</p>
+<a class="header-link" href="#steppenwolf"><h3 id="steppenwolf">Steppenwolf</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/16631.Steppenwolf">Goodreads</a>)</p>
+<p>Hermann Hesse makes it clear in his anniversary preface of the work that he intended this work to hit more strongly with older generations, but I (along with many other readers) found this work profoundly relevant to my own life and struggles, brief though they so far have been. Despite the somber and weird nature of the Steppenwolf, I found him relatable in many important ways. The climactic sentence of life was one that had me in tears at the end, and I believe this will be a work I will return to again when I&rsquo;m feeling the lonely self-indulgent moods it so well describes.</p>
+<a class="header-link" href="#the-frugal-wizards-guide-to-surviving-medeival-england"><h3 id="the-frugal-wizards-guide-to-surviving-medeival-england">The Frugal Wizard&rsquo;s Guide to Surviving Medeival England</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/60531410-the-frugal-wizard-s-handbook-for-surviving-medieval-england">Goodreads</a>)</p>
+<p>While I&rsquo;m not the most thorough die-hard fan of Brandon Sanderson&rsquo;s works, I have a solid appreciation for many of them that started with my discovery of his short story he wrote for the Infinity Blade mobile game that I played as a kid. I enjoyed the Mistborn series but must admit I haven&rsquo;t gotten to his Stormlight Archive yet. With that preface, I will say that I thoroughly did not enjoy this particular work. The vocabulary was uninspired and dull and the story was both uninteresting and uncomplelling. Surprisingly, the author managed to make his main character <em>less</em> interesting by the end of the story than the beginning of the story. If you&rsquo;re looking for an allegory about how you&rsquo;re not as cool as you think you are, this book is appropriate on multiple levels.</p>
+<a class="header-link" href="#how-to-be-a-dad"><h3 id="how-to-be-a-dad">How To Be A Dad</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/49610607-how-to-be-a-dad">Goodreads</a>)</p>
+<p>Not to give away too much here, but I enjoyed the &lsquo;read by the author&rsquo; aspect of this particular audiobook. The author is very knowledgable about pediatry as well as his own book, making the listening experience very enjoyable. Oscar Duke&rsquo;s comments are both relevant and witty without over-indulging in the sarcasm that so often soaks these types of works. The information he presents is both practical and referencable, and the work feels like both a reference manual and a trusted personal advisor at the same time. Some of the information is only relevant to residents of the UK, but not enough of it to offend my American sensibilities.</p>
+<a class="header-link" href="#harry-potter-books-1-7"><h3 id="harry-potter-books-1-7">Harry Potter (Books 1-7)</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/862041.Harry_Potter_Series_Box_Set">Goodreads</a>)</p>
+<p>In preparation for my virst-ever visit to Orlando Studios this year I re-read the Harry Potter series, which was comfortable and amusing. While Rowling quickly gets out of her element by the end of the third book, the characters are charming and the stories are fun even if they lack somewhat originality and depth. Rowling&rsquo;s strength as a storyteller is in creating a core idea that is enlivened by the reader&rsquo;s imagination. As she delves into political moralism and educational commentary the magic is slowly lost.</p>
+<a class="header-link" href="#psychology-of-money"><h3 id="psychology-of-money">Psychology of Money</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/41881472-the-psychology-of-money">Goodreads</a>)</p>
+<p>This book came highly recommended to me and I started it a bit too optimistically for the subjects it covered. I&rsquo;m not a highly-educated investor but I understand some of the basics, and the ideas this book introduced to me left me with more consternation than inspiration. I have pessimistic economic voices that are quite loud in other areas of my life, and the lukewarm outlook this book presented left me feeling more uneasy about my finances than faithful in the advice (however sound) it offered.</p>
+<a class="header-link" href="#subtle-art-of-not-giving-a-fuck"><h3 id="subtle-art-of-not-giving-a-fuck">Subtle Art of Not Giving A Fuck</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/28257707-the-subtle-art-of-not-giving-a-f-ck">Goodreads</a>)</p>
+<p>Mark Manson is a terrific motifivational writer, and I&rsquo;m a sucker for these types of self-help books. I&rsquo;m not a big believer in any particular type of mantra for consuming these type of books, but I like the way author&rsquo;s challenge your operational mode of thinking. Mark does this elegantly in the second half of the book. The first time I attempted this book I struggled to get past the third chapter, but the book really turns up from there. I like to alternate works like this with more classic literature to keep my mind open.</p>
+<a class="header-link" href="#pillars-of-the-earth"><h3 id="pillars-of-the-earth">Pillars of the Earth</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/5043.The_Pillars_of_the_Earth">Goodreads</a>)</p>
+<p>Despite being written as early as 40 years ago, the vocabulistic maturity of this work is impressive. Ken Follett&rsquo;s description of a historically-aligned world is detailed enough to make the mind wander off his tour of medeival England on many occasions. The work has indellible character work: far from being facsimiles, his characters are fatally human and act in ways that are often surprising and disappointing.</p>
+<a class="header-link" href="#the-count-of-monte-cristo"><h3 id="the-count-of-monte-cristo">The Count of Monte Cristo</a> </h3>
+<p>(<a href="https://www.goodreads.com/book/show/7126.The_Count_of_Monte_Cristo">Goodreads</a>)</p>
+<p>I thoroughly love the translation of this work, which unfortunately I can&rsquo;t credit as the most common English version was translated anonymously. The author&rsquo;s use of language is both plain and sublime, but as varied and acrobatic as a gymnist. It&rsquo;s always refreshing to hear again old vocabulary that I haven&rsquo;t heard in awhile and find new words to add to my daily vulgate. The story is entertaining and entrancing. I love following the characters and their reactions to opulance, and remembering that in our time the economically elite are not so deifferent than they were only 200 years ago.</p>
 
 
   </main>
@@ -314,8 +322,8 @@ This script will modify ESXi’s local.sh that will allow MacOS to boot fully.</
 
 
           <div class="pagenav">
-<div class="pagenav-prev" ><span>← </span><a href="/post/batacwror/">Building a Tabletop Arcade Cabinet with RetroArch on RetroPi</a></div>
-<div class="pagenav-next" ><a href="/post/hacktober2019/">Hacktober 2019 - Filesystems</a><span> →</span></div>
+<div class="pagenav-prev" ><span>← </span><a href="/post/boi2024/">Shoot Into the Wild Bluesky</a></div>
+
 </div>
           <footer role="contentinfo">
   <hr>

@@ -6,8 +6,15 @@
     <description>Recent content in Tutorial on cronocide.com</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Shoot Into the Wild Bluesky</title>
+      <link>https://cronocide.com/post/boi2024/</link>
+      <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/boi2024/</guid>
+      <description>&lt;hr&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been on a journey to complete my &lt;a href=&#34;https://bsky.app/&#34;&gt;Bluesky&lt;/a&gt; account setup for over a year now. The content loss I experienced as a result of the evaporation of my Infosec Twitter community in 2022 was largely mitigated by my massive &lt;em&gt;(and unhealthy)&lt;/em&gt; Reddit diet at the time, but when &lt;a href=&#34;https://www.engadget.com/apollo-and-other-popular-third-party-reddit-apps-have-shut-down-123149140.html&#34;&gt;they shut down 3rd party apps&lt;/a&gt; I knew the time had come for me to do some &lt;em&gt;major&lt;/em&gt; social media readjustments. I started the setup of &lt;a href=&#34;https://bsky.app/profile/cronoci.de&#34;&gt;my Bluesky account&lt;/a&gt; back in 2023 but only barely got around to finishing setting it up today. As I re-read the docs for setting up the account I re-organized the information around the ideas of ownership in Bluesky and thought I would jot down some quick learnings on the process.&lt;/p&gt;</description>
+    </item>
     <item>
       <title>Building your first SIEM with the Elastic Stack</title>
       <link>https://cronocide.com/post/byfswtes/</link>

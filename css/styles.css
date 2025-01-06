@@ -1,3 +1,6 @@
+/* Debugging */
+/* * {outline: 1px solid #f00 !important;} */
+
 /* Fonts */
 @font-face {
     font-family: 'Futura';
@@ -47,7 +50,6 @@
     font-weight: var(--font-default-weight);
     src: local('BigNoodleToo'), url('https://cronocide.com/css/fonts/big-noodle-too-oblique.woff') format('woff');
 }
-
 *,
 *::before,
 *::after {
@@ -83,6 +85,7 @@ h1 + *,
 h2 + *,
 h3 + *,
 h4 + *,
+ul + *,
 p + * {
     margin-top: 1.2rem;
 }
@@ -207,6 +210,7 @@ h1 {
     font-family: BigNoodleToo, serif;
     font-weight: unset;
     font-size: 3.5rem;
+    vertical-align: middle;
 }
 h2 {
     font-size: 1.66rem;
@@ -505,6 +509,23 @@ caption {
     padding: 2.25rem;
     padding-bottom: 0;
 }
+
+.iframe-and-footer > div > #main > h1 {
+    display: inline-block;
+    overflow: revert;
+}
+
+.iframe-and-footer > div > #main > div {
+    display: inline-block;
+    vertical-align: text-top;
+    background-color: unset;
+    padding-bottom: 1rem;
+}
+
+.iframe-and-footer > div > #main > div > ul {
+    margin-left: 2rem;
+}
+
 [role="contentinfo"] {
     font-size: 0.85rem;
     margin-top: 4rem;
@@ -645,6 +666,21 @@ caption {
     padding-bottom: 0rem;
     padding-top: .15rem;
     margin-right: .3rem;
+}
+.blue-tag li {
+    color: #ffffff;
+    background-color: #2e9ff5;
+    border:solid #2e9ff5 3px;
+    font-style: normal;
+    font-weight: bold;
+    max-width: 6rem;
+    width: 6rem;
+    text-align: center;
+}
+.blue-tag li:hover {
+    border-radius: 0.33em;
+    border: 3px solid #ffffff;
+    background: #288de5;
 }
 .tags a {
     border-bottom: none;
@@ -868,7 +904,7 @@ p:empty {
     background: #efefef;
 }
 .site-error strong {
-    color: #C83737;
+    color: #d03c38;
 }
 
 /* SVG icons */
@@ -1029,6 +1065,36 @@ h1 svg {
   max-width: 100%;
 }
 
+/* Card layouts */
+.card-icon {
+    max-width: 3rem;
+    display: inline-block;
+}
+.card-description {
+    display: inline-block;
+    padding-top: .2rem;
+    padding-left: .5rem;
+    vertical-align: top;
+}
+.card > a > h2 {
+    display: block;
+    width: fit-content;
+}
+.card {
+    border-collapse: collapse;
+    border-collapse:separate;
+    border:solid #ffffff 3px;
+    border-radius:0.33em;
+    -moz-border-radius: 0.33em;
+    -webkit-border-radius: 0.33em;
+    padding: 1rem;
+    width: 31%;
+    min-width: fit-content;
+    display: inline-block;
+    margin-left: 1rem;
+    padding-right: .5rem;
+    padding-bottom: 0.6rem;
+}
 /* Utilities */
 .vh {
   clip: rect(1px, 1px, 1px, 1px);
@@ -1148,8 +1214,11 @@ div.social a > * {
     .iframe-and-footer {
         margin-left: 0rem;
         max-width: 80rem;
-        padding-bottom: 0rem;
-        padding: 2.25rem;
+        padding: 0rem;
+    }
+    .iframe-and-footer > div > #main > h1 {
+        padding-left: 2.25rem;
+        display: block;
     }
     #menu-button {
         display: block;
@@ -1165,6 +1234,9 @@ div.social a > * {
     }
     code {
       word-break: break-all;
+    }
+    .card {
+        min-width: 94%;
     }
     div.social {
         margin-top: .6rem;
@@ -1207,6 +1279,9 @@ div.social a > * {
     main a::after {
         content: " (" attr(href) ")";
         word-break: break-word;
+    }
+    .tags > li > a {
+        content: '';
     }
     main nav a::after {
         content: '';
