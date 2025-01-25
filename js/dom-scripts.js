@@ -40,7 +40,7 @@ function checkForStatusText() {
       return response.json();
     })
     .then(text => {
-      if (!(Object.keys(obj).length === 0)) {
+      if (!(Object.keys(text).length === 0)) {
         // Display the fetched text in an element
         document.getElementById('banner-text').textContent = text.message;
         document.getElementById('banner').classList.add('fade-in');
