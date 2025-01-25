@@ -144,6 +144,90 @@ p.http-status {
     font-weight: bold;
 }
 
+/* Notification Banner */
+#banner {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    min-height: 3.4rem;
+    background-color: #ee3c33;
+    color: #ffffff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0 1.5rem;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 1000;
+    font-family: BigNoodleToo, serif;
+    box-sizing: inherit;
+}
+#banner-text {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 2rem;
+}
+#banner.info {
+    background-color: #2e9ff5;
+}
+#banner.warning {
+    background-color: #fdbe2e;
+    color: #625434;
+}
+button.close-btn {
+    background: none;
+    border: none;
+    color: #ffffff;
+    font-size: 18px;
+    cursor: pointer;
+    line-height: 1;
+    padding: 0;
+    font-family: serif;
+    right: 1.5rem;
+}
+button.close-btn:hover {
+    background: none;
+    border: none;
+}
+.timer-bar {
+    position: absolute;
+    transform-origin: left;
+    bottom: 0rem;
+    height: 2px;
+    background-color: #ffffff;
+    width: 100%;
+    animation: timerbar 7s linear forwards;
+}
+.fade-in {
+    animation: fadein 0.1s ease-in-out forwards;
+}
+.fade-out {
+    animation: fadeout 0.1s ease-in-out forwards;
+}
+@keyframes fadein {
+    from {
+        transform: scaleY(0);
+    }
+    to {
+        transform: scaleY(1);
+    }
+}
+@keyframes fadeout {
+    from {
+        transform: scaleY(1);
+    }
+    to {
+        transform: scaleY(0);
+    }
+}
+@keyframes timerbar {
+    from {
+        transform: scaleX(1);
+    }
+    to {
+        transform: scaleX(0);
+    }
+}
 
 
 /* Animated HR */
@@ -159,7 +243,7 @@ hr {
     to {
       width: 100%;
     }
-  }
+}
 hr.animate {
     width: 100%;
     animation: drawLine 1s ease-out forwards;
@@ -564,7 +648,6 @@ caption {
     font-weight: bold;
     font-size: 1.3rem;
     padding: 0 1rem;
-    justify-items: ;
 }
 .pattern a:focus {
     outline: none;

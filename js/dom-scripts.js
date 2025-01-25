@@ -29,6 +29,44 @@
   }
 }());
 
+function checkForStatusText() {
+  // Reach out to https://crono.link/status.json and see if any text is returned. If so, display it.
+  const lastUpdate = localStorage.getItem('bannerClosed');
+  if (((new Date().getTime() / 1000) - lastUpdate) > 500) {
+    fetch('https://gist.cronocide.net/Cronocide/site-status/raw/HEAD/status.json', { redirect: 'follow', mode: 'no-cors',}).then(response => {
+      if (!response.ok) {
+        throw new Error(`Unable to get site status: got ${response.status}`);
+      }
+      return response.json();
+    })
+    .then(text => {
+      // Display the fetched text in an element
+      document.getElementById('banner-text').textContent = text.message;
+      document.getElementById('banner').classList.add('fade-in');
+      if (Object.hasOwn(text, 'type')) {
+        document.getElementById('banner').classList.add(text.type);
+      }
+      document.getElementById('banner').style.display = null;
+    })
+    .catch(error => {
+      // Handle errors
+      console.error('Error fetching site-status text:', error);
+    });
+  }
+}
+
+function fadeBanner() {
+  var banner = document.querySelectorAll('#banner.fade-in')
+  if (banner.length > 0) {
+    banner[0].classList.remove('fade-in');
+  } else {
+    document.getElementById('banner').classList.add('fade-out');
+    localStorage.setItem('bannerClosed', (new Date().getTime() / 1000));
+  }
+}
+document.getElementById('banner').addEventListener('animationend', fadeBanner);
+document.addEventListener('DOMContentLoaded', checkForStatusText);
+
 /* Persist navigation scroll point */
 (function () {
   window.onbeforeunload = function () {
@@ -50,7 +88,7 @@
   })
 }());
 
-// Rip out prism inline styles
+/* Rip out prism inline styles */
 function removePrismInlines() {
   for (var element of document.querySelectorAll('pre.language-bash')) {
     element.style = null;
@@ -76,6 +114,7 @@ document.addEventListener('DOMContentLoaded', removePrismInlines);
     }
   });
 }());
+
 /* Auto-animate HRs */
 // listen for scroll event and call animate function
 document.addEventListener('DOMContentLoaded', animate);
