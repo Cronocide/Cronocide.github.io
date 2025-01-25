@@ -33,7 +33,7 @@ function checkForStatusText() {
   // Reach out to https://crono.link/status.json and see if any text is returned. If so, display it.
   const lastUpdate = localStorage.getItem('bannerClosed');
   if (((new Date().getTime() / 1000) - lastUpdate) > 500) {
-    fetch('https://gist.cronocide.net/Cronocide/site-status/raw/HEAD/status.json', { redirect: 'follow', mode: 'no-cors',}).then(response => {
+    fetch('https://gist.cronocide.net/Cronocide/site-status/raw/HEAD/status.json', { redirect: 'follow'}).then(response => {
       if (!response.ok) {
         throw new Error(`Unable to get site status: got ${response.status}`);
       }
