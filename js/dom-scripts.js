@@ -40,13 +40,15 @@ function checkForStatusText() {
       return response.json();
     })
     .then(text => {
-      // Display the fetched text in an element
-      document.getElementById('banner-text').textContent = text.message;
-      document.getElementById('banner').classList.add('fade-in');
-      if (Object.hasOwn(text, 'type')) {
-        document.getElementById('banner').classList.add(text.type);
+      if (!(Object.keys(obj).length === 0)) {
+        // Display the fetched text in an element
+        document.getElementById('banner-text').textContent = text.message;
+        document.getElementById('banner').classList.add('fade-in');
+        if (Object.hasOwn(text, 'type')) {
+          document.getElementById('banner').classList.add(text.type);
+        }
+        document.getElementById('banner').style.display = null;
       }
-      document.getElementById('banner').style.display = null;
     })
     .catch(error => {
       // Handle errors
