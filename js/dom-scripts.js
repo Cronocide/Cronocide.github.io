@@ -66,8 +66,12 @@ function fadeBanner() {
     localStorage.setItem('bannerClosed', (new Date().getTime() / 1000));
   }
 }
-document.getElementById('banner').addEventListener('animationend', fadeBanner);
-document.addEventListener('DOMContentLoaded', checkForStatusText);
+try {
+  document.getElementById('banner').addEventListener('animationend', fadeBanner);
+  document.addEventListener('DOMContentLoaded', checkForStatusText);
+} catch(e) {
+
+}
 
 /* Persist navigation scroll point */
 (function () {
