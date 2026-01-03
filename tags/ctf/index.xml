@@ -4,16 +4,18 @@
     <title>CTF on cronocide.com</title>
     <link>https://cronocide.com/tags/ctf/</link>
     <description>Recent content in CTF on cronocide.com</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
-    <atom:link href="https://cronocide.com/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate><atom:link href="https://cronocide.com/tags/ctf/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Hacktober 2019 - Filesystems</title>
       <link>https://cronocide.com/post/hacktober2019/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
       <guid>https://cronocide.com/post/hacktober2019/</guid>
-      <description>&lt;p&gt;I recently finished the Hacktober 2019 CTF from the great folks &lt;a href=&#34;https://twitter.com/uvucsc&#34;&gt;@UVUCSC&lt;/a&gt;. The challenges were mostly entry-level but there were a few that were quite challenging.&lt;/p&gt;&#xA;&lt;p&gt;The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend &lt;a href=&#34;https://www.linkedin.com/in/ddbishop/&#34;&gt;chuck&lt;/a&gt; called &lt;code&gt;filesystems&lt;/code&gt;. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.&lt;/p&gt;</description>
+      <description>I recently finished the Hacktober 2019 CTF from the great folks @UVUCSC. The challenges were mostly entry-level but there were a few that were quite challenging.
+The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend chuck called filesystems. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</description>
     </item>
+    
   </channel>
 </rss>

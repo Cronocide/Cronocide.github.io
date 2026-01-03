@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.139.4">
+  <meta name="generator" content="Hugo 0.92.2" />
   <link rel="canonical" href="https://cronocide.com/post/saedfafc/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -259,38 +259,38 @@
     <p>My 3rd day of class started out with the unpleasant realization that my server was offline as of 4:30 this morning. I got the notice from my Uptime Robot who monitors the web server. I assumed that it was either a problem with my nginx frontend not starting automatically after a VM crash or a loss of internet to the house. Since I didn’t realize the problem until I was in class there wasn’t much I could do. My VPN has been a work-in-progress, and I now realized that the work on that particular project needs to get finished soon.</p>
 <p>I couldn’t get into my Unifi controller to manage my firewall so I assumed that the internet was down. I called and found out from my roommate that the internet was working. My suspicion turned to the server itself. When I got home 12 hours later I confirmed that this was the case.</p>
 <p>After hacking my way into my DRAC with a completely unnecessary amount of security downgrading, I found this welcoming message on my BIOS screen:</p>
-<figure><img src="/images/saedfafc_1.png"><figcaption>
-      <h4>This doesn&#39;t look good</h4>
-    </figcaption>
+<figure><img src="/images/saedfafc_1.png"/><figcaption>
+            <h4>This doesn&#39;t look good</h4>
+        </figcaption>
 </figure>
 
 <p>Fortunately it was not one of my NAS drives, just the drive that holds my virtual machine installs. Great.</p>
 <p>So I pulled the drive out, blew on it like the 90’s kid I am, and shoved it back in. Now it was showing up as a foreign drive in my PERC. With no small amount of bravery, I cleared the old config in the PERC for the RAID 0 drive and created a new virtual disk for it without reinitializing.</p>
 <p>But I still didn’t know if I’d get my VM’s off of the drive yet.</p>
 <p>The BIOS was now happy and showed my normal virtual disk configurations from the PERC. I booted into ESXi and wasn’t really surprised to see that none of my VM’s were found.</p>
-<figure><img src="/images/saedfafc_2.png"><figcaption>
-      <h4>Nothing to see here</h4>
-    </figcaption>
+<figure><img src="/images/saedfafc_2.png"/><figcaption>
+            <h4>Nothing to see here</h4>
+        </figcaption>
 </figure>
 
 <p>Now I’m by no means trained in any way on ESXi, I only know what I’ve figured out so far. So I SSH’ed in and listed the volumes:</p>
-<figure><img src="/images/saedfafc_3.png"><figcaption>
-      <h4>Volumes available to ESXi</h4>
-    </figcaption>
+<figure><img src="/images/saedfafc_3.png"/><figcaption>
+            <h4>Volumes available to ESXi</h4>
+        </figcaption>
 </figure>
 
 <p>After listing the contents I determined that the data on my VM disk did survive in some degree. Yay!</p>
-<figure><img src="/images/saedfafc_4.png"><figcaption>
-      <h4>Data survivors</h4>
-    </figcaption>
+<figure><img src="/images/saedfafc_4.png"/><figcaption>
+            <h4>Data survivors</h4>
+        </figcaption>
 </figure>
 
 <p>However nothing showed up in the web console.</p>
 <p>So after searching around I found some useful commands that helped me get a grip on the situation:</p>
 <p><code>esxcfg-volume -l</code></p>
-<figure><img src="/images/saedfafc_5.png"><figcaption>
-      <h4>Drive can be mounted!</h4>
-    </figcaption>
+<figure><img src="/images/saedfafc_5.png"/><figcaption>
+            <h4>Drive can be mounted!</h4>
+        </figcaption>
 </figure>
 
 <p>It says the drive can mount and re signature. Awesome.</p>
@@ -300,9 +300,9 @@
 <p>esxcfg-volume -M</p>
 <p>(The -M tells it to mount this volume on boot every time.)</p>
 <p>And it worked!</p>
-<figure><img src="/images/saedfafc_6.png"><figcaption>
-      <h4>Would you look at that!</h4>
-    </figcaption>
+<figure><img src="/images/saedfafc_6.png"/><figcaption>
+            <h4>Would you look at that!</h4>
+        </figcaption>
 </figure>
 
 <p>I was able to load up all of my VM’s and boot them normally without having to re-connect the datastore or remap my VM’s in the browser.</p>

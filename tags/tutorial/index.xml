@@ -4,58 +4,76 @@
     <title>Tutorial on cronocide.com</title>
     <link>https://cronocide.com/tags/tutorial/</link>
     <description>Recent content in Tutorial on cronocide.com</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://cronocide.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate><atom:link href="https://cronocide.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Shoot Into the Wild Bluesky</title>
       <link>https://cronocide.com/post/boi2024/</link>
       <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/post/boi2024/</guid>
-      <description>&lt;hr&gt;&#xA;&lt;p&gt;I&amp;rsquo;ve been on a journey to complete my &lt;a href=&#34;https://bsky.app/&#34;&gt;Bluesky&lt;/a&gt; account setup for over a year now. The content loss I experienced as a result of the evaporation of my Infosec Twitter community in 2022 was largely mitigated by my massive &lt;em&gt;(and unhealthy)&lt;/em&gt; Reddit diet at the time, but when &lt;a href=&#34;https://www.engadget.com/apollo-and-other-popular-third-party-reddit-apps-have-shut-down-123149140.html&#34;&gt;they shut down 3rd party apps&lt;/a&gt; I knew the time had come for me to do some &lt;em&gt;major&lt;/em&gt; social media readjustments. I started the setup of &lt;a href=&#34;https://bsky.app/profile/cronoci.de&#34;&gt;my Bluesky account&lt;/a&gt; back in 2023 but only barely got around to finishing setting it up today. As I re-read the docs for setting up the account I re-organized the information around the ideas of ownership in Bluesky and thought I would jot down some quick learnings on the process.&lt;/p&gt;</description>
+      <description>I&amp;rsquo;ve been on a journey to complete my Bluesky account setup for over a year now. The content loss I experienced as a result of the evaporation of my Infosec Twitter community in 2022 was largely mitigated by my massive (and unhealthy) Reddit diet at the time, but when they shut down 3rd party apps I knew the time had come for me to do some major social media readjustments.</description>
     </item>
+    
     <item>
       <title>Building your first SIEM with the Elastic Stack</title>
       <link>https://cronocide.com/post/byfswtes/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
       <guid>https://cronocide.com/post/byfswtes/</guid>
-      <description>&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;&#xA;&lt;p&gt;This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.&lt;/p&gt;&#xA;&lt;p&gt;After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.&lt;/p&gt;</description>
+      <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.
+After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</description>
     </item>
+    
     <item>
       <title>Hacktober 2019 - Filesystems</title>
       <link>https://cronocide.com/post/hacktober2019/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
       <guid>https://cronocide.com/post/hacktober2019/</guid>
-      <description>&lt;p&gt;I recently finished the Hacktober 2019 CTF from the great folks &lt;a href=&#34;https://twitter.com/uvucsc&#34;&gt;@UVUCSC&lt;/a&gt;. The challenges were mostly entry-level but there were a few that were quite challenging.&lt;/p&gt;&#xA;&lt;p&gt;The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend &lt;a href=&#34;https://www.linkedin.com/in/ddbishop/&#34;&gt;chuck&lt;/a&gt; called &lt;code&gt;filesystems&lt;/code&gt;. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.&lt;/p&gt;</description>
+      <description>I recently finished the Hacktober 2019 CTF from the great folks @UVUCSC. The challenges were mostly entry-level but there were a few that were quite challenging.
+The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend chuck called filesystems. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</description>
     </item>
+    
     <item>
       <title>Enable iMessage on Mac for ESXi (in 2017)</title>
       <link>https://cronocide.com/post/eiomfe17/</link>
       <pubDate>Mon, 01 Jan 2018 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/post/eiomfe17/</guid>
-      <description>&lt;p&gt;Running virtual Macs on ESXi is a great way to become familiar with the operating system and server software without buying your own Mac lab. To install MacOS on ESXI 5.5 and above is pretty trivial, since VMWare’s hypervisor almost natively supports the OS. There are several steps that must be done however before the OS will boot properly, and even still, before iMessage will work.&lt;/p&gt;&#xA;&lt;p&gt;To install MacOS you will need a legitimate installer for the operating system, &lt;a href=&#34;https://support.apple.com/en-us/HT201372&#34;&gt;which can be produced by any Mac&lt;/a&gt; that has purchased the OS.&#xA;&lt;em&gt;Note: just because your Mac came with a specific version of MacOS doesn’t mean that you have it available in the app store. You must ‘purchase’ it for free before you can make installers for it.&lt;/em&gt;&lt;/p&gt;</description>
+      <description>Running virtual Macs on ESXi is a great way to become familiar with the operating system and server software without buying your own Mac lab. To install MacOS on ESXI 5.5 and above is pretty trivial, since VMWare’s hypervisor almost natively supports the OS. There are several steps that must be done however before the OS will boot properly, and even still, before iMessage will work.
+To install MacOS you will need a legitimate installer for the operating system, which can be produced by any Mac that has purchased the OS.</description>
     </item>
+    
     <item>
       <title>Enable 2FA SSH for Mac</title>
       <link>https://cronocide.com/post/e2sfm/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/post/e2sfm/</guid>
-      <description>&lt;p&gt;I’ve been using two-factor authentication with &lt;a href=&#34;https://authy.com/&#34;&gt;Authy&lt;/a&gt; now for awhile and have really enjoyed the flexibility of being able to control all of my logins with 2FA. I got to thinking to myself “Wouldn’t it be cool if I could use 2FA on my SSH logins?”&lt;/p&gt;&#xA;&lt;p&gt;Well, it turns out that you can! I recently followed a tutorial by &lt;a href=&#34;https://servinglinux.com/articles/entry-pdf-export/1-secure-ssh-with-2fa/&#34;&gt;servinglinux.com&lt;/a&gt; and with little adaptation was able to get 2FA working beautifully on my Macs.&lt;/p&gt;</description>
+      <description>I’ve been using two-factor authentication with Authy now for awhile and have really enjoyed the flexibility of being able to control all of my logins with 2FA. I got to thinking to myself “Wouldn’t it be cool if I could use 2FA on my SSH logins?”
+Well, it turns out that you can! I recently followed a tutorial by servinglinux.com and with little adaptation was able to get 2FA working beautifully on my Macs.</description>
     </item>
+    
     <item>
       <title>Installing Homebrew on Mac</title>
       <link>https://cronocide.com/post/ihom/</link>
       <pubDate>Sat, 16 Sep 2017 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/post/ihom/</guid>
-      <description>&lt;p&gt;I often receive complaints from developers and administrators about the lack of a centralized package system on the Mac. While Apple did provide &lt;a href=&#34;https://en.wikipedia.org/wiki/Installer_(macOS)&#34;&gt;installer&lt;/a&gt;, the Darwin-era package installation app, it did not really have any sort of repository system until the App Store was released with Snow Leopard. &lt;a href=&#34;https://en.wikipedia.org/wiki/MacPorts&#34;&gt;MacPorts&lt;/a&gt;, the successor of DarwinPorts, was the de-facto package manager for enthusiasts for a long time. But in recent years a lot of the community has switched over to Homebrew for their package management.&lt;/p&gt;</description>
+      <description>I often receive complaints from developers and administrators about the lack of a centralized package system on the Mac. While Apple did provide installer, the Darwin-era package installation app, it did not really have any sort of repository system until the App Store was released with Snow Leopard. MacPorts, the successor of DarwinPorts, was the de-facto package manager for enthusiasts for a long time. But in recent years a lot of the community has switched over to Homebrew for their package management.</description>
     </item>
+    
     <item>
       <title>Setting up a Vagrant Box on Mac</title>
       <link>https://cronocide.com/post/suavbom/</link>
       <pubDate>Wed, 23 Aug 2017 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/post/suavbom/</guid>
-      <description>&lt;p&gt;This year I’ll be working with several different operating systems for school. I want to run each of them as natively as I can on my production machine without having to un-boot my production Mac environment. Virtualization is the obvious answer.&lt;/p&gt;&#xA;&lt;p&gt;If you’re anything like me you’ve always been turned off by the graphical interfaces for Virtualbox and VMWare. Personally, I’ve always preferred to work in a command-line environment anyway. I’m going to use something called &lt;code&gt;vagrant&lt;/code&gt; to boot a pre-configured VM and get me SSH’ed into it.&lt;/p&gt;</description>
+      <description>This year I’ll be working with several different operating systems for school. I want to run each of them as natively as I can on my production machine without having to un-boot my production Mac environment. Virtualization is the obvious answer.
+If you’re anything like me you’ve always been turned off by the graphical interfaces for Virtualbox and VMWare. Personally, I’ve always preferred to work in a command-line environment anyway. I’m going to use something called vagrant to boot a pre-configured VM and get me SSH’ed into it.</description>
     </item>
+    
   </channel>
 </rss>

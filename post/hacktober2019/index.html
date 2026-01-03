@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.139.4">
+  <meta name="generator" content="Hugo 0.92.2" />
   <link rel="canonical" href="https://cronocide.com/post/hacktober2019/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -1400,18 +1400,18 @@
 </code></pre><p>So we&rsquo;re only <em>one step into this</em> and we&rsquo;re already ready for a tl;dr.
 Well here it is.
 Let&rsquo;s take a look at the content of one of the files:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; xxd key/folder0/file5 | head -n <span style="color:#ae81ff">10</span>
-</span></span><span style="display:flex;"><span>00000000: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000010: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000020: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000030: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000040: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000050: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000060: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000070: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000080: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span><span style="display:flex;"><span>00000090: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
-</span></span></code></pre></div><p>And guess what guys? <em>It goes on for another million bytes like that!</em>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; xxd key/folder0/file5 | head -n <span style="color:#ae81ff">10</span>
+00000000: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000010: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000020: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000030: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000040: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000050: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000060: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000070: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000080: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+00000090: <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span> <span style="color:#ae81ff">0000</span>  ................
+</code></pre></div><p>And guess what guys? <em>It goes on for another million bytes like that!</em>
 The whole thing, just all zeros. And it&rsquo;s not the only one! After sampling files all over that horrible tree all I&rsquo;m seeing is zeros. Megabytes and megabytes of null, all over my hard drive. Thanks chuck!</p>
 <p>We also have this challenge1.img file, which the diskarbitration framework on my mac doesn&rsquo;t recognize and neither does <code>file</code>:</p>
 <pre tabindex="0"><code>$&gt; file challenge1.img
@@ -1432,36 +1432,36 @@ Let us google further:</p>
 <strong>LUKS format uses a metadata header and 8 key-slot areas that are being placed at the beginning of the disk</strong>. The passphrases are used to decrypt a single master key that is stored in the anti-forensic stripes.</p>
 </blockquote>
 <p>That sounds like the type of data that we have! But what about all these blank files? Let&rsquo;s go through all of them and compare the hashes of the empty ones and see if any <em>aren&rsquo;t</em> all zeros:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls key/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file81<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file82<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file83<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file84<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 5a447860f291d664316a344562e14a30
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file85<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file86<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>key/folder3/file87<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
-</span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><p>Aha! Did you see it? Only <em>one</em> file in the keys isn&rsquo;t <em>all</em> zeros! Lets copy that out (key/folder3/file84).
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls key/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
+...
+MD5 <span style="color:#f92672">(</span>key/folder3/file81<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
+MD5 <span style="color:#f92672">(</span>key/folder3/file82<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
+MD5 <span style="color:#f92672">(</span>key/folder3/file83<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
+MD5 <span style="color:#f92672">(</span>key/folder3/file84<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 5a447860f291d664316a344562e14a30
+MD5 <span style="color:#f92672">(</span>key/folder3/file85<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
+MD5 <span style="color:#f92672">(</span>key/folder3/file86<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
+MD5 <span style="color:#f92672">(</span>key/folder3/file87<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> b6d81b360a5672d80c27430f39153e2c
+...
+</code></pre></div><p>Aha! Did you see it? Only <em>one</em> file in the keys isn&rsquo;t <em>all</em> zeros! Lets copy that out (key/folder3/file84).
 What about the header files?</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls header/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
-</span></span><span style="display:flex;"><span>...
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder6/file5<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder6/file6<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder6/file7<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder6/file8<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 213b661636a402ff256d8807e8bb7372
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder6/file9<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder7/file0<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
-</span></span><span style="display:flex;"><span>MD5 <span style="color:#f92672">(</span>header/folder7/file1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
-</span></span><span style="display:flex;"><span>...
-</span></span></code></pre></div><p>Eureka! (does anyone say that anymore??) We have only <em>one</em> file in the headers file that isn&rsquo;t <em>all</em> zeros. We&rsquo;ll copy it out too (header/folder6/file8).</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; <span style="color:#66d9ef">for</span> file in <span style="color:#66d9ef">$(</span>ls header/*/*<span style="color:#66d9ef">)</span>; <span style="color:#66d9ef">do</span> md5 $file; <span style="color:#66d9ef">done</span>
+...
+MD5 <span style="color:#f92672">(</span>header/folder6/file5<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
+MD5 <span style="color:#f92672">(</span>header/folder6/file6<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
+MD5 <span style="color:#f92672">(</span>header/folder6/file7<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
+MD5 <span style="color:#f92672">(</span>header/folder6/file8<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 213b661636a402ff256d8807e8bb7372
+MD5 <span style="color:#f92672">(</span>header/folder6/file9<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
+MD5 <span style="color:#f92672">(</span>header/folder7/file0<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
+MD5 <span style="color:#f92672">(</span>header/folder7/file1<span style="color:#f92672">)</span> <span style="color:#f92672">=</span> 2c7ab85a893283e98c931e9511add182
+...
+</code></pre></div><p>Eureka! (does anyone say that anymore??) We have only <em>one</em> file in the headers file that isn&rsquo;t <em>all</em> zeros. We&rsquo;ll copy it out too (header/folder6/file8).</p>
 <p>So now that we have just <em>one</em> header and <em>one</em> key, we <em>should</em> have enough data to decrypt the disk image (if it is a LUKS image that is).</p>
 <p>Unfortunately that means it is time to move over to Linux to try this out. Fortunately it&rsquo;s just a VM that I can fire up. For this challenge I used a vanilla Ubuntu 18.04 box.</p>
 <p>Now I don&rsquo;t know anything about LUKS, so it&rsquo;s time to do a bit of research. The site I posted above seems to do a pretty good job of explaining what we need to do to &ldquo;restore&rdquo; the LUKS header to our &ldquo;damaged&rdquo; image:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
-</span></span></code></pre></div><p>So let&rsquo;s try it out. After copying the challenge1.img, file8 and file84 to the linux VM, we try it out:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cryptsetup luksHeaderRestore challenge1.img --header-backup-file file8
-</span></span></code></pre></div><p>Doing so we are given this handy little warning:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cryptsetup luksHeaderRestore &lt;device&gt; --header-backup-file &lt;file&gt;
+</code></pre></div><p>So let&rsquo;s try it out. After copying the challenge1.img, file8 and file84 to the linux VM, we try it out:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cryptsetup luksHeaderRestore challenge1.img --header-backup-file file8
+</code></pre></div><p>Doing so we are given this handy little warning:</p>
 <pre tabindex="0"><code>WARNING!
 ========
 Device challenge1.img does not contain LUKS header. Replacing header can destroy data on that device.
@@ -1473,31 +1473,31 @@ Are you sure? (Type uppercase yes):
 <p>If we run <code>file</code> on challenge1.img <em>now</em> we get:</p>
 <pre tabindex="0"><code>challenge1.img: LUKS encrypted file, ver 1 [aes, xts-plain64, sha256] UUID: c3c465b4-4a78-4215-975e-f8ac6c8350ea
 </code></pre><p>Ok, so now we have to decrypt it and mount any file systems on it&hellip; I think. After digging through the <code>man</code> page for <code>cryptsetup</code> I learn the following:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>luksOpen &lt;device&gt; &lt;name&gt; <span style="color:#f92672">(</span>old syntax<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>       Opens the LUKS device &lt;device&gt; and sets up a mapping &lt;name&gt; after successful verification of the supplied passphrase.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>       First, the passphrase is searched in LUKS tokens. If it<span style="color:#960050;background-color:#1e0010">&#39;</span>s not found in any token and also the passphrase is not supplied via --key-file, the command prompts <span style="color:#66d9ef">for</span> it interactively.
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>       &lt;options&gt;  can  be  <span style="color:#f92672">[</span>--key-file, --keyfile-offset, --keyfile-size, --readonly, --test-passphrase, --allow-discards, --header, --key-slot, --master-key-file, --token-id, --token-only, --dis‐
-</span></span><span style="display:flex;"><span>       able-keyring, --disable-locks<span style="color:#f92672">]</span>.
-</span></span></code></pre></div><p>What I understand from this is that this command <em>should</em> provide us a decrypted device at <code>&lt;name&gt;</code> <em>if</em> we give it a valid keyfile and cooresponding LUKS device, which we <em>should</em> have. That&rsquo;s a lot of <em>should&rsquo;s</em>. We&rsquo;ll see if this works.</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; sudo cryptsetup luksOpen challenge1.img challenge1_decrypted --key-file file84
-</span></span></code></pre></div><p>Ok, it says it worked, but now what? Some more googling later I learn that a <em>mapping</em> generated by LUKS is stored in <code>/dev/mapper/</code>, and looking there sure enough:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; ls /dev/mapper/
-</span></span><span style="display:flex;"><span>challenge1_decrypted  control
-</span></span></code></pre></div><p>Is this it? Did we do it? Did we create a decrypted device?? Let&rsquo;s try mounting it:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; sudo mkdir /mnt/challenge1
-</span></span><span style="display:flex;"><span>$&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
-</span></span><span style="display:flex;"><span>$&gt;
-</span></span></code></pre></div><p>It worked! No errors! Let&rsquo;s <code>cd</code> to that directory and get our flag!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> ls
-</span></span><span style="display:flex;"><span>$&gt;
-</span></span></code></pre></div><p>Uh, what?</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; ls -la
-</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">4</span>
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">1</span> vagrant vagrant    <span style="color:#ae81ff">0</span> Oct  <span style="color:#ae81ff">2</span> 17:42 .
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">3</span> root    root    <span style="color:#ae81ff">4096</span> Oct <span style="color:#ae81ff">29</span> 16:18 ..
-</span></span></code></pre></div><p>There&rsquo;s nothing in there! It&rsquo;s empty! We came all this way&hellip; after all this work&hellip;</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">luksOpen &lt;device&gt; &lt;name&gt; <span style="color:#f92672">(</span>old syntax<span style="color:#f92672">)</span>
+       Opens the LUKS device &lt;device&gt; and sets up a mapping &lt;name&gt; after successful verification of the supplied passphrase.
+
+       First, the passphrase is searched in LUKS tokens. If it<span style="color:#960050;background-color:#1e0010">&#39;</span>s not found in any token and also the passphrase is not supplied via --key-file, the command prompts <span style="color:#66d9ef">for</span> it interactively.
+
+       &lt;options&gt;  can  be  <span style="color:#f92672">[</span>--key-file, --keyfile-offset, --keyfile-size, --readonly, --test-passphrase, --allow-discards, --header, --key-slot, --master-key-file, --token-id, --token-only, --dis‐
+       able-keyring, --disable-locks<span style="color:#f92672">]</span>.
+</code></pre></div><p>What I understand from this is that this command <em>should</em> provide us a decrypted device at <code>&lt;name&gt;</code> <em>if</em> we give it a valid keyfile and cooresponding LUKS device, which we <em>should</em> have. That&rsquo;s a lot of <em>should&rsquo;s</em>. We&rsquo;ll see if this works.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo cryptsetup luksOpen challenge1.img challenge1_decrypted --key-file file84
+</code></pre></div><p>Ok, it says it worked, but now what? Some more googling later I learn that a <em>mapping</em> generated by LUKS is stored in <code>/dev/mapper/</code>, and looking there sure enough:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; ls /dev/mapper/
+challenge1_decrypted  control
+</code></pre></div><p>Is this it? Did we do it? Did we create a decrypted device?? Let&rsquo;s try mounting it:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo mkdir /mnt/challenge1
+$&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
+$&gt;
+</code></pre></div><p>It worked! No errors! Let&rsquo;s <code>cd</code> to that directory and get our flag!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> ls
+$&gt;
+</code></pre></div><p>Uh, what?</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; ls -la
+total <span style="color:#ae81ff">4</span>
+drwxr-xr-x <span style="color:#ae81ff">1</span> vagrant vagrant    <span style="color:#ae81ff">0</span> Oct  <span style="color:#ae81ff">2</span> 17:42 .
+drwxr-xr-x <span style="color:#ae81ff">3</span> root    root    <span style="color:#ae81ff">4096</span> Oct <span style="color:#ae81ff">29</span> 16:18 ..
+</code></pre></div><p>There&rsquo;s nothing in there! It&rsquo;s empty! We came all this way&hellip; after all this work&hellip;</p>
 <p>At this point <a href="https://www.youtube.com/watch?v=D_KZSdBDofw&amp;t=1">I&rsquo;m kindof feeling like this</a> but I refuse to give up!
 There has to be something!</p>
 <p>In frustration I call <code>mount</code>, which ends in the following line:</p>
@@ -1515,62 +1515,62 @@ Does this BTRFS have other subvolumes perhaps?</p>
 ID 256 gen 17 top level 5 path default
 ID 257 gen 13 top level 5 path non-default
 </code></pre><p>Ok, now we&rsquo;re getting somewhere! There&rsquo;s a <code>non-default</code> subvolume on our btrfs filesystem that we didn&rsquo;t see before. A quick google of &ldquo;how to mount btrfs subvlume&rdquo; <a href="https://thegeekdiary.com/how-to-create-and-mount-btrfs-snapshots/">takes me here</a>, where I learn the command to change the default subvolume that is mounted when a btrfs filesystem is mounted:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; btrfs subvolume set-default <span style="color:#ae81ff">257</span> /mnt/challenge1/
-</span></span></code></pre></div><p>(257 is the subvolume ID). Now we unmount and remount the volume:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; sudo umount /mnt/challenge1
-</span></span><span style="display:flex;"><span>$&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
-</span></span></code></pre></div><p>Now we see if there is anything inside:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>ls -la /mnt/challenge1/
-</span></span><span style="display:flex;"><span>total <span style="color:#ae81ff">8</span>
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">1</span> vagrant vagrant   <span style="color:#ae81ff">32</span> Oct  <span style="color:#ae81ff">2</span> 17:44 .
-</span></span><span style="display:flex;"><span>drwxr-xr-x <span style="color:#ae81ff">4</span> root    root    <span style="color:#ae81ff">4096</span> Oct <span style="color:#ae81ff">29</span> 17:35 ..
-</span></span><span style="display:flex;"><span>-rwxrwxrwx <span style="color:#ae81ff">1</span> vagrant vagrant  <span style="color:#ae81ff">220</span> Oct  <span style="color:#ae81ff">2</span> 17:09 instructions.rar
-</span></span></code></pre></div><p>Halleluja! We&rsquo;ve finally reached the end and found our flag! Let&rsquo;s extract that tar file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> tar -xvf instructions.rar
-</span></span><span style="display:flex;"><span>tar: This does not look like a tar archive
-</span></span><span style="display:flex;"><span>tar: Exiting with failure status due to previous errors
-</span></span></code></pre></div><p>* Looks carefully *</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; btrfs subvolume set-default <span style="color:#ae81ff">257</span> /mnt/challenge1/
+</code></pre></div><p>(257 is the subvolume ID). Now we unmount and remount the volume:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo umount /mnt/challenge1
+$&gt; sudo mount /dev/mapper/challenge1_decrypted /mnt/challenge1
+</code></pre></div><p>Now we see if there is anything inside:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">ls -la /mnt/challenge1/
+total <span style="color:#ae81ff">8</span>
+drwxr-xr-x <span style="color:#ae81ff">1</span> vagrant vagrant   <span style="color:#ae81ff">32</span> Oct  <span style="color:#ae81ff">2</span> 17:44 .
+drwxr-xr-x <span style="color:#ae81ff">4</span> root    root    <span style="color:#ae81ff">4096</span> Oct <span style="color:#ae81ff">29</span> 17:35 ..
+-rwxrwxrwx <span style="color:#ae81ff">1</span> vagrant vagrant  <span style="color:#ae81ff">220</span> Oct  <span style="color:#ae81ff">2</span> 17:09 instructions.rar
+</code></pre></div><p>Halleluja! We&rsquo;ve finally reached the end and found our flag! Let&rsquo;s extract that tar file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cd /mnt/challenge1/ <span style="color:#f92672">&amp;&amp;</span> tar -xvf instructions.rar
+tar: This does not look like a tar archive
+tar: Exiting with failure status due to previous errors
+</code></pre></div><p>* Looks carefully *</p>
 <pre tabindex="0"><code>tar: This does not look like a tar archive
 </code></pre><p>** Looks more carefully **</p>
 <pre tabindex="0"><code>instructions.rar
 </code></pre><p>A .rar file?? Who uses rar files anymore?? Ok then, this shouldn&rsquo;t be too difficult, just got to install <code>rar</code> and uncompress it&hellip;</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; sudo apt install rar
-</span></span><span style="display:flex;"><span>Reading package lists... Done
-</span></span><span style="display:flex;"><span>Building dependency tree
-</span></span><span style="display:flex;"><span>Reading state information... Done
-</span></span><span style="display:flex;"><span>Suggested packages:
-</span></span><span style="display:flex;"><span>  unrar
-</span></span><span style="display:flex;"><span>The following NEW packages will be installed:
-</span></span><span style="display:flex;"><span>  rar
-</span></span><span style="display:flex;"><span><span style="color:#ae81ff">0</span> upgraded, <span style="color:#ae81ff">1</span> newly installed, <span style="color:#ae81ff">0</span> to remove and <span style="color:#ae81ff">94</span> not upgraded.
-</span></span><span style="display:flex;"><span>Need to get <span style="color:#ae81ff">295</span> kB of archives.
-</span></span><span style="display:flex;"><span>After this operation, <span style="color:#ae81ff">799</span> kB of additional disk space will be used.
-</span></span><span style="display:flex;"><span>Get:1 http://us.archive.ubuntu.com/ubuntu bionic/multiverse amd64 rar amd64 2:5.5.0-1 <span style="color:#f92672">[</span><span style="color:#ae81ff">295</span> kB<span style="color:#f92672">]</span>
-</span></span><span style="display:flex;"><span>Fetched <span style="color:#ae81ff">295</span> kB in 1s <span style="color:#f92672">(</span><span style="color:#ae81ff">511</span> kB/s<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Selecting previously unselected package rar.
-</span></span><span style="display:flex;"><span><span style="color:#f92672">(</span>Reading database ... <span style="color:#ae81ff">88083</span> files and directories currently installed.<span style="color:#f92672">)</span>
-</span></span><span style="display:flex;"><span>Preparing to unpack .../rar_2%3a5.5.0-1_amd64.deb ...
-</span></span><span style="display:flex;"><span>Unpacking rar <span style="color:#f92672">(</span>2:5.5.0-1<span style="color:#f92672">)</span> ...
-</span></span><span style="display:flex;"><span>Setting up rar <span style="color:#f92672">(</span>2:5.5.0-1<span style="color:#f92672">)</span> ...
-</span></span><span style="display:flex;"><span>Processing triggers <span style="color:#66d9ef">for</span> man-db <span style="color:#f92672">(</span>2.8.3-2ubuntu0.1<span style="color:#f92672">)</span> ...
-</span></span><span style="display:flex;"><span>$&gt; rar e instructions.rar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>RAR 5.50   Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 1993-2017 Alexander Roshal   <span style="color:#ae81ff">11</span> Aug <span style="color:#ae81ff">2017</span>
-</span></span><span style="display:flex;"><span>Trial version             Type <span style="color:#e6db74">&#39;rar -?&#39;</span> <span style="color:#66d9ef">for</span> help
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Extracting from instructions.rar
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>Extracting  instructions.txt                                          OK
-</span></span><span style="display:flex;"><span>All OK
-</span></span></code></pre></div><p>Alright, we have our <code>instructions.txt</code>, which isn&rsquo;t as nice as the flag, but still something! Let&rsquo;s see what our final step is:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; cat instructions.txt
-</span></span><span style="display:flex;"><span>The flag is not here.
-</span></span></code></pre></div><p>What? That&rsquo;s it?? That&rsquo;s all you have for me Chuck, after all this work??? Maybe I&rsquo;m missing some unprintable characters, let&rsquo;s see a hexdump of the file:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>$&gt; xxd instructions.txt
-</span></span><span style="display:flex;"><span>00000000: <span style="color:#ae81ff">5468</span> <span style="color:#ae81ff">6520</span> 666c <span style="color:#ae81ff">6167</span> <span style="color:#ae81ff">2069</span> <span style="color:#ae81ff">7320</span> 6e6f <span style="color:#ae81ff">7420</span>  The flag is not
-</span></span><span style="display:flex;"><span>00000010: <span style="color:#ae81ff">6865</span> <span style="color:#ae81ff">7265</span> 2e                             here.
-</span></span></code></pre></div><p>Nope! All 21 bytes are right there for me to see, nothing is hidden.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; sudo apt install rar
+Reading package lists... Done
+Building dependency tree
+Reading state information... Done
+Suggested packages:
+  unrar
+The following NEW packages will be installed:
+  rar
+<span style="color:#ae81ff">0</span> upgraded, <span style="color:#ae81ff">1</span> newly installed, <span style="color:#ae81ff">0</span> to remove and <span style="color:#ae81ff">94</span> not upgraded.
+Need to get <span style="color:#ae81ff">295</span> kB of archives.
+After this operation, <span style="color:#ae81ff">799</span> kB of additional disk space will be used.
+Get:1 http://us.archive.ubuntu.com/ubuntu bionic/multiverse amd64 rar amd64 2:5.5.0-1 <span style="color:#f92672">[</span><span style="color:#ae81ff">295</span> kB<span style="color:#f92672">]</span>
+Fetched <span style="color:#ae81ff">295</span> kB in 1s <span style="color:#f92672">(</span><span style="color:#ae81ff">511</span> kB/s<span style="color:#f92672">)</span>
+Selecting previously unselected package rar.
+<span style="color:#f92672">(</span>Reading database ... <span style="color:#ae81ff">88083</span> files and directories currently installed.<span style="color:#f92672">)</span>
+Preparing to unpack .../rar_2%3a5.5.0-1_amd64.deb ...
+Unpacking rar <span style="color:#f92672">(</span>2:5.5.0-1<span style="color:#f92672">)</span> ...
+Setting up rar <span style="color:#f92672">(</span>2:5.5.0-1<span style="color:#f92672">)</span> ...
+Processing triggers <span style="color:#66d9ef">for</span> man-db <span style="color:#f92672">(</span>2.8.3-2ubuntu0.1<span style="color:#f92672">)</span> ...
+$&gt; rar e instructions.rar
+
+RAR 5.50   Copyright <span style="color:#f92672">(</span>c<span style="color:#f92672">)</span> 1993-2017 Alexander Roshal   <span style="color:#ae81ff">11</span> Aug <span style="color:#ae81ff">2017</span>
+Trial version             Type <span style="color:#e6db74">&#39;rar -?&#39;</span> <span style="color:#66d9ef">for</span> help
+
+
+Extracting from instructions.rar
+
+Extracting  instructions.txt                                          OK
+All OK
+</code></pre></div><p>Alright, we have our <code>instructions.txt</code>, which isn&rsquo;t as nice as the flag, but still something! Let&rsquo;s see what our final step is:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; cat instructions.txt
+The flag is not here.
+</code></pre></div><p>What? That&rsquo;s it?? That&rsquo;s all you have for me Chuck, after all this work??? Maybe I&rsquo;m missing some unprintable characters, let&rsquo;s see a hexdump of the file:</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">$&gt; xxd instructions.txt
+00000000: <span style="color:#ae81ff">5468</span> <span style="color:#ae81ff">6520</span> 666c <span style="color:#ae81ff">6167</span> <span style="color:#ae81ff">2069</span> <span style="color:#ae81ff">7320</span> 6e6f <span style="color:#ae81ff">7420</span>  The flag is not
+00000010: <span style="color:#ae81ff">6865</span> <span style="color:#ae81ff">7265</span> 2e                             here.
+</code></pre></div><p>Nope! All 21 bytes are right there for me to see, nothing is hidden.</p>
 <p>:face_with_raised_eyebrow: emoji here.</p>
 <p>So this seems a lot like our previous problem, where initially we didn&rsquo;t see anything, but then we found out that the technology was capable of hiding things in plain sight. Let&rsquo;s take a step back and <a href="https://ss64.com/bash/rar.html">see if the rar command can hide additional files that we&rsquo;re not seeing</a>.</p>
 <p>* 15 minutes of reading later *</p>
@@ -1583,7 +1583,7 @@ ID 257 gen 13 top level 5 path non-default
 00000030: 7472 7563 7469 6f6e 732e 7478 740a 0302  tructions.txt...
 00000040: 377e b62a 7679 d501 5468 6520 666c 6167  7~.*vy..The flag
 00000050: 2069 7320 6e6f 7420 6865 7265 2e96 1977   is not here...w
-00000060: 8d27 0323 11cb 8000 04c9 8000 0064 45bc  .&#39;.#.........dE.
+00000060: 8d27 0323 11cb 8000 04c9 8000 0064 45bc  .'.#.........dE.
 00000070: 6780 0300 0353 544d 1007 3a6e 6f74 7468  g....STM..:notth
 00000080: 6566 6c61 672e 7478 74c7 d548 3530 333f  eflag.txt..H503?
 00000090: 7504 2ef9 2c07 c04b 2cba d903 93eb 71c0  u...,..K,.....q.
@@ -1615,46 +1615,46 @@ RR	Recovery record</p>
 <p><em><strong>chuck-sigh</strong></em></p>
 <p>I fire up <em>and install Windows</em> in a VM <em>because believe it or not, I don&rsquo;t have any reason to keep one handy</em>.</p>
 <p>This takes some time, and after paying my dues to the devil and letting Windows Telemetry play big brother on the VM, I finally have Windows machine to move this rar file over to.</p>
-<figure><img src="/images/hacktober_1.png"><figcaption>
-      <h4>Installing WinRAR</h4>
-    </figcaption>
+<figure><img src="/images/hacktober_1.png"/><figcaption>
+            <h4>Installing WinRAR</h4>
+        </figcaption>
 </figure>
 
 <p>So we <a href="https://www.cronocide.com/images/hacktober_1.png">install WinRAR</a> and go through the process of <a href="https://www.cronocide.com/images/hacktober_2.png">extracting the instructions.txt file to the desktop</a>.</p>
-<figure><img src="/images/hacktober_2.png"><figcaption>
-      <h4>The power of extraction at work</h4>
-    </figcaption>
+<figure><img src="/images/hacktober_2.png"/><figcaption>
+            <h4>The power of extraction at work</h4>
+        </figcaption>
 </figure>
 
 <p>Now it&rsquo;s up to our friend Robert from Microsoft to help us view this <em>alternate NTFS stream</em> in Powershell. This part I <em>can</em> do from a command line!</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\&gt; Get-item -Path C:\Users\cronocide\Desktop\instructions\instructions.txt -stream *
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt::$DATA
-</span></span><span style="display:flex;"><span>PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
-</span></span><span style="display:flex;"><span>PSChildName   <span style="color:#960050;background-color:#1e0010">:</span> instructions.txt::$DATA
-</span></span><span style="display:flex;"><span>PSDrive       <span style="color:#960050;background-color:#1e0010">:</span> C
-</span></span><span style="display:flex;"><span>PSProvider    <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem
-</span></span><span style="display:flex;"><span>PSIsContainer <span style="color:#960050;background-color:#1e0010">:</span> False
-</span></span><span style="display:flex;"><span>FileName      <span style="color:#960050;background-color:#1e0010">:</span> C:\Users\Cronocide\Desktop\instructions\instructions.txt
-</span></span><span style="display:flex;"><span>Stream        <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">:</span>$DATA
-</span></span><span style="display:flex;"><span>Length        <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">21</span>
-</span></span><span style="display:flex;"><span>
-</span></span><span style="display:flex;"><span>PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>notthefl
-</span></span><span style="display:flex;"><span>                ag.txt
-</span></span><span style="display:flex;"><span>PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
-</span></span><span style="display:flex;"><span>PSChildName   <span style="color:#960050;background-color:#1e0010">:</span> instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>nottheflag.txt
-</span></span><span style="display:flex;"><span>PSDrive       <span style="color:#960050;background-color:#1e0010">:</span> C
-</span></span><span style="display:flex;"><span>PSProvider    <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem
-</span></span><span style="display:flex;"><span>PSIsContainer <span style="color:#960050;background-color:#1e0010">:</span> False
-</span></span><span style="display:flex;"><span>FileName      <span style="color:#960050;background-color:#1e0010">:</span> C:\Users\Cronocide\Desktop\instructions\instructions.txt
-</span></span><span style="display:flex;"><span>Stream        <span style="color:#960050;background-color:#1e0010">:</span> nottheflag.txt
-</span></span><span style="display:flex;"><span>Length        <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#ae81ff">73</span>
-</span></span></code></pre></div><p>We can see right there that our &rsquo;nottheflag.txt&rsquo; is an alternate NTFS stream available to be read from instructions.txt, which can <em>only</em> be read on an NTFS filesystem. Now I know and trust Chuck, despite all of the pain he&rsquo;s put us through in this challenge, but I don&rsquo;t believe for a second that <code>nottheflag.txt</code> isn&rsquo;t the flag! It&rsquo;s got to be! There&rsquo;s nowhere else to go! There&rsquo;s nothing else to do! The game has to be over!</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\&gt; Get-item -Path C:\Users\cronocide\Desktop\instructions\instructions.txt -stream *
+
+
+PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt::$DATA
+PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
+PSChildName   <span style="color:#960050;background-color:#1e0010">:</span> instructions.txt::$DATA
+PSDrive       <span style="color:#960050;background-color:#1e0010">:</span> C
+PSProvider    <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem
+PSIsContainer <span style="color:#960050;background-color:#1e0010">:</span> False
+FileName      <span style="color:#960050;background-color:#1e0010">:</span> C:\Users\Cronocide\Desktop\instructions\instructions.txt
+Stream        <span style="color:#960050;background-color:#1e0010">:</span> <span style="color:#960050;background-color:#1e0010">:</span>$DATA
+Length        <span style="color:#960050;background-color:#1e0010">:</span> 21
+
+PSPath        <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions\instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>notthefl
+                ag.txt
+PSParentPath  <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem::C:\Users\Cronocide\Desktop\instructions
+PSChildName   <span style="color:#960050;background-color:#1e0010">:</span> instructions.txt<span style="color:#960050;background-color:#1e0010">:</span>nottheflag.txt
+PSDrive       <span style="color:#960050;background-color:#1e0010">:</span> C
+PSProvider    <span style="color:#960050;background-color:#1e0010">:</span> Microsoft.PowerShell.Core\FileSystem
+PSIsContainer <span style="color:#960050;background-color:#1e0010">:</span> False
+FileName      <span style="color:#960050;background-color:#1e0010">:</span> C:\Users\Cronocide\Desktop\instructions\instructions.txt
+Stream        <span style="color:#960050;background-color:#1e0010">:</span> nottheflag.txt
+Length        <span style="color:#960050;background-color:#1e0010">:</span> 73
+</code></pre></div><p>We can see right there that our &lsquo;nottheflag.txt&rsquo; is an alternate NTFS stream available to be read from instructions.txt, which can <em>only</em> be read on an NTFS filesystem. Now I know and trust Chuck, despite all of the pain he&rsquo;s put us through in this challenge, but I don&rsquo;t believe for a second that <code>nottheflag.txt</code> isn&rsquo;t the flag! It&rsquo;s got to be! There&rsquo;s nowhere else to go! There&rsquo;s nothing else to do! The game has to be over!</p>
 <p>Finally, we read the alternate stream:</p>
-<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-powershell" data-lang="powershell"><span style="display:flex;"><span>PS C:\Users\Cronocide&gt; Get-content -Path C:\Users\Cronocide\Desktop\instructions\instructions.txt -stream nottheflag.txt
-</span></span><span style="display:flex;"><span>flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
-</span></span></code></pre></div><p>There it is. <a href="https://youtu.be/Ga1hJgE_BwY?t=63">We found the treasure</a>.</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-powershell" data-lang="powershell">PS C:\Users\Cronocide&gt; Get-content -Path C:\Users\Cronocide\Desktop\instructions\instructions.txt -stream nottheflag.txt
+flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
+</code></pre></div><p>There it is. <a href="https://youtu.be/Ga1hJgE_BwY?t=63">We found the treasure</a>.</p>
 <pre tabindex="0"><code>flag{b2d31d31a8c453a8ee263c3dffe6a689271f93307d81e0bb141c7c814e1339c4}
 </code></pre><p>I sit back in my reclining office chair at my desk. It&rsquo;s dark outside. This challenge took my whole evening.</p>
 <p>But it was a good challenge. It was fun. And even though I had to read the rar specification byte by byte, I still learned a <em>ton</em> of cool new stuff.</p>

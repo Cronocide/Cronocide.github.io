@@ -4,51 +4,62 @@
     <title>Tags on cronocide.com</title>
     <link>https://cronocide.com/tags/</link>
     <description>Recent content in Tags on cronocide.com</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 04 Jan 2025 00:00:00 +0000</lastBuildDate>
-    <atom:link href="https://cronocide.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cronocide.com/tags/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Rant</title>
       <link>https://cronocide.com/tags/rant/</link>
-      <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
+      <pubDate>Tue, 17 Jun 2025 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/tags/rant/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Tutorial</title>
       <link>https://cronocide.com/tags/tutorial/</link>
       <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/tags/tutorial/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>CTF</title>
       <link>https://cronocide.com/tags/ctf/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
       <guid>https://cronocide.com/tags/ctf/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Security</title>
       <link>https://cronocide.com/tags/security/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
       <guid>https://cronocide.com/tags/security/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Activity</title>
       <link>https://cronocide.com/tags/activity/</link>
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/tags/activity/</guid>
       <description></description>
     </item>
+    
     <item>
       <title>Gist</title>
       <link>https://cronocide.com/tags/gist/</link>
       <pubDate>Tue, 28 Nov 2017 00:00:00 +0000</pubDate>
+      
       <guid>https://cronocide.com/tags/gist/</guid>
       <description></description>
     </item>
+    
   </channel>
 </rss>

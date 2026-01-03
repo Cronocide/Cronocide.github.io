@@ -4,16 +4,18 @@
     <title>Security on cronocide.com</title>
     <link>https://cronocide.com/tags/security/</link>
     <description>Recent content in Security on cronocide.com</description>
-    <generator>Hugo</generator>
+    <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate>
-    <atom:link href="https://cronocide.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 26 Mar 2019 08:47:11 +0100</lastBuildDate><atom:link href="https://cronocide.com/tags/security/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building your first SIEM with the Elastic Stack</title>
       <link>https://cronocide.com/post/byfswtes/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
+      
       <guid>https://cronocide.com/post/byfswtes/</guid>
-      <description>&lt;h2 id=&#34;preface&#34;&gt;Preface&lt;/h2&gt;&#xA;&lt;p&gt;This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.&lt;/p&gt;&#xA;&lt;p&gt;After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.&lt;/p&gt;</description>
+      <description>Preface This process is an exercise in installing and configuring Elastic Stack components for use as a SIEM. Normally you wouldn&amp;rsquo;t install all of these services on a single host: you should consider the resource consumption of each host and distribute your services appropriately.
+After we get the basic software running we&amp;rsquo;ll do a few example searches and create an example alert. The power of your SIEM will be determined by how many detections you implement and what kind of alerts you use.</description>
     </item>
+    
   </channel>
 </rss>
