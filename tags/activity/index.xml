@@ -6,24 +6,21 @@
     <description>Recent content in Activity on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 31 Dec 2017 00:00:00 +0000</lastBuildDate><atom:link href="https://cronocide.com/tags/activity/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Sun, 31 Dec 2017 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cronocide.com/tags/activity/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building a Tabletop Arcade Cabinet with RetroArch on RetroPi</title>
       <link>https://cronocide.com/post/batacwror/</link>
       <pubDate>Sun, 31 Dec 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://cronocide.com/post/batacwror/</guid>
       <description>Each year I get a crazy idea for a great gift for one of my family members. I do my best to get everyone in my family something they’ll like or appreciate, but usually there is one person that I think ‘Wow, this would be a great gift for them!’. This year it was my Dad. On a day that I got lost on the internet I found that there was such a thing as bartop arcade cabinet kits that take up a fraction of the space of normal arcade cabinets.</description>
     </item>
-    
     <item>
       <title>Saving an ESXi Datastore from a Foreign Config</title>
       <link>https://cronocide.com/post/saedfafc/</link>
       <pubDate>Tue, 29 Aug 2017 00:00:00 +0000</pubDate>
-      
       <guid>https://cronocide.com/post/saedfafc/</guid>
       <description>My 3rd day of class started out with the unpleasant realization that my server was offline as of 4:30 this morning. I got the notice from my Uptime Robot who monitors the web server. I assumed that it was either a problem with my nginx frontend not starting automatically after a VM crash or a loss of internet to the house. Since I didn’t realize the problem until I was in class there wasn’t much I could do.</description>
     </item>
-    
   </channel>
 </rss>

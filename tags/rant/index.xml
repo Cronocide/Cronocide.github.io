@@ -6,45 +6,35 @@
     <description>Recent content in Rant on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 17 Jun 2025 00:00:00 +0000</lastBuildDate><atom:link href="https://cronocide.com/tags/rant/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 17 Jun 2025 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cronocide.com/tags/rant/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Building an iPod for the fun of it</title>
       <link>https://cronocide.com/post/baiftfoi/</link>
       <pubDate>Tue, 17 Jun 2025 00:00:00 +0000</pubDate>
-      
       <guid>https://cronocide.com/post/baiftfoi/</guid>
-      <description>I&amp;rsquo;ve been following the r/ipod subreddit for about six months now and have learned that there&amp;rsquo;s a small community out in the world that still uses these small but mighty music players. I scrolled past this build and my technolust for it couldn&amp;rsquo;t be helped. I wanted one.
-I had an iPod Nano growing up that I put rockbox on and spent more time tweaking it than actually listening to music on it.</description>
+      <description>I&amp;rsquo;ve been following the r/ipod subreddit for about six months now and have learned that there&amp;rsquo;s a small community out in the world that still uses these small but mighty music players. I scrolled past this build and my technolust for it couldn&amp;rsquo;t be helped. I wanted one.&#xA;I had an iPod Nano growing up that I put rockbox on and spent more time tweaking it than actually listening to music on it.</description>
     </item>
-    
     <item>
       <title>2024: My Year in Review</title>
       <link>https://cronocide.com/post/yir2024/</link>
       <pubDate>Sat, 04 Jan 2025 00:00:00 +0000</pubDate>
-      
       <guid>https://cronocide.com/post/yir2024/</guid>
-      <description>This year I&amp;rsquo;ve noticed a fashion of posting &amp;lsquo;year in review&amp;rsquo; blog posts to herald in the new year. I rarely find time to write about anything worth reading about during most normal weeks, but decided that reviewing some of my year&amp;rsquo;s highlights might be an easier post than most.
-Projects that crossed the finish line At any moment I have dozens of projects that I am whole heartedly committed to finishing, but the reality is that few of these projects reach a level of maturity to be called an MVP (let alone &amp;lsquo;finished&amp;rsquo;).</description>
+      <description>This year I&amp;rsquo;ve noticed a fashion of posting &amp;lsquo;year in review&amp;rsquo; blog posts to herald in the new year. I rarely find time to write about anything worth reading about during most normal weeks, but decided that reviewing some of my year&amp;rsquo;s highlights might be an easier post than most.&#xA;Projects that crossed the finish line At any moment I have dozens of projects that I am whole heartedly committed to finishing, but the reality is that few of these projects reach a level of maturity to be called an MVP (let alone &amp;lsquo;finished&amp;rsquo;).</description>
     </item>
-    
     <item>
       <title>Shoot Into the Wild Bluesky</title>
       <link>https://cronocide.com/post/boi2024/</link>
       <pubDate>Fri, 15 Nov 2024 00:00:00 +0000</pubDate>
-      
       <guid>https://cronocide.com/post/boi2024/</guid>
       <description>I&amp;rsquo;ve been on a journey to complete my Bluesky account setup for over a year now. The content loss I experienced as a result of the evaporation of my Infosec Twitter community in 2022 was largely mitigated by my massive (and unhealthy) Reddit diet at the time, but when they shut down 3rd party apps I knew the time had come for me to do some major social media readjustments.</description>
     </item>
-    
     <item>
       <title>Hacktober 2019 - Filesystems</title>
       <link>https://cronocide.com/post/hacktober2019/</link>
       <pubDate>Tue, 26 Mar 2019 08:47:11 +0100</pubDate>
-      
       <guid>https://cronocide.com/post/hacktober2019/</guid>
-      <description>I recently finished the Hacktober 2019 CTF from the great folks @UVUCSC. The challenges were mostly entry-level but there were a few that were quite challenging.
-The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend chuck called filesystems. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</description>
+      <description>I recently finished the Hacktober 2019 CTF from the great folks @UVUCSC. The challenges were mostly entry-level but there were a few that were quite challenging.&#xA;The highest-point-value challenge was a frustrating and time-consuming monster developed by my friend chuck called filesystems. I was the only solver of the challenge and was asked to do a write up of it, and because it was such a twisted and annoying challenge (that I learned a lot from) I decided to go ahead and do it.</description>
     </item>
-    
   </channel>
 </rss>
