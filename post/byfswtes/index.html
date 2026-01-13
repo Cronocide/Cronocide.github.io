@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <meta name="generator" content="Hugo 0.123.7">
+  <meta name="generator" content="Hugo 0.139.4">
   <link rel="canonical" href="https://cronocide.com/post/byfswtes/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
@@ -568,9 +568,9 @@ server.host: &#34;0.0.0.0&#34;
 <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-sh" data-lang="sh"><span style="display:flex;"><span>sudo systemctl enable kibana
 </span></span><span style="display:flex;"><span>sudo systemctl restart kibana
 </span></span></code></pre></div><p>Now it&rsquo;s time to log in to our dashboard! Navigate to the IP address of the box Kibana is running on on port 5601. Since we&rsquo;ll be loading this in the web browser on the SIEM, the address would be <a href="http://localhost:5601">http://localhost:5601</a>.</p>
-<figure><img src="/images/byfswtes_welcome.png"/><figcaption>
-            <h4>Kibana Welcome Page</h4>
-        </figcaption>
+<figure><img src="/images/byfswtes_welcome.png"><figcaption>
+      <h4>Kibana Welcome Page</h4>
+    </figcaption>
 </figure>
 
 <p>When prompted to explore your own data or play with the examples, choose to explore your data.</p>
@@ -579,17 +579,17 @@ server.host: &#34;0.0.0.0&#34;
 <p>The first thing we will need to do is create two <em>indices</em> to store our two different types of data: our network logs from Zeek and our host or endpoint logs from Filebeat.</p>
 <p>By default, Logstash will make new indices in Elasticsearch every day, but there are many ways that this can be optimized, depending on your log type.</p>
 <p>Select the Settings gear in the bottom left of Kibana and select Index Patterns under Kibana in the left. We&rsquo;ll create a new <em>index pattern</em> that describes any indices that start with &lsquo;system&rsquo;. set the index pattern to be <code>system-*</code> and click next. When prompted for a time filter field, select &lsquo;@Timestamp&rsquo;. This lets Kibana know how to assign your events to a timeline.</p>
-<figure><img src="/images/byfswtes_system.png"/><figcaption>
-            <h4>Creating a &#39;system-*&#39; index pattern</h4>
-        </figcaption>
+<figure><img src="/images/byfswtes_system.png"><figcaption>
+      <h4>Creating a &#39;system-*&#39; index pattern</h4>
+    </figcaption>
 </figure>
 
 <p>We&rsquo;ll do the same with our <code>zeek-*</code> index pattern.</p>
 <a class="header-link" href="#using-kibana"><h3 id="using-kibana">Using Kibana</a> </h3>
 <p>Now let&rsquo;s explore the data. Select the Discover icon (second from the top on the left).</p>
-<figure><img src="/images/byfswtes_discover.png"/><figcaption>
-            <h4>Using &#39;Discover&#39; in Kibana</h4>
-        </figcaption>
+<figure><img src="/images/byfswtes_discover.png"><figcaption>
+      <h4>Using &#39;Discover&#39; in Kibana</h4>
+    </figcaption>
 </figure>
 
 <p>On the left there will be a dropdown to select your index. This lets you choose the type of data you&rsquo;re searching for. In our case, we can search for system logs or Zeek logs. The logs are sorted historically, and you can adjust the search time to go further back.</p>
