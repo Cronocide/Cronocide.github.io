@@ -1153,6 +1153,10 @@ h1 svg {
     max-width: 3rem;
     display: inline-block;
 }
+svg.card-icon {
+    width: 3rem;
+    height: auto;
+}
 .card-description {
     display: inline-block;
     padding-top: .2rem;
