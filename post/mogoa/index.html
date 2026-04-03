@@ -335,6 +335,11 @@
 <a class="header-link" href="#attempt-1-qemu-ppc-screamer-for-h700"><h2 id="attempt-1-qemu-ppc-screamer-for-h700">Attempt 1: qemu-ppc-screamer for H700</a> </h2>
 <p>QEMU has had the ability to emulate the PowerPC G3 for over a decade, and with the addition of the screamer patch has full audio support. While this is a full CPU emulator, QEMU uses <a href="https://wiki.qemu.org/Documentation/TCG">TCG</a> to translate the PowerPC-native instruction set to the target architecture&rsquo;s instruction set. While this solution is extremely robust and allows MacOS to run on almost anything, it gets very few performance perks. This wasn&rsquo;t noticible on my x64 Steam Deck, but would prove to be crucial later on in this project.</p>
 <p>I sat down with the Portmaster porting docs and the <code>qemu-ppc-screamer</code> source code and started hammering away at a Portmaster build for the RG35XXSP. I naively used a virtual machine development environment instead of a docker container for reasons I can neither remember nor fathom. After referencing plenty of SDL and OpenGL documentation, building <code>libepoxy</code> from source and tediously shlepping build files over to the device over SCP, I was able to get a booting Mac OS 9 VM on QEMU running, but without graphics or sound. Convinced these problems were surmountable, I took a break to take time to think.</p>
+<figure><img src="/images/mogoa_my_qemu_port.png"/><figcaption>
+            <h4>It works, you just can&#39;t see or hear anything!</h4>
+        </figcaption>
+</figure>
+
 <p>Regrettably, all of this development happened around the time that I needed to upgrade my laptop. While I did manage to migrate the finished artifacts over, I forgot to migrate over the VM that contained the in-progress source code before I wiped my old one. A painful lesson was learned, but I wasn&rsquo;t in the mood to re-attempt this project for a couple of months after that.</p>
 <a class="header-link" href="#attempt-2-qemu-ppc-screamer-for-h700---"><h2 id="attempt-2-qemu-ppc-screamer-for-h700---">Attempt 2: qemu-ppc-screamer for H700 - ✨</a> </h2>
 <p>I am fortunate enough to have a <a href="https://cursor.com/">Cursor</a> license provided to me through my work. My company&rsquo;s agreement with Cursor allows us so many credits per-month-per-user. My role in the company is not primarily a development role, so I don&rsquo;t usually use even half of my credit quota. These credits are distributed on a &ldquo;use it or lose it&rdquo; basis, and we were asked recently to increase our utilization near the end of the month. They didn&rsquo;t need to ask me twice!</p>
@@ -342,10 +347,20 @@
 <p>The majority of the &ldquo;work&rdquo; needed for the setup was populating the <code>AGENTS.md</code> file. I filled it with the verbatim caveats and build instructions from the Portmaster Porting guide and added preambles with our project intent and conclusions that included how to quickly build and test. I wrote out a long instructional prompt explaining what it was that I wanted it to build. Then I fired it off.</p>
 <p>It was exciting to watch its thinking context expand over the work I had already previously done manually. It figured out instantly the shader changes that I toiled over for an hour, and got libepoxy sent over from the build container without issues. In just a few minutes I had a working instance of <code>qemu-ppc-screamer</code> available on my RG35XXSP.</p>
 <p>My existing Mac OS 9 installation virtual hard disk that I use for my Steam Deck was just over 5GB in size, about 1GB larger than the maximum file size allowed by MuOS&rsquo;s FAT32-formatted SD cards. So I patiently reinstalled Mac OS 9.2 on the device and booted it up.</p>
+<figure><img src="/images/mogoa_qemu_boot.gif"/><figcaption>
+            <h4>It does boot and install... eventually</h4>
+        </figcaption>
+</figure>
+
 <p>It ran <em>painfully</em> slow. It took several minutes just to boot. I was able to test the sound ability in Mac OS 9&rsquo;s &ldquo;Speech&rdquo; control panel, but the audio was so broken by the CPU emulation as to be almost incomprehensible. I decided not to install any games on this build: QEMU would be too slow on my device to play the games I wanted to play.</p>
 <a class="header-link" href="#attempt-3-sheepshaver-for-aarch64---"><h2 id="attempt-3-sheepshaver-for-aarch64---">Attempt 3: SheepShaver for AArch64 - ✨</a> </h2>
 <p>But after AI made such quick work of my <code>qemu-ppc-screamer</code> build, I thought it might be worth trying another approach: cross-compiling SheepShaver for AArch64. Similarly to QEMU, I downloaded the latest SheepShaver fork and created an <code>AGENTS.md</code> file similar to the one I created for QEMU. After only one or two prompts, <code>claude-4.6-opus-high-thinking</code> had successfully built SheepShaver for my RG35XXSP.</p>
 <p>SheepShaver doesn&rsquo;t support anything newer than Mac OS 9.1 because SheepShaver doesn&rsquo;t implement an MMU, and versions newer than that must support virtual memory. This wasn&rsquo;t a problem for my use case but did force me to create a new installation of the OS from scratch. A few hours of patiently installing Mac OS 9.1 and I was ready to test again.</p>
+<figure><img src="/images/mogoa_sheepshaver_boot.gif"/><figcaption>
+            <h4>That&#39;s more like it!</h4>
+        </figcaption>
+</figure>
+
 <p>This time the &ldquo;Speech&rdquo; control panel worked without issue! Any slowness the emulator was exhibiting wasn&rsquo;t visible in the desktop, so I went ahead with testing a game. Ferazel&rsquo;s Wand is one that I don&rsquo;t have working on QEMU <em>(Ferazel implements a <a href="https://www.emaculation.com/forum/viewtopic.php?t=5117&amp;start=100">gamma adjust</a> call that&rsquo;s not implemented in QEMU yet)</em> so I thought it&rsquo;d be a great performance candidate.</p>
 <p>Installation went off without a hitch, so I launched the game and&hellip;</p>
 <p>&hellip; the performance was <strong>still</strong> slow. Not &ldquo;one frame per second&rdquo; slow, but only about 50% of the normal play speed. Benchmarking performance of such an old system would be a challenging task on its own, so I decided to go off of vibes and &ldquo;playability&rdquo;. I went back to <code>claude-4.6-opus-high-thinking</code> for some performance ideas. It suggested that the primary culprit for the game&rsquo;s poor performance was likely the lack of JIT engine for AArch64, the architecture it was now running on. I was pretty discouraged at this analysis, since building a cross-architecture assembly generator is <strong>WAY</strong> beyond my skills and abilities.</p>
@@ -364,12 +379,12 @@
 <p>Claude: I can see the trampoline IS correctly written at EmulatorData+0x38. The problem is deeper: r29 and r31 are already corrupted before we reach EmulatorData+0x38. The extra routine at 0x36f900 doesn&rsquo;t restore them. Let me check what XLM_KERNEL_DATA is so I can write a better trampoline that restores the corrupted registers:</p>
 </blockquote>
 <p>Anyways, I was about to give up on this silly attempt at having a chatbot build me a JIT backend when right before I went to bed <em>(literally my <strong>final</strong> attempt before giving up)</em> I was suddenly surprised by a <a href="https://apple.fandom.com/wiki/Happy_Mac">happy mac</a>! I was sure that there was a mistake and JIT had been disabled, but when I went to test Ferazel&rsquo;s Wand the evidence was clear:</p>
-<figure><img src="/images/ferazel_nojit.gif"/><figcaption>
+<figure><img src="/images/mogoa_ferazel_nojit.gif"/><figcaption>
             <h4>Ferazel&#39;s Wand on SheepShaver for AArch64, no JIT compilation</h4>
         </figcaption>
 </figure>
 
-<figure><img src="/images/ferazel_jit.gif"/><figcaption>
+<figure><img src="/images/mogoa_ferazel_jit.gif"/><figcaption>
             <h4>Ferazel&#39;s Wand on SheepShaver for AArch64, with JIT compilation</h4>
         </figcaption>
 </figure>
