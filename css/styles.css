@@ -341,7 +341,7 @@ code {
     border:solid #7f7f7f 1px;
     padding: 2px;
     padding-top: 0;
-    padding-bottom: 0;
+    padding-bottom:3px;
     border-radius:0.33em;
     -moz-border-radius: 0.33em;
     -webkit-border-radius: 0.33em;

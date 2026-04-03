@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+  <meta name="generator" content="Hugo 0.123.7">
+  <link rel="canonical" href="https://cronocide.com/post/mogoa/">
+  
+  <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+  <link rel="manifest" href="/site.webmanifest">
+  <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#000000">
+  <meta name="msapplication-TileColor" content="#ffffff">
+  <meta name="theme-color" content="#ffffff">
+  
+  <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/asciinema-player.css" />
+  <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/prism.css" media="none" onload="this.media='all';">
+  
+  
+  <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/styles.css">
+  
+  <title>Mac OS 9 Games on Anbernic devices | cronocide.com</title>
+</head>
+
+  <body>
+    
+    <div id="banner" style="display: none;">
+	<span id="banner-text">Site upgrades in progress. Some features are temporarily unavailable.</span>
+	<button class="close-btn" onclick="fadeBanner()">✕</button>
+	<div class="timer-bar"></div>
+</div>
+    <svg style="display: none">
+  <symbol id="bookmark" viewBox="0 0 40 50">
+    <g transform="translate(2266 3206.2)">
+      <path style="stroke:currentColor;stroke-width:3.2637;fill:none" d="m-2262.2-3203.4-.2331 42.195 16.319-16.318 16.318 16.318.2331-42.428z"/>
+    </g>
+  </symbol>
+  <symbol id="w3c" viewBox="0 0 127.09899 67.763">
+   <text font-size="83" style="font-size:83px;font-family:Trebuchet;letter-spacing:-12;fill-opacity:0" letter-spacing="-12" y="67.609352" x="-26.782778">W3C</text>
+   <text font-size="83" style="font-size:83px;font-weight:bold;font-family:Trebuchet;fill-opacity:0" y="67.609352" x="153.21722" font-weight="bold">SVG</text>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m33.695.377 12.062 41.016 12.067-41.016h8.731l-19.968 67.386h-.831l-12.48-41.759-12.479 41.759h-.832l-19.965-67.386h8.736l12.061 41.016 8.154-27.618-3.993-13.397h8.737z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m91.355 46.132c0 6.104-1.624 11.234-4.862 15.394-3.248 4.158-7.45 6.237-12.607 6.237-3.882 0-7.263-1.238-10.148-3.702-2.885-2.47-5.02-5.812-6.406-10.022l6.82-2.829c1.001 2.552 2.317 4.562 3.953 6.028 1.636 1.469 3.56 2.207 5.781 2.207 2.329 0 4.3-1.306 5.909-3.911 1.609-2.606 2.411-5.738 2.411-9.401 0-4.049-.861-7.179-2.582-9.399-1.995-2.604-5.129-3.912-9.397-3.912h-3.327v-3.991l11.646-20.133h-14.062l-3.911 6.655h-2.493v-14.976h32.441v4.075l-12.31 21.217c4.324 1.385 7.596 3.911 9.815 7.571 2.22 3.659 3.329 7.953 3.329 12.892z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.21 0 1.414 8.6-5.008 9.583s-1.924-4.064-5.117-6.314c-2.693-1.899-4.447-2.309-7.186-1.746-3.527.73-7.516 4.938-9.258 10.13-2.084 6.21-2.104 9.218-2.178 11.978-.115 4.428.58 7.043.58 7.043s-3.04-5.626-3.011-13.866c.018-5.882.947-11.218 3.666-16.479 2.404-4.627 5.954-7.404 9.114-7.728 3.264-.343 5.848 1.229 7.841 2.938 2.089 1.788 4.213 5.698 4.213 5.698l4.94-9.837z"/>
+   <path style="fill:currentColor;image-rendering:optimizeQuality;shape-rendering:geometricPrecision" d="m125.82 48.674s-2.208 3.957-3.589 5.48c-1.379 1.524-3.849 4.209-6.896 5.555-3.049 1.343-4.646 1.598-7.661 1.306-3.01-.29-5.807-2.032-6.786-2.764-.979-.722-3.486-2.864-4.897-4.854-1.42-2-3.634-5.995-3.634-5.995s1.233 4.001 2.007 5.699c.442.977 1.81 3.965 3.749 6.572 1.805 2.425 5.315 6.604 10.652 7.545 5.336.945 9.002-1.449 9.907-2.031.907-.578 2.819-2.178 4.032-3.475 1.264-1.351 2.459-3.079 3.116-4.108.487-.758 1.276-2.286 1.276-2.286l-1.276-6.644z"/>
+  </symbol>
+  <symbol id="folder" viewBox="0 0 24 24">
+    <g transform="translate(2266 3206.2)">
+       <path style="stroke:currentColor;stroke-width:3.2637;fill:currentColor" d="M20,6h-8l-1.414-1.414C10.211,4.211,9.702,4,9.172,4H4C2.9,4,2,4.9,2,6v12c0,1.1,0.9,2,2,2h16c1.1,0,2-0.9,2-2V8 C22,6.9,21.1,6,20,6z"/>
+    </g>
+  </symbol>
+
+  <symbol id="tag" viewBox="0 0 177.16535 177.16535">
+    <g transform="translate(0 -875.2)">
+     <path style="fill-rule:evenodd;stroke-width:0;fill:currentColor" d="m159.9 894.3-68.79 8.5872-75.42 77.336 61.931 60.397 75.429-76.565 6.8495-69.755zm-31.412 31.835a10.813 10.813 0 0 1 1.8443 2.247 10.813 10.813 0 0 1 -3.5174 14.872l-.0445.0275a10.813 10.813 0 0 1 -14.86 -3.5714 10.813 10.813 0 0 1 3.5563 -14.863 10.813 10.813 0 0 1 13.022 1.2884z"/>
+    </g>
+  </symbol>
+
+  <symbol id="balloon" viewBox="0 0 141.73228 177.16535">
+   <g transform="translate(0 -875.2)">
+    <g>
+     <path style="fill:currentColor" d="m68.156 882.83-.88753 1.4269c-4.9564 7.9666-6.3764 17.321-5.6731 37.378.36584 10.437 1.1246 23.51 1.6874 29.062.38895 3.8372 3.8278 32.454 4.6105 38.459 4.6694-.24176 9.2946.2879 14.377 1.481 1.2359-3.2937 5.2496-13.088 8.886-21.623 6.249-14.668 8.4128-21.264 10.253-31.252 1.2464-6.7626 1.6341-12.156 1.4204-19.764-.36325-12.93-2.1234-19.487-6.9377-25.843-2.0833-2.7507-6.9865-7.6112-7.9127-7.8436-.79716-.20019-6.6946-1.0922-6.7755-1.0248-.02213.0182-5.0006-.41858-7.5248-.22808l-2.149-.22808h-3.3738z"/>
+     <path style="fill:currentColor" d="m61.915 883.28-3.2484.4497c-1.7863.24724-3.5182.53481-3.8494.63994-2.4751.33811-4.7267.86957-6.7777 1.5696-.28598 0-1.0254.20146-2.3695.58589-5.0418 1.4418-6.6374 2.2604-8.2567 4.2364-6.281 7.6657-11.457 18.43-12.932 26.891-1.4667 8.4111.71353 22.583 5.0764 32.996 3.8064 9.0852 13.569 25.149 22.801 37.517 1.3741 1.841 2.1708 2.9286 2.4712 3.5792 3.5437-1.1699 6.8496-1.9336 10.082-2.3263-1.3569-5.7831-4.6968-21.86-6.8361-33.002-.92884-4.8368-2.4692-14.322-3.2452-19.991-.68557-5.0083-.77707-6.9534-.74159-15.791.04316-10.803.41822-16.162 1.5026-21.503 1.4593-5.9026 3.3494-11.077 6.3247-15.852z"/>
+     <path style="fill:currentColor" d="m94.499 885.78c-.10214-.0109-.13691 0-.0907.0409.16033.13489 1.329 1.0675 2.5976 2.0723 6.7003 5.307 11.273 14.568 12.658 25.638.52519 4.1949.24765 14.361-.5059 18.523-2.4775 13.684-9.7807 32.345-20.944 53.519l-3.0559 5.7971c2.8082.76579 5.7915 1.727 8.9926 2.8441 11.562-11.691 18.349-19.678 24.129-28.394 7.8992-11.913 11.132-20.234 12.24-31.518.98442-10.02-1.5579-20.876-6.7799-28.959-.2758-.4269-.57803-.86856-.89617-1.3166-3.247-6.13-9.752-12.053-21.264-16.131-2.3687-.86369-6.3657-2.0433-7.0802-2.1166z"/>
+     <path style="fill:currentColor" d="m32.52 892.22c-.20090-.13016-1.4606.81389-3.9132 2.7457-11.486 9.0476-17.632 24.186-16.078 39.61.79699 7.9138 2.4066 13.505 5.9184 20.562 5.8577 11.77 14.749 23.219 30.087 38.74.05838.059.12188.1244.18052.1838 1.3166-.5556 2.5965-1.0618 3.8429-1.5199-.66408-.32448-1.4608-1.3297-3.8116-4.4602-5.0951-6.785-8.7512-11.962-13.051-18.486-5.1379-7.7948-5.0097-7.5894-8.0586-13.054-6.2097-11.13-8.2674-17.725-8.6014-27.563-.21552-6.3494.13041-9.2733 1.775-14.987 2.1832-7.5849 3.9273-10.986 9.2693-18.07 1.7839-2.3656 2.6418-3.57 2.4409-3.7003z"/>
+     <path style="fill:currentColor" d="m69.133 992.37c-6.2405.0309-12.635.76718-19.554 2.5706 4.6956 4.7759 9.935 10.258 12.05 12.625l4.1272 4.6202h11.493l3.964-4.4516c2.0962-2.3541 7.4804-7.9845 12.201-12.768-8.378-1.4975-16.207-2.6353-24.281-2.5955z"/>
+     <rect style="stroke-width:0;fill:currentColor" ry="2.0328" height="27.746" width="22.766" y="1017.7" x="60.201"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="info" viewBox="0 0 41.667 41.667">
+   <g transform="translate(-37.035 -1004.6)">
+    <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m76.25 1030.2a18.968 18.968 0 0 1 -23.037 13.709 18.968 18.968 0 0 1 -13.738 -23.019 18.968 18.968 0 0 1 23.001 -13.768 18.968 18.968 0 0 1 13.798 22.984"/>
+    <g transform="matrix(1.1146 0 0 1.1146 -26.276 -124.92)">
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:3.728;fill:none" d="m75.491 1039.5v-8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" transform="scale(-1)" d="m-73.193-1024.5a2.3719 2.3719 0 0 1 -2.8807 1.7142 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+   </g>
+  </symbol>
+
+  <symbol id="warning" viewBox="0 0 48.430474 41.646302">
+    <g transform="translate(-1.1273 -1010.2)">
+     <path style="stroke-linejoin:round;stroke:currentColor;stroke-linecap:round;stroke-width:4.151;fill:none" d="m25.343 1012.3-22.14 37.496h44.28z"/>
+     <path style="stroke:currentColor;stroke-linecap:round;stroke-width:4.1512;fill:none" d="m25.54 1027.7v8.7472"/>
+     <path style="stroke-width:0;fill:currentColor" d="m27.839 1042.8a2.3719 2.3719 0 0 1 -2.8807 1.7143 2.3719 2.3719 0 0 1 -1.718 -2.8785 2.3719 2.3719 0 0 1 2.8763 -1.7217 2.3719 2.3719 0 0 1 1.7254 2.8741"/>
+    </g>
+  </symbol>
+
+  <symbol id="menu" viewBox="0 0 50 50">
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="0" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="20" x="0"/>
+     <rect style="stroke-width:0;fill:currentColor" height="10" width="50" y="40" x="0"/>
+   </symbol>
+
+   <symbol id="link" viewBox="0 0 50 50">
+    <g transform="translate(0 -1002.4)">
+     <g transform="matrix(.095670 0 0 .095670 2.3233 1004.9)">
+      <g>
+       <path style="stroke-width:0;fill:currentColor" d="m452.84 192.9-128.65 128.65c-35.535 35.54-93.108 35.54-128.65 0l-42.881-42.886 42.881-42.876 42.884 42.876c11.845 11.822 31.064 11.846 42.886 0l128.64-128.64c11.816-11.831 11.816-31.066 0-42.9l-42.881-42.881c-11.822-11.814-31.064-11.814-42.887 0l-45.928 45.936c-21.292-12.531-45.491-17.905-69.449-16.291l72.501-72.526c35.535-35.521 93.136-35.521 128.64 0l42.886 42.881c35.535 35.523 35.535 93.141-.001 128.66zm-254.28 168.51-45.903 45.9c-11.845 11.846-31.064 11.817-42.881 0l-42.884-42.881c-11.845-11.821-11.845-31.041 0-42.886l128.65-128.65c11.819-11.814 31.069-11.814 42.884 0l42.886 42.886 42.876-42.886-42.876-42.881c-35.54-35.521-93.113-35.521-128.65 0l-128.65 128.64c-35.538 35.545-35.538 93.146 0 128.65l42.883 42.882c35.51 35.54 93.11 35.54 128.65 0l72.496-72.499c-23.956 1.597-48.092-3.784-69.474-16.283z"/>
+      </g>
+     </g>
+    </g>
+  </symbol>
+ <symbol id="hash" viewBox="0 0 32 32" style="enable-background:new 0 0 32 32;" xml:space="preserve">
+	 <g>
+	 <path style="fill:#030104;" d="M30,12V8h-5.004l1-8h-4l-1,8h-7.998l1-8h-4l-1,8H2v4h6.498L7.5,20H2v4h5l-1,8h4l1-8h8l-1.002,8H22
+		 l1-8h7v-4h-6.5l0.996-8H30z M19.5,20h-8l0.998-8h7.998L19.5,20z"/>
+	 </g>
+</symbol>
+  <symbol id="doc" viewBox="0 0 35 45">
+   <g transform="translate(-147.53 -539.83)">
+    <path style="stroke:currentColor;stroke-width:2.4501;fill:none" d="m149.38 542.67v39.194h31.354v-39.194z"/>
+    <g style="stroke-width:25" transform="matrix(.098003 0 0 .098003 133.69 525.96)">
+     <path d="m220 252.36h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path style="stroke:currentColor;stroke-width:25;fill:none" d="m220 409.95h200"/>
+     <path d="m220 488.74h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+     <path d="m220 331.15h200" style="stroke:currentColor;stroke-width:25;fill:none"/>
+    </g>
+   </g>
+ </symbol>
+
+ <symbol id="tick" viewBox="0 0 177.16535 177.16535">
+  <g transform="translate(0 -875.2)">
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="155" width="40" y="702.99" x="556.82"/>
+   <rect style="stroke-width:0;fill:currentColor" transform="rotate(30)" height="40" width="90.404" y="817.99" x="506.42"/>
+  </g>
+ </symbol>
+</svg>
+
+
+
+    
+    <div class="wrapper">
+      
+      <header class="intro-and-nav" role="banner">
+  <div>
+    <div class="intro">
+      <a class="logo" href="/" aria-label="cronocide.com home page">
+        <img src="https://cronocide.com/images/border-silver-blank.png" alt="">
+      </a>
+      <h1>Cronocide</h1>
+      
+      <p class="library-desc">
+        
+      </p>
+    </div>
+    <nav id="patterns-nav" class="patterns" role="navigation">
+  <h2 class="vh">Main navigation</h2>
+  <button id="menu-button" aria-expanded="false">
+    <svg viewBox="0 0 50 50" aria-hidden="true" focusable="false">
+      <use xlink:href="#menu"></use>
+    </svg>
+    More
+  </button>
+  
+  
+  <ul id="patterns-list">
+  
+    <li class="pattern">
+      
+      
+        <a href="/" >
+        <span class="text">About</span>
+      </a>
+     
+    </li>
+  
+    <li class="pattern">
+      
+      
+        <a href="/post/" >
+        <span class="text">All Posts</span>
+      </a>
+     
+    </li>
+  
+    <li class="pattern">
+      
+      
+        <a href="https://apps.cronocide.com/login" >
+        <span class="text">Applications</span>
+      </a>
+     
+    </li>
+  
+    <li class="pattern">
+      
+      
+        <a href="/resume/" >
+        <span class="text">Resume</span>
+      </a>
+     
+    </li>
+  
+    <li class="pattern">
+      
+      
+        <a href="/contact/" >
+        <span class="text">Contact</span>
+      </a>
+     
+    </li>
+  
+  </ul>
+</nav>
+
+    <div class="social" role="social">
+  <a href="https://cronocide.com/index.xml">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M64 32C28.7 32 0 60.7 0 96L0 416c0 35.3 28.7 64 64 64l320 0c35.3 0 64-28.7 64-64l0-320c0-35.3-28.7-64-64-64L64 32zM96 136c0-13.3 10.7-24 24-24c137 0 248 111 248 248c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-110.5-89.5-200-200-200c-13.3 0-24-10.7-24-24zm0 96c0-13.3 10.7-24 24-24c83.9 0 152 68.1 152 152c0 13.3-10.7 24-24 24s-24-10.7-24-24c0-57.4-46.6-104-104-104c-13.3 0-24-10.7-24-24zm0 120a32 32 0 1 1 64 0 32 32 0 1 1 -64 0z"/></svg>
+
+  </a>
+  <a href="https://linkedin.com/in/danieldayley">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3zM135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5zm282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9V416z"/></svg>
+
+  </a>
+  <a href="mailto:website@cronocide.com">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--!Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.--><path fill="#ffffff" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM218 271.7L64.2 172.4C66 156.4 79.5 144 96 144l256 0c16.5 0 30 12.4 31.8 28.4L230 271.7c-1.8 1.2-3.9 1.8-6 1.8s-4.2-.6-6-1.8zm29.4 26.9L384 210.4 384 336c0 17.7-14.3 32-32 32L96 368c-17.7 0-32-14.3-32-32l0-125.6 136.6 88.2c7 4.5 15.1 6.9 23.4 6.9s16.4-2.4 23.4-6.9z"/></svg>
+
+  </a>
+  <a href="https://github.com/Cronocide">
+    
+    <svg aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github-square" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" class="svg-inline--fa fa-github-square fa-w-14 fa-9x"><path fill="#ffffff" d="M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48V80c0-26.5-21.5-48-48-48zM277.3 415.7c-8.4 1.5-11.5-3.7-11.5-8 0-5.4.2-33 .2-55.3 0-15.6-5.2-25.5-11.3-30.7 37-4.1 76-9.2 76-73.1 0-18.2-6.5-27.3-17.1-39 1.7-4.3 7.4-22-1.7-45-13.9-4.3-45.7 17.9-45.7 17.9-13.2-3.7-27.5-5.6-41.6-5.6-14.1 0-28.4 1.9-41.6 5.6 0 0-31.8-22.2-45.7-17.9-9.1 22.9-3.5 40.6-1.7 45-10.6 11.7-15.6 20.8-15.6 39 0 63.6 37.3 69 74.3 73.1-4.8 4.3-9.1 11.7-10.6 22.3-9.5 4.3-33.8 11.7-48.3-13.9-9.1-15.8-25.5-17.1-25.5-17.1-16.2-.2-1.1 10.2-1.1 10.2 10.8 5 18.4 24.2 18.4 24.2 9.7 29.7 56.1 19.7 56.1 19.7 0 13.9.2 36.5.2 40.6 0 4.3-3 9.5-11.5 8-66-22.1-112.2-84.9-112.2-158.3 0-91.8 70.2-161.5 162-161.5S388 165.6 388 257.4c.1 73.4-44.7 136.3-110.7 158.3zm-98.1-61.1c-1.9.4-3.7-.4-3.9-1.7-.2-1.5 1.1-2.8 3-3.2 1.9-.2 3.7.6 3.9 1.9.3 1.3-1 2.6-3 3zm-9.5-.9c0 1.3-1.5 2.4-3.5 2.4-2.2.2-3.7-.9-3.7-2.4 0-1.3 1.5-2.4 3.5-2.4 1.9-.2 3.7.9 3.7 2.4zm-13.7-1.1c-.4 1.3-2.4 1.9-4.1 1.3-1.9-.4-3.2-1.9-2.8-3.2.4-1.3 2.4-1.9 4.1-1.5 2 .6 3.3 2.1 2.8 3.4zm-12.3-5.4c-.9 1.1-2.8.9-4.3-.6-1.5-1.3-1.9-3.2-.9-4.1.9-1.1 2.8-.9 4.3.6 1.3 1.3 1.8 3.3.9 4.1zm-9.1-9.1c-.9.6-2.6 0-3.7-1.5s-1.1-3.2 0-3.9c1.1-.9 2.8-.2 3.7 1.3 1.1 1.5 1.1 3.3 0 4.1zm-6.5-9.7c-.9.9-2.4.4-3.5-.6-1.1-1.3-1.3-2.8-.4-3.5.9-.9 2.4-.4 3.5.6 1.1 1.3 1.3 2.8.4 3.5zm-6.7-7.4c-.4.9-1.7 1.1-2.8.4-1.3-.6-1.9-1.7-1.5-2.6.4-.6 1.5-.9 2.8-.4 1.3.7 1.9 1.8 1.5 2.6z" class=""></path></svg>
+
+  </a>
+</div>
+
+  </div>
+</header>
+
+      
+      
+      <div class="main-and-footer">
+        <div>
+          
+  <main id="main">
+    <h1>
+      Mac OS 9 Games on Anbernic devices
+    </h1>
+
+    <div class="date">
+      
+      
+      <span aria-hidden="true">Mar 16, 2026</span>
+      
+        
+      
+    </div>
+
+    
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              
+              <a href="https://cronocide.com/tags/rant/">Rant</a>
+            </li>
+          
+        </ul>
+      </div>
+    
+      <hr>
+    
+      
+
+  <nav class="toc" aria-labelledby="toc-heading">
+    <h2 id="toc-heading">Table of contents</h2>
+    <ol>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#attempt-1-qemu-ppc-screamer-for-h700">
+            Attempt 1: qemu-ppc-screamer for H700
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#attempt-2-qemu-ppc-screamer-for-h700---">
+            Attempt 2: qemu-ppc-screamer for H700 - ✨
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#attempt-3-sheepshaver-for-aarch64---">
+            Attempt 3: SheepShaver for AArch64 - ✨
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#attempt-4-sheepshaver-with-jit-for-aarch64---">
+            Attempt 4: SheepShaver with JIT for AArch64 - ✨
+          </a>
+        </li>
+      
+        <li>
+          
+          
+          
+          
+          <a href="#future-work">
+            Future Work
+          </a>
+        </li>
+      
+    </ol>
+  </nav>
+
+
+    
+
+    <p>I grew up in a frugal household that never considered buying a video game console. Consequently we never owned one, so the video games I grew up with were the ones that would run on my mom&rsquo;s iMac G3, running Mac OS 9.2.2. While other kids enjoyed their Nintendo 64s, the suite of games published by studios like <a href="https://web.archive.org/web/20170926153723/http://www.ambrosiasw.com/about/">Ambrosia Software</a> and <a href="https://pangeasoft.net/">Pangea</a> kept me happily entertained throughout my childhood.</p>
+<p>My Steam Deck has been great for emulating these old games. With the exception of <a href="https://web.archive.org/web/20170915070901/http://www.ambrosiasw.com/games/ferazel/">Ferazel&rsquo;s Wand</a>, I was able to get all the games I could remember from my childhood running with excellent performance via a <a href="https://github.com/mcayland/qemu/tree/screamer">QEMU fork</a> called <code>qemu-ppc-screamer</code>, one of the two ways of emulating Mac OS 9. Ferazel&rsquo;s Wand utilizes a <a href="https://www.emaculation.com/forum/viewtopic.php?t=5117&amp;start=100">gamma adjustment</a> that hasn&rsquo;t been implemented in QEMU yet, so I use SheepShaver for that one on the Steam Deck.</p>
+<p>The Steam Deck is great for a more modern portable gaming experience, but it&rsquo;s still a bit overkill for the small games that pushed the <a href="https://en.wikipedia.org/wiki/IMac_G3">iMac G3</a>. A few years ago I picked up an <a href="https://en.wikipedia.org/wiki/Anbernic_RG35XXSP">Anbernic RG35XXSP</a> and was surprised by how capable it was for its price and portability. I got a hankering to see if I could get my old childhood games running on it so I could pull them out anywhere. There are a handful of third-party firmware available for the device and I&rsquo;ve been running <a href="https://muos.dev/">MuOS</a> on it with few complaints. One of the excellent projects that MuOS supports is <a href="https://portmaster.games/">Portmaster</a>, which is a lightweight software distribution system for software compatible with ARM handheld devices. Portmaster already had ports of some of the open-sourced versions of old Pangea titles I used to love, like <a href="https://github.com/DescentDevelopers/Descent3">Descent 3</a>, <a href="https://github.com/jorio/Nanosaur">Nanosaur</a>, <a href="https://github.com/jorio/Bugdom">Bugdom</a> and <a href="https://github.com/jorio/CroMagRally">Cro-Mag Rally</a>.</p>
+<a class="header-link" href="#attempt-1-qemu-ppc-screamer-for-h700"><h2 id="attempt-1-qemu-ppc-screamer-for-h700">Attempt 1: qemu-ppc-screamer for H700</a> </h2>
+<p>QEMU has had the ability to emulate the PowerPC G3 for over a decade, and with the addition of the screamer patch has full audio support. While this is a full CPU emulator, QEMU uses <a href="https://wiki.qemu.org/Documentation/TCG">TCG</a> to translate the PowerPC-native instruction set to the target architecture&rsquo;s instruction set. While this solution is extremely robust and allows MacOS to run on almost anything, it gets very few performance perks. This wasn&rsquo;t noticible on my x64 Steam Deck, but would prove to be crucial later on in this project.</p>
+<p>I sat down with the Portmaster porting docs and the <code>qemu-ppc-screamer</code> source code and started hammering away at a Portmaster build for the RG35XXSP. I naively used a virtual machine development environment instead of a docker container for reasons I can neither remember nor fathom. After referencing plenty of SDL and OpenGL documentation, building <code>libepoxy</code> from source and tediously shlepping build files over to the device over SCP, I was able to get a booting Mac OS 9 VM on QEMU running, but without graphics or sound. Convinced these problems were surmountable, I took a break to take time to think.</p>
+<p>Regrettably, all of this development happened around the time that I needed to upgrade my laptop. While I did manage to migrate the finished artifacts over, I forgot to migrate over the VM that contained the in-progress source code before I wiped my old one. A painful lesson was learned, but I wasn&rsquo;t in the mood to re-attempt this project for a couple of months after that.</p>
+<a class="header-link" href="#attempt-2-qemu-ppc-screamer-for-h700---"><h2 id="attempt-2-qemu-ppc-screamer-for-h700---">Attempt 2: qemu-ppc-screamer for H700 - ✨</a> </h2>
+<p>I am fortunate enough to have a <a href="https://cursor.com/">Cursor</a> license provided to me through my work. My company&rsquo;s agreement with Cursor allows us so many credits per-month-per-user. My role in the company is not primarily a development role, so I don&rsquo;t usually use even half of my credit quota. These credits are distributed on a &ldquo;use it or lose it&rdquo; basis, and we were asked recently to increase our utilization near the end of the month. They didn&rsquo;t need to ask me twice!</p>
+<p>I was continuously impressed with frontier coding models&rsquo; abilities to create nuanced contributions to existing codebases, particularly <code>claude-4.6-opus-high-thinking</code>. I decided that it might be up to the task of getting me back to where I was before my computer-wiping incident. Having rethought my previous VM strategy I decided to use a build container so I could keep the source code in a place I could easily back up.</p>
+<p>The majority of the &ldquo;work&rdquo; needed for the setup was populating the <code>AGENTS.md</code> file. I filled it with the verbatim caveats and build instructions from the Portmaster Porting guide and added preambles with our project intent and conclusions that included how to quickly build and test. I wrote out a long instructional prompt explaining what it was that I wanted it to build. Then I fired it off.</p>
+<p>It was exciting to watch its thinking context expand over the work I had already previously done manually. It figured out instantly the shader changes that I toiled over for an hour, and got libepoxy sent over from the build container without issues. In just a few minutes I had a working instance of <code>qemu-ppc-screamer</code> available on my RG35XXSP.</p>
+<p>My existing Mac OS 9 installation virtual hard disk that I use for my Steam Deck was just over 5GB in size, about 1GB larger than the maximum file size allowed by MuOS&rsquo;s FAT32-formatted SD cards. So I patiently reinstalled Mac OS 9.2 on the device and booted it up.</p>
+<p>It ran <em>painfully</em> slow. It took several minutes just to boot. I was able to test the sound ability in Mac OS 9&rsquo;s &ldquo;Speech&rdquo; control panel, but the audio was so broken by the CPU emulation as to be almost incomprehensible. I decided not to install any games on this build: QEMU would be too slow on my device to play the games I wanted to play.</p>
+<a class="header-link" href="#attempt-3-sheepshaver-for-aarch64---"><h2 id="attempt-3-sheepshaver-for-aarch64---">Attempt 3: SheepShaver for AArch64 - ✨</a> </h2>
+<p>But after AI made such quick work of my <code>qemu-ppc-screamer</code> build, I thought it might be worth trying another approach: cross-compiling SheepShaver for AArch64. Similarly to QEMU, I downloaded the latest SheepShaver fork and created an <code>AGENTS.md</code> file similar to the one I created for QEMU. After only one or two prompts, <code>claude-4.6-opus-high-thinking</code> had successfully built SheepShaver for my RG35XXSP.</p>
+<p>SheepShaver doesn&rsquo;t support anything newer than Mac OS 9.1 because SheepShaver doesn&rsquo;t implement an MMU, and versions newer than that must support virtual memory. This wasn&rsquo;t a problem for my use case but did force me to create a new installation of the OS from scratch. A few hours of patiently installing Mac OS 9.1 and I was ready to test again.</p>
+<p>This time the &ldquo;Speech&rdquo; control panel worked without issue! Any slowness the emulator was exhibiting wasn&rsquo;t visible in the desktop, so I went ahead with testing a game. Ferazel&rsquo;s Wand is one that I don&rsquo;t have working on QEMU <em>(Ferazel implements a <a href="https://www.emaculation.com/forum/viewtopic.php?t=5117&amp;start=100">gamma adjust</a> call that&rsquo;s not implemented in QEMU yet)</em> so I thought it&rsquo;d be a great performance candidate.</p>
+<p>Installation went off without a hitch, so I launched the game and&hellip;</p>
+<p>&hellip; the performance was <strong>still</strong> slow. Not &ldquo;one frame per second&rdquo; slow, but only about 50% of the normal play speed. Benchmarking performance of such an old system would be a challenging task on its own, so I decided to go off of vibes and &ldquo;playability&rdquo;. I went back to <code>claude-4.6-opus-high-thinking</code> for some performance ideas. It suggested that the primary culprit for the game&rsquo;s poor performance was likely the lack of JIT engine for AArch64, the architecture it was now running on. I was pretty discouraged at this analysis, since building a cross-architecture assembly generator is <strong>WAY</strong> beyond my skills and abilities.</p>
+<p><em>But</em> it was late Saturday night and I still had some cursor credits to burn before the end of the month. So I impishly suggested that <strong>claude-4.6-opus-high-thinking</strong> build me a JIT backend for AArch64:</p>
+<blockquote>
+<p>Me: What would be needed to implement a PPC to ARM JIT backend for the dyngen code that Sheepshaver uses?</p>
+</blockquote>
+<a class="header-link" href="#attempt-4-sheepshaver-with-jit-for-aarch64---"><h2 id="attempt-4-sheepshaver-with-jit-for-aarch64---">Attempt 4: SheepShaver with JIT for AArch64 - ✨</a> </h2>
+<p>It started its response to my paltry prompt and simpleminded instructions with <em>&ldquo;This is a massive undertaking&hellip;&rdquo;</em> I think it was exaggerating, but not by much. There&rsquo;s a lot of machine code nuance that needs to be fully understood in order to build a working JIT compiler. I wanted a <em>native</em> PPC to AArch64 JIT with no intermediary bytecode. To be honest I didn&rsquo;t actually know if it was possible with the architectures so different from each other. But I set up a test device and gave it the tools it needed to build+deploy+test to iterate on its ideas.</p>
+<p>For hours all Sunday I would come in to check on it and click the <strong>Approve</strong> button for anything it wanted to try. Attempting to interrupt or guide it would have been a useless effort as it was now speaking a language of machine code I couldn&rsquo;t understand. But the tests it ran were all definitive. They all ended almost immediately with a black screen and no output:</p>
+<blockquote>
+<p>Me: The screen is just black. I&rsquo;ve confirmed that if I use the <code>--jit false</code> flag it does start booting, so there may be a correctness issue here.</p>
+</blockquote>
+<p>The Cursor application itself struggled to keep up with the agent&rsquo;s conversation length. Besides frequently hitting the context window limit and compressing the context, the chat&rsquo;s scroll window would stop working at times and some UI elements wouldn&rsquo;t render right. A few times I would have to stop and fire up a new agent with the same prompt as the old one just to clear out the old build/debug context it had churned through. It would think for 5 to 10 minutes at a time, probably on simple problems <em>(though I would not be able to tell)</em> that could be more quickly solved by expert intervention. Its thoughts and debugging were not anything I could offer helpful insight into:</p>
+<blockquote>
+<p>Claude: I can see the trampoline IS correctly written at EmulatorData+0x38. The problem is deeper: r29 and r31 are already corrupted before we reach EmulatorData+0x38. The extra routine at 0x36f900 doesn&rsquo;t restore them. Let me check what XLM_KERNEL_DATA is so I can write a better trampoline that restores the corrupted registers:</p>
+</blockquote>
+<p>Anyways, I was about to give up on this silly attempt at having a chatbot build me a JIT backend when right before I went to bed <em>(literally my <strong>final</strong> attempt before giving up)</em> I was suddenly surprised by a <a href="https://apple.fandom.com/wiki/Happy_Mac">happy mac</a>! I was sure that there was a mistake and JIT had been disabled, but when I went to test Ferazel&rsquo;s Wand the evidence was clear:</p>
+<figure><img src="/images/ferazel_nojit.gif"/><figcaption>
+            <h4>Ferazel&#39;s Wand on SheepShaver for AArch64, no JIT compilation</h4>
+        </figcaption>
+</figure>
+
+<figure><img src="/images/ferazel_jit.gif"/><figcaption>
+            <h4>Ferazel&#39;s Wand on SheepShaver for AArch64, with JIT compilation</h4>
+        </figcaption>
+</figure>
+
+<p>Somehow, the JIT backend it built worked. Ferazel was <em>finally</em> playable on my portable game system! Well, almost. It would occasionally freeze or crash, but a few more agents were able to quickly diagnose and remediate the issues.</p>
+<a class="header-link" href="#future-work"><h2 id="future-work">Future Work</a> </h2>
+<p>What surprised me the most about this project was how ripe it was for improvement. Despite use from fans all over the world, the SheepShaver project is quite fragmented, with forks trying to do different things. While this build plays well enough for me, I doubt it would pass inspection by the folks over at Portmaster. There&rsquo;s a lot that could be improved to make Sheepshaver a better experience on mobile devices.
+The same week I compiled this backend, Emaculation.com user <code>seirra760</code> completed and <a href="https://www.emaculation.com/forum/viewtopic.php?p=81946">published</a> a native Metal renderer for RAVE, the graphics accelerator used in the iMac G3. Here&rsquo;s my wishlist for things to do with this build in the future:</p>
+<ul>
+<li>Native SDL acceleration for RAVE/QuickDraw3D</li>
+<li>Better virtual disk syncing</li>
+<li>Stricter mouse emulation (for games like <a href="https://en.wikipedia.org/wiki/Apeiron_(video_game)">Apeiron</a>)</li>
+<li>Saving and restoring machine state (for faster game saving/loading)</li>
+</ul>
+
+
+  </main>
+  <div id="disqus-container">
+  
+</div>
+
+
+          <div class="pagenav">
+<div class="pagenav-prev" ><span>← </span><a href="/post/baiftfoi/">Building an iPod for the fun of it</a></div>
+
+</div>
+          <footer role="contentinfo">
+  <hr>
+  
+    Opinions expressed are not representative of <a href="https://linkedin.com/in/danieldayley">my current, former, and future employers</a>.
+  
+</footer>
+
+        </div>
+      </div>
+      
+    </div>
+    <script src="https://cronocide.com/js/prism.js"></script>
+<script src="https://cronocide.com/js/dom-scripts.js"></script>
+    
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.css" integrity="sha384-dbVIfZGuN1Yq7/1Ocstc1lUEm+AT+/rCkibIcC/OmWo5f0EA48Vf8CytHzGrSwbQ" crossorigin="anonymous">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/katex.min.js" integrity="sha384-2BKqo+exmr9su6dir+qCw08N2ZKRucY4PrGQPPWU1A7FtlCGjmEGFqXCv5nyM5Ij" crossorigin="anonymous"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.10.1/dist/contrib/auto-render.min.js" integrity="sha384-kWPLUVMOks5AQFrykwIup5lo0m3iMkkHrD0uJ4H5cjeGihAutqP0yW0J6dpFiVkI" crossorigin="anonymous" onload="renderMathInElement(document.body);"></script>
+
+  </body>
+</html>
