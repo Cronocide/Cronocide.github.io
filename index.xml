@@ -6,8 +6,15 @@
     <description>Recent content in About on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Wed, 01 Apr 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Daniel Dayley</title>
+      <link>https://cronocide.com/resume/</link>
+      <pubDate>Wed, 01 Apr 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/resume/</guid>
+      <description>Experienced security and software engineer with a history of strong project delivery and technical leadership. Diversified skill set involving software security administration, software development, and systems administration. Enthusiastic problem solver with a proven track record of technical growth and engagement.&#xA;Work Experience Application Security Engineer Qualtrics | 2025-2026&#xA;Oversaw the Static Application Security Testing (SAST) and Software Composition Analysis (SCA) scanning program, achieving an increase in code visibility and a 2/3rds reduction in false-positive findings across 15k code repositories by integrating agentic AI systems.</description>
+    </item>
     <item>
       <title>Mac OS 9 Games on Anbernic devices</title>
       <link>https://cronocide.com/post/mogoa/</link>
@@ -56,13 +63,6 @@
       <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
       <guid>https://cronocide.com/contact/</guid>
       <description> danieldayley LinkedIn Cronocide Github cronoci.de Discord u/cronocide Reddit cronocide Keybase @Cronocide Twitter @cronoci.de Bluesky Cronocide Apple Music </description>
-    </item>
-    <item>
-      <title>Daniel Dayley</title>
-      <link>https://cronocide.com/resume/</link>
-      <pubDate>Tue, 01 Oct 2024 00:00:00 +0000</pubDate>
-      <guid>https://cronocide.com/resume/</guid>
-      <description>Experienced security and software engineer with a history of technical and architectural leadership. Diversified skill set involving information security administration, software development, and system administration. Enthusiastic problem solver with a proven track record of technical growth and engagement.&#xA;Work Experience Application Security Engineer Qualtrics | 2025-2026&#xA;Oversaw the SAST/SCA scanning program, achieving a 300% increase in code visibility and reduction in false-positive findings across 15k code repositories by integrating agentic AI systems.</description>
     </item>
     <item>
       <title>Applications</title>
