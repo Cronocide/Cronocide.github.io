@@ -368,6 +368,13 @@ main ol {
 main li + li {
     margin-top: 0.5rem;
 }
+main > ul > li > a {
+    color: #2e9ff5;
+}
+main > ul > li.patterns-list > h2 > a {
+    color: #ffffff;
+}
+
 main ul ul, main ol ol, main li ul, main li ol {
     margin-top: 0.5rem;
 }
