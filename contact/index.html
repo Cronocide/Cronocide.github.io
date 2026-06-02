@@ -341,7 +341,7 @@ M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48
 <div class="authenticated-card-container"
      data-url="https://apps.cronocide.com/phone"
      data-title="iMessage"
-     data-svg="/images/music.svg">
+     data-svg="/images/imessage.svg">
 </div>
 
 <script>
@@ -360,7 +360,7 @@ M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48
 
       if (!url) return;
 
-      fetch(url)
+      fetch(url, { credentials: 'include' })
         .then(response => {
           if (!response.ok) throw new Error('Not authenticated or error');
           return response.json();
@@ -380,6 +380,7 @@ M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48
             ${svgHtml}
             <div class="card-description">
               <a href="tel:${phoneNumber}" target="_blank"><h2>${displayPhone}</h2></a>
+              ${subtitle ? `<div>${subtitle}</div>` : ''}
               <span class="card-subtitle">${title}</span>
             </div>
           `;
