@@ -1183,6 +1183,7 @@ svg.card-icon {
     padding-right: .5rem;
     padding-bottom: 0.6rem;
     overflow: hidden;
+    position: relative;
 }
 @keyframes fade-overlay {
   from { opacity: 1; }
