@@ -1182,6 +1182,7 @@ svg.card-icon {
     margin-top: 1.5rem;
     padding-right: .5rem;
     padding-bottom: 0.6rem;
+    overflow: hidden;
 }
 @keyframes fade-overlay {
   from { opacity: 1; }
@@ -1194,7 +1195,6 @@ svg.card-icon {
   background: blue;
   animation: fade-overlay 0.5s ease-out forwards;
   pointer-events: none;
-  /* No blend mode — just a solid overlay fading out */
 }
 /* Utilities */
 .vh {
