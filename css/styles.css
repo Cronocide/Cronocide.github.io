@@ -1194,7 +1194,7 @@ svg.card-icon {
   position: absolute;
   inset: 0;
   background: blue;
-  animation: fade-overlay 0.5s ease-out forwards;
+  animation: fade-overlay 0.75s ease-out forwards;
   pointer-events: none;
 }
 /* Utilities */
