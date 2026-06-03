@@ -368,13 +368,14 @@ M400 32H48C21.5 32 0 53.5 0 80v352c0 26.5 21.5 48 48 48h352c26.5 0 48-21.5 48-48
           if (!phoneNumber) return;
           const displayPhone = phoneNumber.replace(/\D/g, '').replace(/^1/, '').replace(/(\d{3})(\d{3})(\d{4})/, '$1-$2-$3') || phoneNumber;
           container.style.display = "";
-          container.insertAdjacentHTML('beforeend', `
+          var cardData = `
             <div class="card-description">
               <a href="tel:${phoneNumber}" target="_blank"><h2>${displayPhone}</h2></a>
               ${subtitle ? `<div>${subtitle}</div>` : ''}
               <span class="card-subtitle">${title}</span>
             </div>
-          `);
+          `
+          container.insertAdjacentHTML('beforeend', cardData);
         })
         .catch(err => {
           console.debug('Authenticated card fetch failed:', err);
