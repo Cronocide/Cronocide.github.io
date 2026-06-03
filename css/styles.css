@@ -1193,7 +1193,7 @@ svg.card-icon {
   content: '';
   position: absolute;
   inset: 0;
-  background: blue;
+  background: #2e9ff5;
   animation: fade-overlay 0.75s ease-out forwards;
   pointer-events: none;
 }
