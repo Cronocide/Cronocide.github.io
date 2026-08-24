@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Agents on cronocide.com</title>
+    <link>https://cronocide.com/tags/agents/</link>
+    <description>Recent content in Agents on cronocide.com</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <atom:link href="https://cronocide.com/tags/agents/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude broke my &#39;FindMy&#39;</title>
+      <link>https://cronocide.com/post/cbmfm/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/cbmfm/</guid>
+      <description>.. or rather, I broke it with Claude&amp;rsquo;s help.&#xA;I recently read an article about getting FindMy data out of the Apple ecosystem. Loaction data is highly sensitive so it&amp;rsquo;s natural that Apple wants to safeguard it for you. However I also prefer to own and operate on my own data when I can, so I was excited by the prospect of getting to harvest my own location data for future use.</description>
+    </item>
+    <item>
+      <title>Mac OS 9 Games on Anbernic devices</title>
+      <link>https://cronocide.com/post/mogoa/</link>
+      <pubDate>Mon, 16 Mar 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/mogoa/</guid>
+      <description>I grew up in a frugal household that never considered buying a video game console. Consequently we never owned one, so the video games I grew up with were the ones that would run on my mom&amp;rsquo;s iMac G3, running Mac OS 9.2.2. While other kids enjoyed their Nintendo 64s, the suite of games published by studios like Ambrosia Software and Pangea kept me happily entertained throughout my childhood.&#xA;My Steam Deck has been great for emulating these old games.</description>
+    </item>
+  </channel>
+</rss>

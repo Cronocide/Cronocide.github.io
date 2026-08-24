@@ -6,8 +6,15 @@
     <description>Recent content in Posts on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Mon, 16 Mar 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Claude broke my &#39;FindMy&#39;</title>
+      <link>https://cronocide.com/post/cbmfm/</link>
+      <pubDate>Fri, 21 Aug 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/cbmfm/</guid>
+      <description>.. or rather, I broke it with Claude&amp;rsquo;s help.&#xA;I recently read an article about getting FindMy data out of the Apple ecosystem. Loaction data is highly sensitive so it&amp;rsquo;s natural that Apple wants to safeguard it for you. However I also prefer to own and operate on my own data when I can, so I was excited by the prospect of getting to harvest my own location data for future use.</description>
+    </item>
     <item>
       <title>Mac OS 9 Games on Anbernic devices</title>
       <link>https://cronocide.com/post/mogoa/</link>

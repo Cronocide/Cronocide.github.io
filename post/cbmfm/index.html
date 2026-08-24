@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
   <meta name="generator" content="Hugo 0.123.7">
-  <link rel="canonical" href="https://cronocide.com/tags/rant/">
+  <link rel="canonical" href="https://cronocide.com/post/cbmfm/">
   
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
@@ -22,7 +22,7 @@
   
   <link rel="stylesheet" type="text/css" href="https://cronocide.com/css/styles.css">
   
-  <title>Rant | cronocide.com</title>
+  <title>Claude broke my &#39;FindMy&#39; | cronocide.com</title>
 </head>
 
   <body>
@@ -239,63 +239,85 @@
         <div>
           
   <main id="main">
-    <h1>Rant</h1>
-    <hr>
-    <ul class="patterns-list">
+    <h1>
+      Claude broke my &#39;FindMy&#39;
+    </h1>
+
+    <div class="date">
+      
+      
+      <span aria-hidden="true">Aug 21, 2026</span>
+      
+        
+      
+    </div>
+
     
-      <li>
-        <h2>
-          <a href="https://cronocide.com/post/cbmfm/">
-            Claude broke my &#39;FindMy&#39;
-          </a>
-        </h2>
-      </li>        
+      <div class="tags">
+        <strong aria-hidden="true">Tags: </strong>
+        <ul aria-label="tags">
+          
+            <li>
+              
+              <a href="https://cronocide.com/tags/rant/">Rant</a>
+            </li>
+          
+            <li>
+              
+              <a href="https://cronocide.com/tags/agents/">Agents</a>
+            </li>
+          
+        </ul>
+      </div>
     
-      <li>
-        <h2>
-          <a href="https://cronocide.com/post/mogoa/">
-            Mac OS 9 Games on Anbernic devices
-          </a>
-        </h2>
-      </li>        
+      <hr>
     
-      <li>
-        <h2>
-          <a href="https://cronocide.com/post/baiftfoi/">
-            Building an iPod for the fun of it
-          </a>
-        </h2>
-      </li>        
+      
+
+
     
-      <li>
-        <h2>
-          <a href="https://cronocide.com/post/yir2024/">
-            2024: My Year in Review
-          </a>
-        </h2>
-      </li>        
-    
-      <li>
-        <h2>
-          <a href="https://cronocide.com/post/boi2024/">
-            Shoot Into the Wild Bluesky
-          </a>
-        </h2>
-      </li>        
-    
-      <li>
-        <h2>
-          <a href="https://cronocide.com/post/hacktober2019/">
-            Hacktober 2019 - Filesystems
-          </a>
-        </h2>
-      </li>        
-    
-    </ul>
+
+    <p>.. or rather, <em>I</em> broke it with Claude&rsquo;s help.</p>
+<p>I recently read <a href="https://www.theregister.com/security/2026/08/20/researcher-tricks-apples-find-my-into-sharing-location-data-with-linux/5290496">an article</a> about getting FindMy data out of the Apple ecosystem. Loaction data is highly sensitive so it&rsquo;s natural that Apple wants to safeguard it for you. However I also prefer to own and operate on my own data when I can, so I was excited by the prospect of getting to harvest my own location data for future use.</p>
+<p>Normally I&rsquo;d reserve a project like this for a time when I feel particularly interested in the system being RE&rsquo;d. Oftentimes someone else in the world fidns that time before I do and I can use whatever solution they produce. While I thought of waiting for such an eventuality, I was curious to see how well Opus could perform at the task after <a href="/post/mogoa/">my last success with it</a>. Unfortunately my trust in the model was little premature.</p>
+<blockquote>
+<p>Note: I&rsquo;ve been hearing anecdotallly that Opus 5 isn&rsquo;t as performant/intelligent/cool/whatever as 4.8, but I heard the same about 4.8 and 4.6 and nobody&rsquo;s talking about 4.6 anymore. YMMV.</p>
+</blockquote>
+<p>I fed the model the article and <a href="https://zerotistic.blog/posts/find-my-people-linux/#fetching-and-decrypting-the-location">cooresponding blog post</a> into Opus with a description of the project we wanted to build (a simple container that exports location data to various sources.) After 108k tokens and a few improvements to CI/CD and README and I had a ready-to-go docker container for testing. To be fair to Opus, it did warn me about components it was unsure about:</p>
+<blockquote>
+<ol start="2">
+<li>The NAC blob is the project&rsquo;s make-or-break. X-Mme-Nas-Qualify comes from Unicorn-emulating Apple&rsquo;s proprietary IMDAppleServices Mach-O. If it doesn&rsquo;t work, Stage 2 fails and nothing downstream exists. So Phase 1 is a spike that proves stages 1–3 end-to-end and reports back before any other code gets written. Related: that binary must not be baked into the image — pushing it to your registry redistributes Apple&rsquo;s proprietary code, so the plan downloads it to /data at runtime, SHA-1 pinned, with a remote NAC mode as an escape hatch.
+Other things worth flagging:</li>
+</ol>
+<ul>
+<li>FindMy.py doesn&rsquo;t publicly expose what we need. searchPartyToken, mmeFMFAppToken, and the DSID live in AsyncAppleAccount._login_state_data — private. The plan confines that access to one adapter function pinned to findmy==0.10.1 with a test that fails loudly if the shape changes.</li>
+</ul>
+</blockquote>
+<p>In any case I didn&rsquo;t see these issues as immidiately problematic. This was my second failure: I didn&rsquo;t thouroughly audit the code that Opus produced. I decided that I would trust that the code would be functional and not fail in any catestrophic ways, but failed to account for the unkown nature of the system I was interacting with. I pushed through to authenticating with my own private Apple account. 🤦‍♂️</p>
+<p>To my delight, I received a 2FA code adn authenticated the container. After entering it and initializing the container, I got an email from Apple that a new Mac Mini had been added to my account. I assumed (with some accuracy) that this was the device emulated by the container trying to register on my account. However, when I checked my device on my Apple account it showed only a new 14&quot; Macbook Pro. The discrepency didn&rsquo;t strike me as signifcant (since Apple representing the container accurately in the web UI as a hacked-up AI abomination seemed unlikley). The initial container logs shows the family accounts I had location data for and indicated it was waiting for location data. I let it run for a few minutes, but the location data never came in. I went back with a few debug prompts and re-ran the container a few more times. Nothing I had ever done in the past with logging in to my Apple ID had been stateful before, so I had no reason to suspect that the changes I was making were affecting my Apple account. My third mistake: running each test deploy without persisting the container&rsquo;s state.</p>
+<p>I decided to check my phone to see if location data was in fact delayed, and that the container was correctly reporting no locations yet. I noticed that the locations were all an hour or so behind. I tried refreshing the app, but the locations didn&rsquo;t change. I let Claude know this was the case to aid in its debugging, but nothing in its context window could explain it:</p>
+<blockquote>
+<p>You&rsquo;re right that breadth is suspicious. We register all seven handles as a single device advertising <code>supports-fmd-v2</code>, <code>supports-incoming-fmd-v1</code>, <code>supports-beacon-sharing-v2/v3</code>.
+A mechanism that fits your symptom: friends&rsquo; devices distribute the location key to every Find My–registered device on the account. We inserted one that claims full capability across all seven handles and never completes a key exchange. If that makes distribution fail, no device gets a fresh key — the phone shows &ldquo;No Location Found&rdquo;, and your Watch fetch briefly surfaces then goes stale.
+I want to be clear that this is a hypothesis, not a finding. I can&rsquo;t confirm it from here, because the directory is unreadable to us — I can&rsquo;t see whether your phone and Watch are still listed.</p>
+</blockquote>
+<p>I tried restarting my phone. No change. Had my wife share/unshare her location. No change. Disabled/re-enabled Find My on the phone without change.</p>
+<p>At this point I started to get worried, since there&rsquo;s not a lot of public documentation (or even discussion) around the FindMy API to repair something over it in the event of a state-changing request. I gave Opus couple more shots at debugging the issue, but found that my Apple watch became affected a few runs later. I decided to shift my focus to remediating the FindMy issues on my phone. I decided that since FindMy is a service, and the only interaction my phone had with this project was authenticating my 2FA, that the issue likely lied in Apple&rsquo;s state for my FindMy account.</p>
+<p>I kicked off more Opus agents to investigate the account issues, but found nothign exposed that seemd off or out of place. Everything it had access to seemed aligned.</p>
+<p>So now I don&rsquo;t get to see any location data on my Apple devices.</p>
+<p>I suspect there&rsquo;s an Apple-sanctioned dance that could be done with my hardware and software, but the steps would likely involve sacrificing my jailbreak or my sanity, and both are pretty scarce right now.</p>
+<p>It seems like the context from the article was not enough to build a working FindMy solution (and rightly so: the researcher redacted their implementation details), but the partial solution ended up being more dangerous than the working one. If you&rsquo;re agent is smarter than mine, I&rsquo;d love a fix (or a suggestion for a fix to the FindMy problem).</p>
+<p>You can find the <a href="https://github.com/Cronocide/findmy-recorder">cursed artifact here</a>.</p>
+
+
   </main>
+  <div id="disqus-container">
+  
+</div>
+
 
           <div class="pagenav">
-
+<div class="pagenav-prev" ><span>← </span><a href="/resume/">Daniel Dayley</a></div>
 
 </div>
           <footer role="contentinfo">
