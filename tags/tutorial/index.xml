@@ -6,8 +6,15 @@
     <description>Recent content in Tutorial on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 15 Nov 2024 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 10 Oct 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/tags/tutorial/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Baby&#39;s First AI Agent</title>
+      <link>https://cronocide.com/post/bfaa/</link>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/bfaa/</guid>
+      <description>I&amp;rsquo;ve been known for a long time to run jailbroken iOS devices as my primary phone. I enjoy learning about iOS system internals and building and running tweaks to make the iOS ecosystem work well for the things I need it to do. I have a lot of years of experience managing jailbroken phones of all states and managing the side-effects of running out-of-date iOS versions.&#xA;The latest inconvenience to running an older iOS version has been the limited supply of compatible AI agent apps that support local inference providers (e.</description>
+    </item>
     <item>
       <title>Shoot Into the Wild Bluesky</title>
       <link>https://cronocide.com/post/boi2024/</link>

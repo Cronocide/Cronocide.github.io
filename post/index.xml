@@ -6,8 +6,22 @@
     <description>Recent content in Posts on cronocide.com</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 21 Aug 2026 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 13 Nov 2026 00:00:00 +0000</lastBuildDate>
     <atom:link href="https://cronocide.com/post/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>I&#39;m Not Claiming I Wrote This</title>
+      <link>https://cronocide.com/post/inciwt/</link>
+      <pubDate>Fri, 13 Nov 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/inciwt/</guid>
+      <description>I&amp;rsquo;m not trying to hide anything. I&amp;rsquo;m too lazy to. The truth is pretty obvious anyway. I write this blog with my own two hands on keys, schlepping out incoherent babbling words from my own confused stream of consciousness, and clearly I don&amp;rsquo;t need a language model to produce utter slop. But working code is another case entirely. If you&amp;rsquo;ve ever perused my git repo, you know that much of my code is a rat&amp;rsquo;s nest of duct tape and super glue keeping together what meager automations bring me joy in life.</description>
+    </item>
+    <item>
+      <title>Baby&#39;s First AI Agent</title>
+      <link>https://cronocide.com/post/bfaa/</link>
+      <pubDate>Sat, 10 Oct 2026 00:00:00 +0000</pubDate>
+      <guid>https://cronocide.com/post/bfaa/</guid>
+      <description>I&amp;rsquo;ve been known for a long time to run jailbroken iOS devices as my primary phone. I enjoy learning about iOS system internals and building and running tweaks to make the iOS ecosystem work well for the things I need it to do. I have a lot of years of experience managing jailbroken phones of all states and managing the side-effects of running out-of-date iOS versions.&#xA;The latest inconvenience to running an older iOS version has been the limited supply of compatible AI agent apps that support local inference providers (e.</description>
+    </item>
     <item>
       <title>Claude broke my &#39;FindMy&#39;</title>
       <link>https://cronocide.com/post/cbmfm/</link>
